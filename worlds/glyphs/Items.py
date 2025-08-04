@@ -122,12 +122,12 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
 # These are just random numbers dont trust them PLEASE
 # I've seen some games that dynamically add item codes such as DOOM as well
 glyphs_items = {
-# ---Item Name------------------------ap_code-----------------------classifications---------------------------count--
+# ---Item Name------------------------ap_code-----------------------classifications-------------------------------count--
     
     # Major Upgrades
     "Sword":                    ItemData(1,     ItemClassification.progression + ItemClassification.useful,         1),
     "Progressive Dash Orb":     ItemData(2,     ItemClassification.progression + ItemClassification.useful,         2),
-    "Map":                      ItemData(3,     ItemClassification.progression + ItemClassification.useful,         1),
+    "Map":                      ItemData(3,     ItemClassification.progression + ItemClassification.useful,         1),     # might make this a starting item
     "Grapple":                  ItemData(4,     ItemClassification.progression + ItemClassification.useful,         1),
     "Parry":                    ItemData(5,     ItemClassification.progression + ItemClassification.useful,         1),
 
@@ -170,22 +170,22 @@ glyphs_chapters = {
 # There is a better way of doing this but this is my jank
 junk_items = {
     # Junk Items
-    "HP Refill":                ItemData(27,    ItemClassification.filler,                                          0),
-    "Pink Bow":                 ItemData(28,    ItemClassification.filler,                                          0),
-    "Dumb Hat":                 ItemData(29,    ItemClassification.filler,                                          0),
-    "Traffic Cone":             ItemData(30,    ItemClassification.filler,                                          0),
-    "John Hat":                 ItemData(31,    ItemClassification.filler,                                          0),
-    "Top Hat":                  ItemData(32,    ItemClassification.filler,                                          0),
-    "Fez":                      ItemData(33,    ItemClassification.filler,                                          0),
-    "Party Hat":                ItemData(34,    ItemClassification.filler,                                          0),
-    "Bomb Hat":                 ItemData(35,    ItemClassification.filler,                                          0),
-    "Crown":                    ItemData(36,    ItemClassification.filler,                                          0),
+    "HP Refill":                ItemData(28,    ItemClassification.filler,                                          0),
+    "Pink Bow":                 ItemData(29,    ItemClassification.filler,                                          0),
+    "Dumb Hat":                 ItemData(30,    ItemClassification.filler,                                          0),
+    "Traffic Cone":             ItemData(31,    ItemClassification.filler,                                          0),
+    "John Hat":                 ItemData(32,    ItemClassification.filler,                                          0),
+    "Top Hat":                  ItemData(33,    ItemClassification.filler,                                          0),
+    "Fez":                      ItemData(34,    ItemClassification.filler,                                          0),
+    "Party Hat":                ItemData(35,    ItemClassification.filler,                                          0),
+    "Bomb Hat":                 ItemData(36,    ItemClassification.filler,                                          0),
+    "Crown":                    ItemData(37,    ItemClassification.filler,                                          0),
 
     # Traps
-    "sMiLE Trap":               ItemData(37,    ItemClassification.trap,                                            0),
-    "John Trap":                ItemData(38,    ItemClassification.trap,                                            0),
-    "Spear Trap":               ItemData(39,    ItemClassification.trap,                                            0),
-    "Death Trap":               ItemData(40,    ItemClassification.trap,                                            0),
+    "sMiLE Trap":               ItemData(38,    ItemClassification.trap,                                            0),
+    "John Trap":                ItemData(39,    ItemClassification.trap,                                            0),
+    "Spear Trap":               ItemData(40,    ItemClassification.trap,                                            0),
+    "Death Trap":               ItemData(41,    ItemClassification.trap,                                            0),
 }
 
 # Junk weights is just how often an item will be chosen when junk is being made
