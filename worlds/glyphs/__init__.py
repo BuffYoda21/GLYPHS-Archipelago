@@ -27,7 +27,7 @@ from .Types import ChapterType, chapter_type_to_name
 # Whatever you named the folder you are holding all of this in
 class GlyphsWeb(WebWorld):
     # Theres a few different themes so have fun with it
-    theme = "Party"
+    theme = "Party"                                                                         # idk just gonna wait on changing this
     
     # You shouldnt have to change much here except the name at the bottom!
     tutorials = [Tutorial(
@@ -37,15 +37,17 @@ class GlyphsWeb(WebWorld):
         "English",
         "setup_en.md",
         "setup/en",
-        ["Nep (but you would put your name!)"]
+        ["BuffYoda21"]
     )]
 
 # This class is the real meat and potatoes
 # Same as the first class its normally named whatever you named your folder with World at the end
 class GlyphsWorld(World):
     """
-    This is where you describe your game. Pretend you are marketing the game and that people have no clue what it is.
-    Or make it silly. Whatever you wish I have no control over you.
+    Traverse the depths of the Tomb of Forbidden Knowledge; a sentient labyrinth
+    containing traces of the past in the form of glyphs. Formidable bosses, platforming,
+    and puzzles stand in the way of discovery - GLYPHS fulfills the extent that one
+    willingly searches for true knowledge. Your determination dictates where this story will unfold.
     """
 
     # You want to put the full name of the game here. If you shortened the name for the folder and class names, dont do that here
@@ -111,8 +113,11 @@ class GlyphsWorld(World):
                 "StartingPlace":            self.options.StartingChapter.value,
                 "ExtraLocations":           self.options.ExtraLocations.value,
                 "TrapChance":               self.options.TrapChance.value,
-                "ForcefemTrapWeight":       self.options.ForcefemTrapWeight.value,
-                "SpeedChangeTrapWeight":    self.options.SpeedChangeTrapWeight.value
+                "sMiLETrapWeight":          self.options.sMiLETrapWeight.value,    # Spawns smiles from the smileshop already agroed to the player based on sMiLE value
+                "JohnTrapWeight":           self.options.JohnTrapWeight.value,     # spawns John Spider near the player
+                "SpearTrapWeight":          self.options.SpearTrapWeight.value,    # spawns the spearman's spear rain attack but probably gonna buff damage
+                "DeathTrapWeight":          self.options.DeathTrapWeight.value,    # spawns the funni instakill explosion asset on the player
+
             },
             "Seed": self.multiworld.seed_name,  # to verify the server's multiworld
             "Slot": self.multiworld.player_name[self.player],  # to connect to server
