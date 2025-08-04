@@ -84,6 +84,19 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
     junk_list: Dict[str, int] = {}
     trap_list: Dict[str, int] = {}
 
+    junk_weights = {
+        "HP Refill":    50,
+        "Pink Bow":     10,
+        "Dumb Hat":     10,
+        "Traffic Cone": 10,
+        "John Hat":     10,
+        "Top Hat":      10,
+        "Fez":          10,
+        "Party Hat":    10,
+        "Bomb Hat":     10,
+        "Crown":        10,
+    }
+
     # This grabs all the junk items and trap items
     for name in item_table.keys():
         # Here we are getting all the junk item names and weights
@@ -186,21 +199,6 @@ junk_items = {
     "John Trap":                ItemData(39,    ItemClassification.trap,                                            0),
     "Spear Trap":               ItemData(40,    ItemClassification.trap,                                            0),
     "Death Trap":               ItemData(41,    ItemClassification.trap,                                            0),
-}
-
-# Junk weights is just how often an item will be chosen when junk is being made
-# Bigger item = more likely to show up
-junk_weights = {
-    "HP Refill":    50,
-    "Pink Bow":     10,
-    "Dumb Hat":     10,
-    "Traffic Cone": 10,
-    "John Hat":     10,
-    "Top Hat":      10,
-    "Fez":          10,
-    "Party Hat":    10,
-    "Bomb Hat":     10,
-    "Crown":        10,
 }
 
 # This makes a really convenient list of all the other dictionaries
