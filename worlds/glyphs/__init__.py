@@ -18,14 +18,14 @@ from typing import Dict
 
 from .Locations import get_location_names, get_total_locations
 from .Items import create_item, create_itempool, item_table
-from .Options import APSkeletonOptions
+from .Options import GlyphsOptions
 from .Regions import create_regions
 from .Types import ChapterType, chapter_type_to_name
 
 # This is where you setup the page on the site!
 # Typically is the name of your game with web
 # Whatever you named the folder you are holding all of this in
-class APSkeletonWeb(WebWorld):
+class GlyphsWeb(WebWorld):
     # Theres a few different themes so have fun with it
     theme = "Party"
     
@@ -42,23 +42,23 @@ class APSkeletonWeb(WebWorld):
 
 # This class is the real meat and potatoes
 # Same as the first class its normally named whatever you named your folder with World at the end
-class APSkeletonWorld(World):
+class GlyphsWorld(World):
     """
     This is where you describe your game. Pretend you are marketing the game and that people have no clue what it is.
     Or make it silly. Whatever you wish I have no control over you.
     """
 
     # You want to put the full name of the game here. If you shortened the name for the folder and class names, dont do that here
-    game = "APSkeleton"
+    game = "GLYPHS"
     # The item_table will be setup in  your Items.py. This line gets all the items you put into item_table and puts it in a way that AP can understand it
     item_name_to_id = {name: data.ap_code for name, data in item_table.items()}
     # get_location_names() will come from your Locations.py
     location_name_to_id = get_location_names()
     # And these 2 are the name of your Options.py class. 
-    options_dataclass = APSkeletonOptions
-    options = APSkeletonOptions
+    options_dataclass = GlyphsOptions
+    options = GlyphsOptions
     # The name of the class above
-    web = APSkeletonWeb()
+    web = GlyphsWeb()
     # print("🐀🐀🐀🐀🐀🐀🐀🐀🐀🐀🐀🐀🐀🐀")
 
     # There are other built in variables for AP. You can look at other worlds to see your options
