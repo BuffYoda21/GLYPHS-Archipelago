@@ -195,12 +195,13 @@ glyphs_chapters = {
     "Region 2":                 ItemData(42,    ItemClassification.progression),
     "Region 3":                 ItemData(43,    ItemClassification.progression),
     "Region 4":                 ItemData(44,    ItemClassification.progression),
-    "Smile Shop":               ItemData(45,    ItemClassification.progression),
-    "Dark Region":              ItemData(46,    ItemClassification.progression),
-    "Act 1":                    ItemData(47,    ItemClassification.progression),
-    "Act 2":                    ItemData(48,    ItemClassification.progression),
-    "Act 3":                    ItemData(49,    ItemClassification.progression),
-    "Epilogue":                 ItemData(50,    ItemClassification.progression),
+    "Collapse":                 ItemData(45,    ItemClassification.progression),
+    "Smile Shop":               ItemData(46,    ItemClassification.progression),
+    "Dark Region":              ItemData(47,    ItemClassification.progression),
+    "Act 1":                    ItemData(48,    ItemClassification.progression),
+    "Act 2":                    ItemData(49,    ItemClassification.progression),
+    "Act 3":                    ItemData(50,    ItemClassification.progression),
+    "Epilogue":                 ItemData(51,    ItemClassification.progression),
 }
 
 # In the way that I made items, I added a way to specify how many of an item should exist
@@ -208,22 +209,22 @@ glyphs_chapters = {
 # There is a better way of doing this but this is my jank
 junk_items = {
     # Junk Items
-    "HP Refill":                ItemData(51,    ItemClassification.filler,                                          0),
-    "Pink Bow":                 ItemData(52,    ItemClassification.filler,                                          0),
-    "Dumb Hat":                 ItemData(53,    ItemClassification.filler,                                          0),
-    "Traffic Cone":             ItemData(54,    ItemClassification.filler,                                          0),
-    "John Hat":                 ItemData(55,    ItemClassification.filler,                                          0),
-    "Top Hat":                  ItemData(56,    ItemClassification.filler,                                          0),
-    "Fez":                      ItemData(57,    ItemClassification.filler,                                          0),
-    "Party Hat":                ItemData(58,    ItemClassification.filler,                                          0),
-    "Bomb Hat":                 ItemData(59,    ItemClassification.filler,                                          0),
-    "Crown":                    ItemData(60,    ItemClassification.filler,                                          0),
+    "HP Refill":                ItemData(52,    ItemClassification.filler,                                          0),
+    "Pink Bow":                 ItemData(53,    ItemClassification.filler,                                          0),
+    "Dumb Hat":                 ItemData(54,    ItemClassification.filler,                                          0),
+    "Traffic Cone":             ItemData(55,    ItemClassification.filler,                                          0),
+    "John Hat":                 ItemData(56,    ItemClassification.filler,                                          0),
+    "Top Hat":                  ItemData(57,    ItemClassification.filler,                                          0),
+    "Fez":                      ItemData(58,    ItemClassification.filler,                                          0),
+    "Party Hat":                ItemData(59,    ItemClassification.filler,                                          0),
+    "Bomb Hat":                 ItemData(60,    ItemClassification.filler,                                          0),
+    "Crown":                    ItemData(61,    ItemClassification.filler,                                          0),
 
     # Traps
-    "sMiLE Trap":               ItemData(61,    ItemClassification.trap,                                            0),
-    "John Trap":                ItemData(62,    ItemClassification.trap,                                            0),
-    "Spear Trap":               ItemData(63,    ItemClassification.trap,                                            0),
-    "Death Trap":               ItemData(64,    ItemClassification.trap,                                            0),
+    "sMiLE Trap":               ItemData(62,    ItemClassification.trap,                                            0),
+    "John Trap":                ItemData(63,    ItemClassification.trap,                                            0),
+    "Spear Trap":               ItemData(64,    ItemClassification.trap,                                            0),
+    "Death Trap":               ItemData(65,    ItemClassification.trap,                                            0),
 }
 
 # This makes a really convenient list of all the other dictionaries
