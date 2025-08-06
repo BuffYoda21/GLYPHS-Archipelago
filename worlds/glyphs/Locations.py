@@ -61,121 +61,96 @@ def is_valid_location(world: "GlyphsWorld", name) -> bool:
 glyphs_locations = {
     # Region 1
     "Sword Pedestal":                       LocData(1,  "Region 1"),
-    "Defeat Runic Construct":               LocData(2,  "Region 1"),        # event location
-    "Runic Construct Reward":               LocData(3,  "Region 1"),
-    "Stalker Sigil 1":                      LocData(4,  "Region 1"),        # event location
-    "Map Pedestal":                         LocData(5,  "Region 1"),
-    "Silver Shard Puzzle 1":                LocData(6,  "Region 1"),
-    "Silver Shard Puzzle 2":                LocData(7,  "Region 1"),
-    "Silver Shard Puzzle 3":                LocData(8,  "Region 1"),
-    "Smile Token Puzzle 3":                 LocData(9,  "Region 1"),
-    "Smile Token Puzzle 9":                 LocData(10,  "Region 1"),
-    "Master Puzzle 2":                      LocData(11, "Region 1"),
-    "Color Cypher Room Pickup":             LocData(12, "Region 1"),
+    "Runic Construct Reward":               LocData(2,  "Region 1"),
+    "Map Pedestal":                         LocData(3,  "Region 1"),
+    "Silver Shard Puzzle 1":                LocData(4,  "Region 1"),
+    "Silver Shard Puzzle 2":                LocData(5,  "Region 1"),
+    "Silver Shard Puzzle 3":                LocData(6,  "Region 1"),
+    "Smile Token Puzzle 3":                 LocData(7,  "Region 1"),
+    "Smile Token Puzzle 9":                 LocData(8,  "Region 1"),
+    "Master Puzzle 2":                      LocData(9,  "Region 1"),
+    "Color Cypher Room Pickup":             LocData(10, "Region 1"),
 
     # Region 2
-    "Serpent Lock 1":                       LocData(13, "Region 2"),        # event location
-    "Serpent Lock 2":                       LocData(14, "Region 2"),        # event location
-    "Serpent Lock 3":                       LocData(15, "Region 2"),        # event location
-    "Silver Shard Puzzle 4":                LocData(16, "Region 2"),
-    "Silver Shard Puzzle 5":                LocData(17, "Region 2"),
-    "Silver Shard Puzzle 6":                LocData(18, "Region 2"),
-    "Silver Shard Puzzle 7":                LocData(19, "Region 2"),
-    "Silver Shard Puzzle 8":                LocData(20, "Region 2"),
-    "Silver Shard Puzzle 9":                LocData(21, "Region 2"),
-    "Silver Shard Puzzle 15":               LocData(22, "Region 2"),
-    "Smile Token Puzzle 1":                 LocData(23, "Region 2"),
-    "Smile Token Puzzle 6":                 LocData(24, "Region 2"),
-    "Smile Token Puzzle 8":                 LocData(25, "Region 2"),
-    "Smile Token Puzzle 10":                LocData(26, "Region 2"),
-    "Master Puzzle 1":                      LocData(27, "Region 2"),
-    "Defeat Gilded Serpent":                LocData(28, "Region 2"),        # event location
-    "Gilded Serpent Reward":                LocData(29, "Region 2"),
-    "Stalker Sigil 2":                      LocData(30, "Region 2"),        # event location
-    "Stalker Sigil 3":                      LocData(31, "Region 2"),        # event location
-    "Shadow Chase Reward":                  LocData(32, "Region 2"),
-    "Water Room Pickup":                    LocData(33, "Region 2"),
-    "Cameo Room Pickup":                    LocData(34, "Region 2"),
-    "George Reward":                        LocData(35, "Region 2"),
-    "Car Hall Pickup":                      LocData(36, "Region 2"),
-    "Sector 1 Below Serpent Lock  Pickup":  LocData(37, "Region 2"),
-    "Collapsed Tunnel Pickup":              LocData(38, "Region 2"),
-    "Shadow Chase Pickup":                  LocData(39, "Region 2"),
-    "Nest Room Pickup":                     LocData(40, "Region 2"),
-    "Serpent Boss Room Pickup":             LocData(41, "Region 2"),
+    "Silver Shard Puzzle 4":                LocData(11, "Region 2"),
+    "Silver Shard Puzzle 5":                LocData(12, "Region 2"),
+    "Silver Shard Puzzle 6":                LocData(13, "Region 2"),
+    "Silver Shard Puzzle 7":                LocData(14, "Region 2"),
+    "Silver Shard Puzzle 8":                LocData(15, "Region 2"),
+    "Silver Shard Puzzle 9":                LocData(16, "Region 2"),
+    "Silver Shard Puzzle 15":               LocData(17, "Region 2"),
+    "Smile Token Puzzle 1":                 LocData(18, "Region 2"),
+    "Smile Token Puzzle 6":                 LocData(19, "Region 2"),
+    "Smile Token Puzzle 8":                 LocData(20, "Region 2"),
+    "Smile Token Puzzle 10":                LocData(21, "Region 2"),
+    "Master Puzzle 1":                      LocData(22, "Region 2"),
+    "Gilded Serpent Reward":                LocData(23, "Region 2"),
+    "Shadow Chase Reward":                  LocData(24, "Region 2"),
+    "Water Room Pickup":                    LocData(25, "Region 2"),
+    "Cameo Room Pickup":                    LocData(26, "Region 2"),
+    "George Reward":                        LocData(27, "Region 2"),
+    "Car Hall Pickup":                      LocData(28, "Region 2"),
+    "Sector 1 Below Serpent Lock  Pickup":  LocData(29, "Region 2"),
+    "Collapsed Tunnel Pickup":              LocData(30, "Region 2"),
+    "Shadow Chase Pickup":                  LocData(31, "Region 2"),
+    "Nest Room Pickup":                     LocData(32, "Region 2"),
+    "Serpent Boss Room Pickup":             LocData(33, "Region 2"),
 
     # Region 3
-    "Green Stone Trial":                    LocData(42, "Region 3"),
-    "Blue Stone Trial":                     LocData(43, "Region 3"),
-    "Red Stone Trial":                      LocData(44, "Region 3"),
-    "Silver Shard Puzzle 10":               LocData(45, "Region 3"),
-    "Silver Shard Puzzle 11":               LocData(46, "Region 3"),
-    "Silver Shard Puzzle 12":               LocData(47, "Region 3"),
-    "Silver Shard Puzzle 13":               LocData(48, "Region 3"),
-    "Silver Shard Puzzle 14":               LocData(49, "Region 3"),
-    "Smile Token Puzzle 2":                 LocData(50, "Region 3"),
-    "Smile Token Puzzle 7":                 LocData(51, "Region 3"),
-    "Master Puzzle 3":                      LocData(52, "Region 3"),
-    "Collapse Unlock":                      LocData(53, "Region 3"),        # event location
-    "Sector 2 Below Serpent Lock Pickup":   LocData(54, "Region 3"),
+    "Green Stone Trial":                    LocData(34, "Region 3"),
+    "Blue Stone Trial":                     LocData(35, "Region 3"),
+    "Red Stone Trial":                      LocData(36, "Region 3"),
+    "Silver Shard Puzzle 10":               LocData(37, "Region 3"),
+    "Silver Shard Puzzle 11":               LocData(38, "Region 3"),
+    "Silver Shard Puzzle 12":               LocData(39, "Region 3"),
+    "Silver Shard Puzzle 13":               LocData(40, "Region 3"),
+    "Silver Shard Puzzle 14":               LocData(41, "Region 3"),
+    "Smile Token Puzzle 2":                 LocData(42, "Region 3"),
+    "Smile Token Puzzle 7":                 LocData(43, "Region 3"),
+    "Master Puzzle 3":                      LocData(44, "Region 3"),
+    "Sector 2 Below Serpent Lock Pickup":   LocData(45, "Region 3"),
 
     # Region 4
-    "Defeat Spearman":                      LocData(55, "Region 4"),        # event location
-    "Spearman Reward":                      LocData(56, "Region 4"),
-    "Multiparry Gold Shard Puzzle":         LocData(57, "Region 4"),
-    "Platforming Gold Shard Room":          LocData(58, "Region 4"),
-    "Flower Puzzle Reward":                 LocData(59, "Region 4"),
-    "Smile Token Puzzle 4":                 LocData(60, "Region 4"),
-    "Smile Token Puzzle 5":                 LocData(61, "Region 4"),
-    "On top of the Rosetta Stone":          LocData(62, "Region 4"),
-    "Long Parry Platforming Room Pickup":   LocData(63, "Region 4"),
-    "Defeat Wraith":                        LocData(64, "Region 4"),        # event location
-    "Defeat Vessel":                        LocData(65, "Region 4"),        # event location
+    "Spearman Reward":                      LocData(46, "Region 4"),
+    "Multiparry Gold Shard Puzzle":         LocData(47, "Region 4"),
+    "Platforming Gold Shard Room":          LocData(48, "Region 4"),
+    "Flower Puzzle Reward":                 LocData(49, "Region 4"),
+    "Smile Token Puzzle 4":                 LocData(50, "Region 4"),
+    "Smile Token Puzzle 5":                 LocData(51, "Region 4"),
+    "On top of the Rosetta Stone":          LocData(52, "Region 4"),
+    "Long Parry Platforming Room Pickup":   LocData(53, "Region 4"),
 
     # Collapse
-    "Escape Normal Sequence Pickup":        LocData(66, "Collapse"),
-    "False Ending":                         LocData(67, "Collapse"),        # event location
+    "Escape Normal Sequence Pickup":        LocData(54, "Collapse"),
 
     # Smile Shop
-    "Smile Shop Item 1":                    LocData(68, "Smile Shop"),
-    "Smile Shop Item 2":                    LocData(69, "Smile Shop"),
-    "Smile Shop Item 3":                    LocData(70, "Smile Shop"),
-    "Smile Shop Item 4":                    LocData(71, "Smile Shop"),
-    "Dash Puzzle Reward":                   LocData(72, "Smile Shop"),
-    "Respawn Reward":                       LocData(73, "Smile Shop"),
-    "Smilemask Ending":                     LocData(74, "Smile Shop"),      # event location
+    "Smile Shop Item 1":                    LocData(55, "Smile Shop"),
+    "Smile Shop Item 2":                    LocData(56, "Smile Shop"),
+    "Smile Shop Item 3":                    LocData(57, "Smile Shop"),
+    "Smile Shop Item 4":                    LocData(58, "Smile Shop"),
+    "Dash Puzzle Reward":                   LocData(59, "Smile Shop"),
+    "Respawn Reward":                       LocData(60, "Smile Shop"),
 
     # Dark Region
-    "Defeat Null":                          LocData(75, "Dark Region"),     # event location
-    "Clarity":                              LocData(76, "Dark Region"),     # event location
-    "Secret Room Pickup":                   LocData(77, "Dark Region"),
-    "Large Room Pickup in the Corner":      LocData(78, "Dark Region"),
+    "Secret Room Pickup":                   LocData(61, "Dark Region"),
+    "Large Room Pickup in the Corner":      LocData(62, "Dark Region"),
     
     # Act 1
-    "Void Gate Shard Location 1":           LocData(79, "Act 1"),
-    "Void Gate Shard Location 2":           LocData(80, "Act 1"),
-    "Void Gate Shard Location 3":           LocData(81, "Act 1"),
-    "Void Gate Shard Location 4":           LocData(82, "Act 1"),
-    "Void Gate Shard Location 5":           LocData(83, "Act 1"),
-    "Void Gate Shard Location 6":           LocData(84, "Act 1"),
-    "Void Gate Shard Location 7":           LocData(85, "Act 1"),
-    "John Room Pickup":                     LocData(86, "Act 1"),
-    "Omnipotence Ending":                   LocData(87, "Act 1"),           # event location
-    "Clear Act 1":                          LocData(88, "Act 1"),           # event location
-
+    "Void Gate Shard Location 1":           LocData(63, "Act 1"),
+    "Void Gate Shard Location 2":           LocData(64, "Act 1"),
+    "Void Gate Shard Location 3":           LocData(65, "Act 1"),
+    "Void Gate Shard Location 4":           LocData(66, "Act 1"),
+    "Void Gate Shard Location 5":           LocData(67, "Act 1"),
+    "Void Gate Shard Location 6":           LocData(68, "Act 1"),
+    "Void Gate Shard Location 7":           LocData(69, "Act 1"),
+    "John Room Pickup":                     LocData(70, "Act 1"),
+    
     # Act 2
-    "Boss Rush Heal 1":                     LocData(89, "Act 2"),
-    "Boss Rush Heal 2":                     LocData(90, "Act 2"),
-    "Boss Rush Heal 3":                     LocData(91, "Act 2"),
-    "Boss Rush Heal 4":                     LocData(92, "Act 2"),
-    "Pink Bow Pickup":                      LocData(93, "Act 2"),
-    "Clear Act 2":                          LocData(94, "Act 2"),           # event location
-
-    # Act 3
-    "Defeat Wraith Prime":                  LocData(95, "Act 3"),           # event location
-
-    # Epilogue
-    "Clear Epilogue":                       LocData(96, "Epilogue"),        # event location
+    "Boss Rush Heal 1":                     LocData(71, "Act 2"),
+    "Boss Rush Heal 2":                     LocData(72, "Act 2"),
+    "Boss Rush Heal 3":                     LocData(73, "Act 2"),
+    "Boss Rush Heal 4":                     LocData(74, "Act 2"),
+    "Pink Bow Pickup":                      LocData(75, "Act 2"),
 }
 
 extra_locations = {
@@ -184,7 +159,28 @@ extra_locations = {
 
 # Like in Items.py, breaking up the different locations to help with organization and if something special needs to happen to them
 event_locations = {
-    "Beat Final Boss": LocData(20050110, "Big Hole in the Floor")
+    "Defeat Runic Construct":               LocData(76,  "Region 1"),
+    "Stalker Sigil 1":                      LocData(77,  "Region 1"),
+    "Serpent Lock 1":                       LocData(78, "Region 2"),
+    "Serpent Lock 2":                       LocData(79, "Region 2"),
+    "Serpent Lock 3":                       LocData(80, "Region 2"),
+    "Defeat Gilded Serpent":                LocData(81, "Region 2"),
+    "Stalker Sigil 2":                      LocData(82, "Region 2"),
+    "Stalker Sigil 3":                      LocData(83, "Region 2"),
+    "Solve Flower Puzzle":                  LocData(84, "Region 2"),
+    "Collapse Unlock":                      LocData(85, "Region 3"),
+    "Defeat Spearman":                      LocData(86, "Region 4"),
+    "Defeat Wraith":                        LocData(87, "Region 4"),
+    "Defeat Vessel":                        LocData(88, "Region 4"),
+    "False Ending":                         LocData(89, "Collapse"),
+    "Smilemask Ending":                     LocData(90, "Smile Shop"),
+    "Defeat Null":                          LocData(91, "Dark Region"),
+    "Clarity":                              LocData(92, "Dark Region"),
+    "Omnipotence Ending":                   LocData(93, "Act 1"),
+    "Clear Act 1":                          LocData(94, "Act 1"),
+    "Clear Act 2":                          LocData(95, "Act 2"),
+    "Defeat Wraith Prime":                  LocData(96, "Act 3"),
+    "Clear Epilogue":                       LocData(97, "Epilogue"),
 }
 
 # Also like in Items.py, this collects all the dictionaries together
