@@ -89,7 +89,7 @@ class Shopsanity(Toggle):
 class RandomShopPrices(Toggle):
     """
     Randomizes the prices of shop items.
-    Never exceeds 10 total.
+    Never exceeds 10 total (or 7 if only false ending locations are shuffled).
     """
     display_name = "Randomize Shop Prices"
 
