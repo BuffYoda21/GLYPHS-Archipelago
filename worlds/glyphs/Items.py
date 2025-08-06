@@ -85,16 +85,16 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
     trap_list: Dict[str, int] = {}
 
     junk_weights = {
-        "HP Refill":    50,
-        "Pink Bow":     10,
-        "Dumb Hat":     10,
-        "Traffic Cone": 10,
-        "John Hat":     10,
-        "Top Hat":      10,
-        "Fez":          10,
-        "Party Hat":    10,
-        "Bomb Hat":     10,
-        "Crown":        10,
+        "HP Refill":        50,
+        "Pink Bow":         10,
+        "Propeller Hat":    10,
+        "Traffic Cone":     10,
+        "John Hat":         10,
+        "Top Hat":          10,
+        "Fez":              10,
+        "Party Hat":        10,
+        "Bomb Hat":         10,
+        "Crown":            10,
     }
 
     # This grabs all the junk items and trap items
@@ -153,6 +153,7 @@ glyphs_items = {
     "Green Stone":              ItemData(11,    ItemClassification.progression,                                     1),
     "Red Stone":                ItemData(12,    ItemClassification.progression,                                     1),
     "Blue Stone":               ItemData(13,    ItemClassification.progression,                                     1),
+    "Seeds":                    ItemData(14,    ItemClassification.progression,                                     10),
 
     # Upgrades
     "Sword Rune":               ItemData(14,    ItemClassification.useful,                                          1),
@@ -168,6 +169,7 @@ glyphs_items = {
     "Wizard True Defeat":       ItemData(22,    ItemClassification.progression_skip_balancing,                      1),
     "Spearman Defeated":        ItemData(23,    ItemClassification.progression_skip_balancing,                      1),
     "Serpent Lock Activated":   ItemData(24,    ItemClassification.progression_skip_balancing,                      3),
+    "Stalker Sigil Collected":  ItemData(25,    ItemClassification.progression_skip_balancing,                      3),
     "Clarity":                  ItemData(25,    ItemClassification.progression_skip_balancing,                      1),
     "Act 1 Unlocked":           ItemData(26,    ItemClassification.progression_skip_balancing,                      1),
     "Act 2 Unlocked":           ItemData(27,    ItemClassification.progression_skip_balancing,                      1),
@@ -211,7 +213,7 @@ junk_items = {
     # Junk Items
     "HP Refill":                ItemData(52,    ItemClassification.filler,                                          0),
     "Pink Bow":                 ItemData(53,    ItemClassification.filler,                                          0),
-    "Dumb Hat":                 ItemData(54,    ItemClassification.filler,                                          0),
+    "Propeller Hat":            ItemData(54,    ItemClassification.filler,                                          0),
     "Traffic Cone":             ItemData(55,    ItemClassification.filler,                                          0),
     "John Hat":                 ItemData(56,    ItemClassification.filler,                                          0),
     "Top Hat":                  ItemData(57,    ItemClassification.filler,                                          0),
