@@ -17,26 +17,24 @@ def create_regions(world: "GlyphsWorld"):
 
     # You can technically name your connections whatever you want as well
     # You'll use those connection names in Rules.py
+
+    # Kinda messy, might rework later
     menu = create_region(world, "Menu")
-    greenhillzone = create_region_and_connect(world, "Green Hill Zone", "Menu -> Green Hill Zone", menu)
-    romania = create_region_and_connect(world, "Romania", "Menu -> Romania", menu)
-    sewer = create_region_and_connect(world, "The Sewer", "Menu -> The Sewer", menu)
-
-    # ---------------------------------- Green Hill Zone ----------------------------------
-    greenhillzone1 = create_region_and_connect(world, "Green Hill Zone - Act 1", "Green Hill Zone -> Green Hill Zone - Act 1", greenhillzone)
-    greenhillzone2 = create_region_and_connect(world, "Green Hill Zone - Act 2", "Green Hill Zone - Act 1 -> Green Hill Zone - Act 2", greenhillzone1)
-    create_region_and_connect(world, "Green Hill Zone - Act 3", "Green Hill Zone - Act 2 -> Green Hill Zone - Act 3", greenhillzone2)
-
-    # ---------------------------------- Romania ------------------------------------------
-    bucharest = create_region_and_connect(world, "Bucharest", "Romania -> Bucharest", romania)
-    sibiu = create_region_and_connect(world, "Sibiu", "Romania -> Sibiu", romania)
-    brașov = create_region_and_connect(world, "Brașov", "Romania -> Brașov", romania)
-    bucharest.connect(sibiu, "Bucharest -> Sibiu")
-    sibiu.connect(brașov, "Sibiu -> Brașov")
-    brașov.connect(bucharest, "Brașov, Bucharest")
-
-    # ---------------------------------- The Sewer ----------------------------------------
-    create_region_and_connect(world, "Big Hole in the Floor", "The Sewer -> Big Hole in the Floor", sewer)
+    region1 = create_region_and_connect(world, "Region 1", "Menu -> Tomb Main Entrance", menu)
+    region2 = create_region_and_connect(world, "Region 2", "Region 1 Gate -> Region 2", region1)
+    region3 = create_region_and_connect(world, "Region 3", "Region 2 Long Fall -> Region 3", region2)
+    region4 = create_region_and_connect(world, "Region 4", "Region 2 Collapsed Tunnel -> Region 4", region2)
+    region3.connect(region4, "Region 3 Flower Passage -> Region 4")
+    collapse = create_region_and_connect(world, "Collapse", "Region 3 Wizard Boss Room -> Collapse", region3)
+    smile_shop = create_region_and_connect(world, "Smile Shop", "Region 2 Smile Shop Entrance -> Smile Shop", region2)
+    dark_region = create_region_and_connect(world, "Dark Region", "Region 2 Long Fall Hidden Passage-> Dark Region", region2)
+    the_between = create_region_and_connect(world, "The Between", "Region 2 -> The Between", region2)
+    act1 = create_region_and_connect(world, "Act 1", "Menu -> Act 1", menu)
+    act2 = create_region_and_connect(world, "Act 2", "Act 1 -> Act 2", act1)
+    menu.connect(act2, "Menu -> Act 2")
+    act3 = create_region_and_connect(world, "Act 3", "Act 2 -> Act 3", act2)
+    menu.connect(act3, "Menu -> Act 3")
+    epilogue = create_region_and_connect(world, "Epilogue", "Act 1 -> Epilogue", act1)
 
 def create_region(world: "GlyphsWorld", name: str) -> Region:
     reg = Region(name, world.player, world.multiworld)
