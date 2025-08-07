@@ -80,3 +80,27 @@ def has_wraith_runes(state: CollectionState, player: int) -> bool:
 
 def has_wraith_glyphstones(state: CollectionState, player: int) -> bool:
     return state.has("Glyphstone", player, options.WraithGlyphstoneCount.value)
+
+def defeated_runic_construct(state: CollectionState, player: int) -> bool:
+    return state.has("Runic Construct Defeated", player)
+
+def defeated_gilded_serpent(state: CollectionState, player: int) -> bool:
+    return state.has("Gilded Serpent Defeated", player)
+
+def collapse_available(state: CollectionState, player: int) -> bool:
+    return state.has("Collapse Unlocked", player)
+
+def wizard_true_defeat(state: CollectionState, player: int) -> bool:
+    return state.has("Wizard True Defeat", player)
+
+def defeated_spearman(state: CollectionState, player: int) -> bool:
+    return state.has("Spearman Defeated", player)
+
+def act_1_available(state: CollectionState, player: int) -> bool:
+    return state.has("Act 1 Unlocked", player)
+
+def act_2_available(state: CollectionState, player: int) -> bool:
+    return state.has("Act 2 Unlocked", player)
+
+def act_3_available(state: CollectionState, player: int) -> bool:
+    return state.has("Act 3 Unlocked", player)
