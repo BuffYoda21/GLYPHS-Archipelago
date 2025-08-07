@@ -17,6 +17,12 @@ def can_dash_attack(state: CollectionState, player: int) -> bool:
 def can_fight(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Sword", player, 1) or (state.has("Progressive Dash Orb", player, 2) and options.SwordlessCombat.value)
 
+def can_warp(state: CollectionState, player: int) -> bool:
+    return state.has("Map", player)
+
+def has_grapple(state: CollectionState, player: int) -> bool:
+    return state.has("Grapple", player)
+
 def can_parry(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Parry", player, 1)
 
