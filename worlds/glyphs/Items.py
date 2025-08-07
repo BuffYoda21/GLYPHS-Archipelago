@@ -137,74 +137,67 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
 glyphs_items = {
 # ---Item Name------------------------ap_code-----------------------classifications-------------------------------count--
     
-    # Major Upgrades
-    "Sword":                    ItemData(1,     ItemClassification.progression + ItemClassification.useful,         1),
-    "Progressive Dash Orb":     ItemData(2,     ItemClassification.progression + ItemClassification.useful,         2),
+    # Upgrades
+    "Progressive Sword":        ItemData(1,     ItemClassification.progression + ItemClassification.useful,         2),
+    "Progressive Dash Orb":     ItemData(2,     ItemClassification.progression + ItemClassification.useful,         3),
     "Map":                      ItemData(3,     ItemClassification.progression + ItemClassification.useful,         1),     # might make this a starting item
     "Grapple":                  ItemData(4,     ItemClassification.progression + ItemClassification.useful,         1),
-    "Parry":                    ItemData(5,     ItemClassification.progression + ItemClassification.useful,         1),
+    "Progressive Parry":        ItemData(5,     ItemClassification.progression + ItemClassification.useful,         2),
+    "Shroud":                   ItemData(6,     ItemClassification.useful,                                          1),
+    "Progressive Chicken Hat":  ItemData(7,     ItemClassification.useful,                                          2),
 
     # Collectables
-    "Silver Shard":             ItemData(6,     ItemClassification.progression_skip_balancing,                      15),
-    "Gold Shard":               ItemData(7,     ItemClassification.useful,                                          3),
-    "Smile Token":              ItemData(8,     ItemClassification.progression_skip_balancing,                      10),
-    "Rune Cube":                ItemData(9,     ItemClassification.progression,                                     3),
-    "Void Gate Shard":          ItemData(10,    ItemClassification.progression_skip_balancing,                      7),
-    "Green Stone":              ItemData(11,    ItemClassification.progression,                                     1),
-    "Red Stone":                ItemData(12,    ItemClassification.progression,                                     1),
-    "Blue Stone":               ItemData(13,    ItemClassification.progression,                                     1),
-    "Seeds":                    ItemData(14,    ItemClassification.progression,                                     10),
-
-    # Upgrades
-    "Sword Rune":               ItemData(14,    ItemClassification.useful,                                          1),
-    "Shroud":                   ItemData(15,    ItemClassification.useful,                                          1),
-    "Fast Magic":               ItemData(16,    ItemClassification.useful,                                          1),
-    "Swift Parry":              ItemData(17,    ItemClassification.useful,                                          1),
-    "Progressive Chicken Hat":  ItemData(18,    ItemClassification.useful,                                          2),
+    "Silver Shard":             ItemData(8,     ItemClassification.progression_skip_balancing,                      15),
+    "Gold Shard":               ItemData(9,     ItemClassification.useful,                                          3),
+    "Smile Token":              ItemData(10,    ItemClassification.progression_skip_balancing,                      10),
+    "Rune Cube":                ItemData(11,    ItemClassification.progression,                                     3),
+    "Void Gate Shard":          ItemData(12,    ItemClassification.progression_skip_balancing,                      7),
+    "Green Stone":              ItemData(13,    ItemClassification.progression,                                     1),
+    "Red Stone":                ItemData(14,    ItemClassification.progression,                                     1),
+    "Blue Stone":               ItemData(15,    ItemClassification.progression,                                     1),
+    "Seeds":                    ItemData(16,    ItemClassification.progression_skip_balancing,                      10),
 
     # Events (not shuffled)
-    "Runic Construct Defeated": ItemData(19,    ItemClassification.progression_skip_balancing,                      1),
-    "Gilded Serpent Defeated":  ItemData(20,    ItemClassification.progression_skip_balancing,                      1),
-    "Collapse Unlocked":        ItemData(21,    ItemClassification.progression_skip_balancing,                      1),
-    "Wizard True Defeat":       ItemData(22,    ItemClassification.progression_skip_balancing,                      1),
-    "Spearman Defeated":        ItemData(23,    ItemClassification.progression_skip_balancing,                      1),
-    "Serpent Lock Activated":   ItemData(24,    ItemClassification.progression_skip_balancing,                      3),
-    "Stalker Sigil Collected":  ItemData(25,    ItemClassification.progression_skip_balancing,                      3),
-    "Clarity":                  ItemData(25,    ItemClassification.progression_skip_balancing,                      1),
-    "Act 1 Unlocked":           ItemData(26,    ItemClassification.progression_skip_balancing,                      1),
-    "Act 2 Unlocked":           ItemData(27,    ItemClassification.progression_skip_balancing,                      1),
-    "Act 3 Unlocked":           ItemData(28,    ItemClassification.progression_skip_balancing,                      1),
+    "Runic Construct Defeated": ItemData(17,    ItemClassification.progression_skip_balancing,                      1),
+    "Gilded Serpent Defeated":  ItemData(18,    ItemClassification.progression_skip_balancing,                      1),
+    "Collapse Unlocked":        ItemData(19,    ItemClassification.progression_skip_balancing,                      1),
+    "Wizard True Defeat":       ItemData(20,    ItemClassification.progression_skip_balancing,                      1),
+    "Spearman Defeated":        ItemData(21,    ItemClassification.progression_skip_balancing,                      1),
+    "Serpent Lock Activated":   ItemData(22,    ItemClassification.progression_skip_balancing,                      3),
+    "Stalker Sigil Collected":  ItemData(23,    ItemClassification.progression_skip_balancing,                      3),
+    "Clarity":                  ItemData(24,    ItemClassification.progression_skip_balancing,                      1),
+    "Act 1 Unlocked":           ItemData(25,    ItemClassification.progression_skip_balancing,                      1),
+    "Act 2 Unlocked":           ItemData(26,    ItemClassification.progression_skip_balancing,                      1),
+    "Act 3 Unlocked":           ItemData(27,    ItemClassification.progression_skip_balancing,                      1),
 
     # Goal items (still not sure this is how I want to structure this)
-    "False Ending":             ItemData(29,    ItemClassification.progression_skip_balancing,                      1),
-    "Good Ending":              ItemData(30,    ItemClassification.progression_skip_balancing,                      1),
-    "True Ending":              ItemData(31,    ItemClassification.progression_skip_balancing,                      1),
-    "Perfect Clarity":          ItemData(32,    ItemClassification.progression_skip_balancing,                      1),
-    "Smilemask Ending":         ItemData(33,    ItemClassification.progression_skip_balancing,                      1),
-    "Omnipotence Ending":       ItemData(34,    ItemClassification.progression_skip_balancing,                      1),
-    "Epilouge Ending":          ItemData(35,    ItemClassification.progression_skip_balancing,                      1),
-    "All Main Endings":         ItemData(36,    ItemClassification.progression_skip_balancing,                      1),
-    "All Star Endings":         ItemData(37,    ItemClassification.progression_skip_balancing,                      1),
-    "All Endings":              ItemData(38,    ItemClassification.progression_skip_balancing,                      1),
-    "Goal":                     ItemData(39,    ItemClassification.progression_skip_balancing,                      1),
+    "False Ending":             ItemData(28,    ItemClassification.progression_skip_balancing,                      1),
+    "Good Ending":              ItemData(29,    ItemClassification.progression_skip_balancing,                      1),
+    "True Ending":              ItemData(30,    ItemClassification.progression_skip_balancing,                      1),
+    "Perfect Clarity":          ItemData(31,    ItemClassification.progression_skip_balancing,                      1),
+    "Smilemask Ending":         ItemData(32,    ItemClassification.progression_skip_balancing,                      1),
+    "Omnipotence Ending":       ItemData(33,    ItemClassification.progression_skip_balancing,                      1),
+    "Epilouge Ending":          ItemData(34,    ItemClassification.progression_skip_balancing,                      1),
+    "All Star Endings":         ItemData(35,    ItemClassification.progression_skip_balancing,                      1),
+    "All Endings":              ItemData(36,    ItemClassification.progression_skip_balancing,                      1),
 }
 
 # I like to split up the items so that its easier to look at and since sometimes you only need to look at one specific type of list
 # An example of that is in create_itempool where I simulated having a starting chapter
 glyphs_chapters = {
-    "Menu":                     ItemData(40,    ItemClassification.progression),    # using this as starting chapter to allow randomized starting spawns
-    "Region 1":                 ItemData(41,    ItemClassification.progression),
-    "Region 2":                 ItemData(42,    ItemClassification.progression),
-    "Region 3":                 ItemData(43,    ItemClassification.progression),
-    "Region 4":                 ItemData(44,    ItemClassification.progression),
-    "Collapse":                 ItemData(45,    ItemClassification.progression),
-    "Smile Shop":               ItemData(46,    ItemClassification.progression),
-    "Dark Region":              ItemData(47,    ItemClassification.progression),
-    "The Between":              ItemData(48,    ItemClassification.progression),
-    "Act 1":                    ItemData(49,    ItemClassification.progression),
-    "Act 2":                    ItemData(50,    ItemClassification.progression),
-    "Act 3":                    ItemData(51,    ItemClassification.progression),
-    "Epilogue":                 ItemData(52,    ItemClassification.progression),
+    "Menu":                     ItemData(37,    ItemClassification.progression),    # using this as starting chapter to allow randomized starting spawns
+    "Region 1":                 ItemData(38,    ItemClassification.progression),
+    "Region 2":                 ItemData(39,    ItemClassification.progression),
+    "Region 3":                 ItemData(40,    ItemClassification.progression),
+    "Region 4":                 ItemData(41,    ItemClassification.progression),
+    "Collapse":                 ItemData(42,    ItemClassification.progression),
+    "Smile Shop":               ItemData(43,    ItemClassification.progression),
+    "Dark Region":              ItemData(44,    ItemClassification.progression),
+    "The Between":              ItemData(45,    ItemClassification.progression),
+    "Act 1":                    ItemData(46,    ItemClassification.progression),
+    "Act 2":                    ItemData(47,    ItemClassification.progression),
+    "Act 3":                    ItemData(48,    ItemClassification.progression),
+    "Epilogue":                 ItemData(49,    ItemClassification.progression),
 }
 
 # In the way that I made items, I added a way to specify how many of an item should exist
@@ -212,22 +205,24 @@ glyphs_chapters = {
 # There is a better way of doing this but this is my jank
 junk_items = {
     # Junk Items
-    "HP Refill":                ItemData(53,    ItemClassification.filler,                                          0),
-    "Pink Bow":                 ItemData(54,    ItemClassification.filler,                                          0),
-    "Propeller Hat":            ItemData(55,    ItemClassification.filler,                                          0),
-    "Traffic Cone":             ItemData(56,    ItemClassification.filler,                                          0),
-    "John Hat":                 ItemData(57,    ItemClassification.filler,                                          0),
-    "Top Hat":                  ItemData(58,    ItemClassification.filler,                                          0),
-    "Fez":                      ItemData(59,    ItemClassification.filler,                                          0),
-    "Party Hat":                ItemData(60,    ItemClassification.filler,                                          0),
-    "Bomb Hat":                 ItemData(61,    ItemClassification.filler,                                          0),
-    "Crown":                    ItemData(62,    ItemClassification.filler,                                          0),
+    "HP Refill":                ItemData(50,    ItemClassification.filler,                                          0),
+    "Pink Bow":                 ItemData(51,    ItemClassification.filler,                                          0),
+    "Propeller Hat":            ItemData(52,    ItemClassification.filler,                                          0),
+    "Traffic Cone":             ItemData(53,    ItemClassification.filler,                                          0),
+    "John Hat":                 ItemData(54,    ItemClassification.filler,                                          0),
+    "Top Hat":                  ItemData(55,    ItemClassification.filler,                                          0),
+    "Fez":                      ItemData(56,    ItemClassification.filler,                                          0),
+    "Party Hat":                ItemData(57,    ItemClassification.filler,                                          0),
+    "Bomb Hat":                 ItemData(58,    ItemClassification.filler,                                          0),
+    "Crown":                    ItemData(59,    ItemClassification.filler,                                          0),
 
     # Traps
-    "sMiLE Trap":               ItemData(63,    ItemClassification.trap,                                            0),
-    "John Trap":                ItemData(64,    ItemClassification.trap,                                            0),
-    "Spear Trap":               ItemData(65,    ItemClassification.trap,                                            0),
-    "Death Trap":               ItemData(66,    ItemClassification.trap,                                            0),
+    "sMiLE Trap":               ItemData(60,    ItemClassification.trap,                                            0),
+    "John Trap":                ItemData(61,    ItemClassification.trap,                                            0),
+    "Spear Trap":               ItemData(62,    ItemClassification.trap,                                            0),
+    "Instakill Trap":           ItemData(63,    ItemClassification.trap,                                            0),
+    "Screen Flip Trap":         ItemData(64,    ItemClassification.trap,                                            0),
+    "Enemy Trap":               ItemData(65,    ItemClassification.trap,                                            0),
 }
 
 # This makes a really convenient list of all the other dictionaries
