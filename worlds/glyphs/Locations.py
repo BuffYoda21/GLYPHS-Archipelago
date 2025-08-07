@@ -1,16 +1,30 @@
 # Look at init or Items.py for more information on imports
+from enum import IntEnum
 from typing import Dict, TYPE_CHECKING
 import logging
 
 from .Types import LocData
+from .Options import LocationPool
 
 if TYPE_CHECKING:
     from . import GlyphsWorld
 
-# This is technique in programming to make things more readable for booleans
-# A boolean is true or false
-def did_include_extra_locations(world: "GlyphsWorld") -> bool:
-    return bool(world.options.ExtraLocations)
+class LocationPoolType(IntEnum):
+    FalseEnding = 1
+    GoodEnding = 2
+    FullTomb = 3
+    OuterVoid = 4
+
+def location_pool_type(world: "GlyphsWorld") -> LocationPoolType:
+    if world.options.LocationPool == LocationPoolType.FalseEnding:
+        return LocationPoolType.FalseEnding
+    elif world.options.LocationPool == LocationPoolType.GoodEnding:
+        return LocationPoolType.GoodEnding
+    elif world.options.LocationPool == LocationPoolType.FullTomb:
+        return LocationPoolType.FullTomb
+    elif world.options.LocationPool == LocationPoolType.OuterVoid:
+        return LocationPoolType.OuterVoid
+    return LocationPoolType.FalseEnding
 
 # This is used by ap and in Items.py
 # Theres a multitude of reasons to need to grab how many locations there are
@@ -21,7 +35,7 @@ def get_total_locations(world: "GlyphsWorld") -> int:
         # If we did not turn on extra locations (see how readable it is with that thing from the top)
         # AND the name of it is found in our extra locations table, then that means we dont want to count it
         # So continue moves onto the next name in the table
-        if not did_include_extra_locations(world) and name in extra_locations:
+        if not location_pool_type == LocationPoolType.FalseEnding(world) and not name in glyphs_false_ending_locations:
             continue
 
         # If the location is valid though, count it
@@ -41,7 +55,7 @@ def get_location_names() -> Dict[str, int]:
 # I know it looks like the same as when we counted it but thats because this is an example
 # Things get complicated fast so having a back up is nice
 def is_valid_location(world: "GlyphsWorld", name) -> bool:
-    if not did_include_extra_locations(world) and name in extra_locations:
+    if not location_pool_type == LocationPoolType.FalseEnding(world) and not name in glyphs_false_ending_locations:
         return False
     
     return True
@@ -58,7 +72,8 @@ def is_valid_location(world: "GlyphsWorld", name) -> bool:
     # Regions will be explained more in Regions.py
     # But just know that it's mostly about organization
     # Place locations together based on where they are in the game and what is needed to get there
-glyphs_locations = {
+
+glyphs_false_ending_locations = {
     # Region 1
     "Sword Pedestal":                       LocData(1,  "Region 1"),
     "Runic Construct Reward":               LocData(2,  "Region 1"),
@@ -68,7 +83,6 @@ glyphs_locations = {
     "Silver Shard Puzzle 3":                LocData(6,  "Region 1"),
     "Smile Token Puzzle 3":                 LocData(7,  "Region 1"),
     "Smile Token Puzzle 9":                 LocData(8,  "Region 1"),
-    "Master Puzzle 2":                      LocData(9,  "Region 1"),
     "Color Cypher Room Pickup":             LocData(10, "Region 1"),
 
     # Region 2
@@ -82,17 +96,11 @@ glyphs_locations = {
     "Smile Token Puzzle 1":                 LocData(18, "Region 2"),
     "Smile Token Puzzle 6":                 LocData(19, "Region 2"),
     "Smile Token Puzzle 8":                 LocData(20, "Region 2"),
-    "Smile Token Puzzle 10":                LocData(21, "Region 2"),
-    "Master Puzzle 1":                      LocData(22, "Region 2"),
     "Gilded Serpent Reward":                LocData(23, "Region 2"),
-    "Shadow Chase Reward":                  LocData(24, "Region 2"),
-    "Water Room Pickup":                    LocData(25, "Region 2"),
     "Cameo Room Pickup":                    LocData(26, "Region 2"),
-    "George Reward":                        LocData(27, "Region 2"),
     "Car Hall Pickup":                      LocData(28, "Region 2"),
     "Sector 1 Below Serpent Lock  Pickup":  LocData(29, "Region 2"),
     "Collapsed Tunnel Pickup":              LocData(30, "Region 2"),
-    "Shadow Chase Pickup":                  LocData(31, "Region 2"),
     "Nest Room Pickup":                     LocData(32, "Region 2"),
     "Serpent Boss Room Pickup":             LocData(33, "Region 2"),
 
@@ -107,18 +115,6 @@ glyphs_locations = {
     "Silver Shard Puzzle 14":               LocData(41, "Region 3"),
     "Smile Token Puzzle 2":                 LocData(42, "Region 3"),
     "Smile Token Puzzle 7":                 LocData(43, "Region 3"),
-    "Master Puzzle 3":                      LocData(44, "Region 3"),
-    "Sector 2 Below Serpent Lock Pickup":   LocData(45, "Region 3"),
-
-    # Region 4
-    "Spearman Reward":                      LocData(46, "Region 4"),
-    "Multiparry Gold Shard Puzzle":         LocData(47, "Region 4"),
-    "Platforming Gold Shard Room":          LocData(48, "Region 4"),
-    "Flower Puzzle Reward":                 LocData(49, "Region 4"),
-    "Smile Token Puzzle 4":                 LocData(50, "Region 4"),
-    "Smile Token Puzzle 5":                 LocData(51, "Region 4"),
-    "On top of the Rosetta Stone":          LocData(52, "Region 4"),
-    "Long Parry Platforming Room Pickup":   LocData(53, "Region 4"),
 
     # Collapse
     "Escape Normal Sequence Pickup":        LocData(54, "Collapse"),
@@ -130,11 +126,46 @@ glyphs_locations = {
     "Smile Shop Item 4":                    LocData(58, "Smile Shop"),
     "Dash Puzzle Reward":                   LocData(59, "Smile Shop"),
     "Respawn Reward":                       LocData(60, "Smile Shop"),
+}
+
+glyphs_good_ending_locations = {
+    # Region 2
+    "Smile Token Puzzle 10":                LocData(21, "Region 2"),
+    "Shadow Chase Reward":                  LocData(24, "Region 2"),
+    "Water Room Pickup":                    LocData(25, "Region 2"),
+    "George Reward":                        LocData(27, "Region 2"),
+    "Shadow Chase Pickup":                  LocData(31, "Region 2"),
+
+    # Region 4
+    "Spearman Reward":                      LocData(46, "Region 4"),
+    "Multiparry Gold Shard Puzzle":         LocData(47, "Region 4"),
+    "Platforming Gold Shard Room":          LocData(48, "Region 4"),
+    "Flower Puzzle Reward":                 LocData(49, "Region 4"),
+    "Smile Token Puzzle 4":                 LocData(50, "Region 4"),
+    "Smile Token Puzzle 5":                 LocData(51, "Region 4"),
+    "On top of the Rosetta Stone Pickup":   LocData(52, "Region 4"),
+    "Long Parry Platforming Room Pickup":   LocData(53, "Region 4"),
 
     # Dark Region
     "Secret Room Pickup":                   LocData(61, "Dark Region"),
     "Large Room Pickup in the Corner":      LocData(62, "Dark Region"),
-    
+}
+
+glyphs_full_tomb_locations = {
+    # Region 1
+    "Master Puzzle 2":                      LocData(9,  "Region 1"),
+
+    # Region 2
+    "Master Puzzle 1":                      LocData(22, "Region 2"),
+
+    # Region 3
+    "Master Puzzle 3":                      LocData(44, "Region 3"),
+
+    # The Between
+    "Between Reward":                       LocData(55, "The Between"),
+}
+
+glyphs_outer_void_locations = {
     # Act 1
     "Void Gate Shard Location 1":           LocData(63, "Act 1"),
     "Void Gate Shard Location 2":           LocData(64, "Act 1"),
@@ -153,14 +184,10 @@ glyphs_locations = {
     "Pink Bow Pickup":                      LocData(75, "Act 2"),
 }
 
-extra_locations = {
-    "ml7's house": LocData(20050102, "Sibiu"),
-}
-
 # Like in Items.py, breaking up the different locations to help with organization and if something special needs to happen to them
 event_locations = {
-    "Defeat Runic Construct":               LocData(76,  "Region 1"),
-    "Stalker Sigil 1":                      LocData(77,  "Region 1"),
+    "Defeat Runic Construct":               LocData(76, "Region 1"),
+    "Stalker Sigil 1":                      LocData(77, "Region 1"),
     "Serpent Lock 1":                       LocData(78, "Region 2"),
     "Serpent Lock 2":                       LocData(79, "Region 2"),
     "Serpent Lock 3":                       LocData(80, "Region 2"),
@@ -188,7 +215,9 @@ event_locations = {
 # Its not here because this is an example and im not funny enough to think of more locations
 # But important to note
 location_table = {
-    **glyphs_locations,
-    **extra_locations,
+    **glyphs_false_ending_locations,
+    **glyphs_good_ending_locations,
+    **glyphs_full_tomb_locations,
+    **glyphs_outer_void_locations,
     **event_locations
 }
