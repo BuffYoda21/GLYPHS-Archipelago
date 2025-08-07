@@ -28,7 +28,7 @@ def create_regions(world: "GlyphsWorld"):
     collapse = create_region_and_connect(world, "Collapse", "Region 3 Wizard Boss Room -> Collapse", region3)
     smile_shop = create_region_and_connect(world, "Smile Shop", "Region 2 Smile Shop Entrance -> Smile Shop", region2)
     dark_region = create_region_and_connect(world, "Dark Region", "Region 2 Long Fall Hidden Passage-> Dark Region", region2)
-    the_between = create_region_and_connect(world, "The Between", "Region 2 -> The Between", region2)
+    the_between = create_region_and_connect(world, "The Between", "Region 2 Hole in the Wall-> The Between", region2)
     act1 = create_region_and_connect(world, "Act 1", "Menu -> Act 1", menu)
     act2 = create_region_and_connect(world, "Act 2", "Act 1 -> Act 2", act1)
     menu.connect(act2, "Menu -> Act 2")
