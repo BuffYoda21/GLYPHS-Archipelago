@@ -1,6 +1,6 @@
 from collections.abc import Callable
 from BaseClasses import Entrance, MultiWorld, CollectionState
-from worlds.generic.Rules import add_rule, set_rule
+from worlds.generic.Rules import set_rule
 from typing import TYPE_CHECKING
 
 from worlds.glyphs.Macros import *
@@ -47,10 +47,28 @@ def set_rules(world: "GlyphsWorld"):
 
     
     # Event Locations
-    ez_set_rule("Defeat Runic Construct",   lambda state: state.can_reach_entrance("Menu -> Region 1", player) and can_fight_parryable_enemy(state, player))
-    ez_set_rule("Stalker Sigil 1",          lambda state: state.can_reach_entrance("Menu -> Region 1", player) and can_fight_parryable_enemy(state, player))
-    ez_set_rule("Serpent Lock 1",           lambda state: state.can_reach_entrance("Region 1 -> Region 2", player) and can_fight_parryable_enemy(state, player))
-    
+    set_rule_from_entrance("Menu -> Region 1",          "Defeat Runic Construct",   lambda state: can_fight_parryable_enemy(state, player))
+    set_rule_from_entrance("Region 2 -> Region 1",      "Defeat Runic Construct",   lambda state: can_fight_parryable_enemy(state, player) and can_dash(state, player))
+    set_rule_from_entrance("Smile Shop -> Region 1",    "Defeat Runic Construct",   lambda state: can_fight_parryable_enemy(state, player))
+    set_rule_from_entrance("Menu -> Region 1",          "Stalker Sigil 1",          lambda state: stalker_sigils_present(state, player))
+    set_rule_from_entrance("Region 2 -> Region 1",      "Stalker Sigil 1",          lambda state: stalker_sigils_present(state, player) and can_dash(state, player))
+    set_rule_from_entrance("Smile Shop -> Region 1",    "Stalker Sigil 1",          lambda state: stalker_sigils_present(state, player))
+    set_rule_from_entrance("Region 1 -> Region 2",      "Serpent Lock 1",           lambda state: can_dash(state, player))
+    set_rule_from_entrance("The Between -> Region 2",   "Serpent Lock 1",           lambda state: can_dash(state, player))
+    set_rule_from_entrance("Region 1 -> Region 2",      "Serpent Lock 2",           lambda state: can_dash(state, player) and can_press_green_buttons(state, player))
+    set_rule_from_entrance("The Between -> Region 2",   "Serpent Lock 2",           lambda state: can_dash(state, player) and can_press_green_buttons(state, player))
+    set_rule_from_entrance("Region 1 -> Region 2",      "Serpent Lock 3",           lambda state: can_dash(state, player))
+    set_rule_from_entrance("Region 4 -> Region 2",      "Serpent Lock 3",           lambda state: can_dash(state, player))
+    set_rule_from_entrance("The Between -> Region 2",   "Serpent Lock 3",           lambda state: can_dash(state, player))
+    set_rule_from_entrance("Region 1 -> Region 2",      "Defeat Gilded Serpent",    lambda state: can_dash(state, player) and serpent_door_open(state, player) and can_fight(state, player))
+    set_rule_from_entrance("The Between -> Region 2",   "Defeat Gilded Serpent",    lambda state: can_dash(state, player) and serpent_door_open(state, player) and can_fight(state, player))
+    set_rule_from_entrance("Region 1 -> Region 2",      "Stalker Sigil 2",          lambda state: stalker_sigils_present(state, player) and can_dash(state, player) and can_press_green_buttons(state, player))     # possible to skip the serpent door with flower puzzle
+    set_rule_from_entrance("The Between -> Region 2",   "Stalker Sigil 2",          lambda state: stalker_sigils_present(state, player) and can_dash(state, player) and can_press_green_buttons(state, player))
+    set_rule_from_entrance("Region 1 -> Region 2",      "Stalker Sigil 3",          lambda state: stalker_sigils_present(state, player) and can_dash(state, player))
+    set_rule_from_entrance("Region 4 -> Region 2",      "Stalker Sigil 3",          lambda state: stalker_sigils_present(state, player))
+    set_rule_from_entrance("The Between -> Region 2",   "Stalker Sigil 3",          lambda state: stalker_sigils_present(state, player) and can_dash(state, player))
+
+
     # Victory condition rule!
     world.multiworld.completion_condition[player] = lambda state: state.has("Victory", player)
 
@@ -59,5 +77,5 @@ def connect_regions(world: MultiWorld, player: int, source: str, target: str, ru
     targetRegion = world.get_region(target, player)
     return sourceRegion.connect(targetRegion, rule=rule)
 
-def ez_set_rule(location_name: str, rule: Callable[[CollectionState], bool]) -> None:
-    set_rule(GlyphsWorld.get_location(location_name), rule)
+def set_rule_from_entrance(entrance_name: str, location_name: str, rule: Callable[[CollectionState], bool]) -> None:
+    set_rule(GlyphsWorld.get_location(location_name), lambda state: state.can_reach_entrance(entrance_name, GlyphsWorld.player) and rule)
