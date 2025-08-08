@@ -75,94 +75,94 @@ def is_valid_location(world: "GlyphsWorld", name) -> bool:
 
 glyphs_false_ending_locations = {
     # Region 1
-    "Sword Pedestal":                       LocData(1,  "Region 1"),
-    "Runic Construct Reward":               LocData(2,  "Region 1"),
-    "Map Pedestal":                         LocData(3,  "Region 1"),
-    "Silver Shard Puzzle 1":                LocData(4,  "Region 1"),
-    "Silver Shard Puzzle 2":                LocData(5,  "Region 1"),
-    "Silver Shard Puzzle 3":                LocData(6,  "Region 1"),
-    "Smile Token Puzzle 3":                 LocData(7,  "Region 1"),
-    "Smile Token Puzzle 9":                 LocData(8,  "Region 1"),
-    "Color Cypher Room Pickup":             LocData(10, "Region 1"),
+    "Sword Pedestal":                       LocData(1,  "Region 1 - Central"),
+    "Runic Construct Reward":               LocData(2,  "Region 1 - Central"),
+    "Map Pedestal":                         LocData(3,  "Region 1 - Left"),
+    "Silver Shard Puzzle 1":                LocData(4,  "Region 1 - Left"),
+    "Silver Shard Puzzle 2":                LocData(5,  "Region 1 - Upper Right"),
+    "Silver Shard Puzzle 3":                LocData(6,  "Region 1 - Upper Right"),
+    "Smile Token Puzzle 3":                 LocData(7,  "Region 1 - Central"),
+    "Smile Token Puzzle 9":                 LocData(8,  "Region 1 - Left"),
+    "Color Cypher Room Pickup":             LocData(9, "Region 1 - Upper Right"),
 
     # Region 2
-    "Silver Shard Puzzle 4":                LocData(11, "Region 2"),
-    "Silver Shard Puzzle 5":                LocData(12, "Region 2"),
-    "Silver Shard Puzzle 6":                LocData(13, "Region 2"),
-    "Silver Shard Puzzle 7":                LocData(14, "Region 2"),
-    "Silver Shard Puzzle 8":                LocData(15, "Region 2"),
-    "Silver Shard Puzzle 9":                LocData(16, "Region 2"),
-    "Silver Shard Puzzle 15":               LocData(17, "Region 2"),
-    "Smile Token Puzzle 1":                 LocData(18, "Region 2"),
-    "Smile Token Puzzle 6":                 LocData(19, "Region 2"),
-    "Smile Token Puzzle 8":                 LocData(20, "Region 2"),
-    "Gilded Serpent Reward":                LocData(23, "Region 2"),
-    "Cameo Room Pickup":                    LocData(26, "Region 2"),
-    "Car Hall Pickup":                      LocData(28, "Region 2"),
-    "Sector 1 Below Serpent Lock  Pickup":  LocData(29, "Region 2"),
-    "Collapsed Tunnel Pickup":              LocData(30, "Region 2"),
-    "Nest Room Pickup":                     LocData(32, "Region 2"),
-    "Serpent Boss Room Pickup":             LocData(33, "Region 2"),
+    "Silver Shard Puzzle 4":                LocData(10, "Region 2 - Central"),
+    "Silver Shard Puzzle 5":                LocData(11, "Region 2 - Central"),
+    "Silver Shard Puzzle 6":                LocData(12, "Region 2 - Sector 1"),
+    "Silver Shard Puzzle 7":                LocData(13, "Region 2 - Sector 2"),
+    "Silver Shard Puzzle 8":                LocData(14, "Region 2 - Lower"),
+    "Silver Shard Puzzle 9":                LocData(15, "Region 2 - Lower"),
+    "Silver Shard Puzzle 15":               LocData(16, "Region 2 - Serpent"),
+    "Smile Token Puzzle 1":                 LocData(17, "Region 2 - Sector 2"),
+    "Smile Token Puzzle 6":                 LocData(18, "Region 2 - Serpent"),
+    "Smile Token Puzzle 8":                 LocData(19, "Region 2 - Sector 1"),
+    "Gilded Serpent Reward":                LocData(20, "Region 2 - Serpent"),
+    "Cameo Room Pickup":                    LocData(21, "Region 2 - Sector 1"),
+    "Car Hall Pickup":                      LocData(22, "Region 2 - Sector 2"),
+    "Near Shooters Pickup":                 LocData(23, "Region 2 - Sector 1"),
+    "Collapsed Tunnel Pickup":              LocData(24, "Region 2 - Sector 4"),
+    "Nest Room Pickup":                     LocData(25, "Region 2 - Left"),
+    "Serpent Boss Room Pickup":             LocData(26, "Region 2 - Serpent"),
 
     # Region 3
-    "Green Stone Trial":                    LocData(34, "Region 3"),
-    "Blue Stone Trial":                     LocData(35, "Region 3"),
-    "Red Stone Trial":                      LocData(36, "Region 3"),
-    "Silver Shard Puzzle 10":               LocData(37, "Region 3"),
-    "Silver Shard Puzzle 11":               LocData(38, "Region 3"),
-    "Silver Shard Puzzle 12":               LocData(39, "Region 3"),
-    "Silver Shard Puzzle 13":               LocData(40, "Region 3"),
-    "Silver Shard Puzzle 14":               LocData(41, "Region 3"),
-    "Smile Token Puzzle 2":                 LocData(42, "Region 3"),
-    "Smile Token Puzzle 7":                 LocData(43, "Region 3"),
+    "Green Stone Trial":                    LocData(27, "Region 3"),
+    "Blue Stone Trial":                     LocData(28, "Region 3"),
+    "Red Stone Trial":                      LocData(29, "Region 3"),
+    "Silver Shard Puzzle 10":               LocData(30, "Region 3"),
+    "Silver Shard Puzzle 11":               LocData(31, "Region 3"),
+    "Silver Shard Puzzle 12":               LocData(32, "Region 3"),
+    "Silver Shard Puzzle 13":               LocData(33, "Region 3"),
+    "Silver Shard Puzzle 14":               LocData(34, "Region 3"),
+    "Smile Token Puzzle 2":                 LocData(35, "Region 3"),
+    "Smile Token Puzzle 7":                 LocData(36, "Region 3"),
 
     # Collapse
-    "Escape Normal Sequence Pickup":        LocData(54, "Collapse"),
+    "Escape Normal Sequence Pickup":        LocData(37, "Collapse"),
 
     # Smile Shop
-    "Smile Shop Item 1":                    LocData(55, "Smile Shop"),
-    "Smile Shop Item 2":                    LocData(56, "Smile Shop"),
-    "Smile Shop Item 3":                    LocData(57, "Smile Shop"),
-    "Smile Shop Item 4":                    LocData(58, "Smile Shop"),
-    "Dash Puzzle Reward":                   LocData(59, "Smile Shop"),
-    "Respawn Reward":                       LocData(60, "Smile Shop"),
+    "Smile Shop Item 1":                    LocData(38, "Smile Shop"),
+    "Smile Shop Item 2":                    LocData(39, "Smile Shop"),
+    "Smile Shop Item 3":                    LocData(40, "Smile Shop"),
+    "Smile Shop Item 4":                    LocData(41, "Smile Shop"),
+    "Dash Puzzle Reward":                   LocData(42, "Smile Shop"),
+    "Respawn Reward":                       LocData(43, "Smile Shop"),
 }
 
 glyphs_good_ending_locations = {
     # Region 2
-    "Smile Token Puzzle 10":                LocData(21, "Region 2"),
-    "Shadow Chase Reward":                  LocData(24, "Region 2"),
-    "Water Room Pickup":                    LocData(25, "Region 2"),
-    "George Reward":                        LocData(27, "Region 2"),
-    "Shadow Chase Pickup":                  LocData(31, "Region 2"),
+    "Smile Token Puzzle 10":                LocData(44, "Region 2 - Shadow Chase"),
+    "Shadow Chase Reward":                  LocData(45, "Region 2 - Shadow Chase"),
+    "Water Room Pickup":                    LocData(46, "Region 2 - Sector 4 End"),
+    "George Reward":                        LocData(47, "Region 2 - Left"),
+    "Shadow Chase Pickup":                  LocData(48, "Region 2 - Shadow Chase"),
 
     # Region 4
-    "Spearman Reward":                      LocData(46, "Region 4"),
-    "Multiparry Gold Shard Puzzle":         LocData(47, "Region 4"),
-    "Platforming Gold Shard Room":          LocData(48, "Region 4"),
-    "Flower Puzzle Reward":                 LocData(49, "Region 4"),
-    "Smile Token Puzzle 4":                 LocData(50, "Region 4"),
-    "Smile Token Puzzle 5":                 LocData(51, "Region 4"),
-    "On top of the Rosetta Stone Pickup":   LocData(52, "Region 4"),
-    "Long Parry Platforming Room Pickup":   LocData(53, "Region 4"),
+    "Spearman Reward":                      LocData(49, "Region 4 - Upper"),
+    "Multiparry Gold Shard Puzzle":         LocData(50, "Region 4 - Central"),
+    "Platforming Gold Shard Room":          LocData(51, "Region 4 - Central"),
+    "Flower Puzzle Reward":                 LocData(52, "Region 4 - Central"),
+    "Smile Token Puzzle 4":                 LocData(53, "Region 4 - Central"),
+    "Smile Token Puzzle 5":                 LocData(54, "Region 4 - Entrance"),
+    "On top of the Rosetta Stone Pickup":   LocData(55, "Region 4 - Central"),
+    "Long Parry Platforming Room Pickup":   LocData(56, "Region 4 - Lower"),
 
     # Dark Region
-    "Secret Room Pickup":                   LocData(61, "Dark Region"),
-    "Large Room Pickup in the Corner":      LocData(62, "Dark Region"),
+    "Secret Room Pickup":                   LocData(57, "Dark Region"),
+    "Large Room Pickup in the Corner":      LocData(58, "Dark Region"),
 }
 
 glyphs_full_tomb_locations = {
     # Region 1
-    "Master Puzzle 2":                      LocData(9,  "Region 1"),
+    "Master Puzzle 2":                      LocData(59,  "Region 1 - Central"),
 
     # Region 2
-    "Master Puzzle 1":                      LocData(22, "Region 2"),
+    "Master Puzzle 1":                      LocData(60, "Region 2 - Sector 2"),
 
     # Region 3
-    "Master Puzzle 3":                      LocData(44, "Region 3"),
+    "Master Puzzle 3":                      LocData(61, "Region 3"),
 
     # The Between
-    "Between Reward":                       LocData(55, "The Between"),
+    "Between Reward":                       LocData(62, "The Between"),
 }
 
 glyphs_outer_void_locations = {
@@ -186,19 +186,19 @@ glyphs_outer_void_locations = {
 
 # Like in Items.py, breaking up the different locations to help with organization and if something special needs to happen to them
 event_locations = {
-    "Defeat Runic Construct":               LocData(76, "Region 1"),
-    "Stalker Sigil 1":                      LocData(77, "Region 1"),
-    "Serpent Lock 1":                       LocData(78, "Region 2"),
-    "Serpent Lock 2":                       LocData(79, "Region 2"),
-    "Serpent Lock 3":                       LocData(80, "Region 2"),
-    "Defeat Gilded Serpent":                LocData(81, "Region 2"),
-    "Stalker Sigil 2":                      LocData(82, "Region 2"),
-    "Stalker Sigil 3":                      LocData(83, "Region 2"),
-    "Solve Flower Puzzle":                  LocData(84, "Region 2"),
+    "Defeat Runic Construct":               LocData(76, "Region 1 - Central"),
+    "Stalker Sigil 1":                      LocData(77, "Region 1 - Central"),
+    "Serpent Lock 1":                       LocData(78, "Region 2 - Sector 1"),
+    "Serpent Lock 2":                       LocData(79, "Region 2 - Sector 2"),
+    "Serpent Lock 3":                       LocData(80, "Region 2 - Sector 4 End"),
+    "Defeat Gilded Serpent":                LocData(81, "Region 2 - Serpent"),
+    "Stalker Sigil 2":                      LocData(82, "Region 2 - Serpent"),
+    "Stalker Sigil 3":                      LocData(83, "Region 2 - Sector 4"),
+    "Solve Flower Puzzle":                  LocData(84, "Region 2 - Sector 4 End"),
     "Collapse Unlock":                      LocData(85, "Region 3"),
-    "Defeat Spearman":                      LocData(86, "Region 4"),
-    "Defeat Wraith":                        LocData(87, "Region 4"),
-    "Defeat Vessel":                        LocData(88, "Region 4"),
+    "Defeat Spearman":                      LocData(86, "Region 4 - Entrance"),
+    "Defeat Wraith":                        LocData(87, "Region 4 - Lower"),
+    "Defeat Vessel":                        LocData(88, "Region 4 - Lower"),
     "False Ending":                         LocData(89, "Collapse"),
     "Smilemask Ending":                     LocData(90, "Smile Shop"),
     "Defeat Null":                          LocData(91, "Dark Region"),
