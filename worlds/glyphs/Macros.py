@@ -14,6 +14,9 @@ def can_dash(state: CollectionState, player: int) -> bool:
 def can_dash_attack(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Dash Orb", player, 2)
 
+def can_press_green_buttons(state: CollectionState, player: int) -> bool:
+    return state.has("Progressive Sword", player, 1) or state.has("Progressive Dash Orb", player, 2)
+
 def can_fight(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Sword", player, 1) or (state.has("Progressive Dash Orb", player, 2) and options.SwordlessCombat.value)
 
@@ -110,3 +113,6 @@ def act_2_available(state: CollectionState, player: int) -> bool:
 
 def act_3_available(state: CollectionState, player: int) -> bool:
     return state.has("Act 3 Unlocked", player)
+
+def void_gate_open(state: CollectionState, player: int) -> bool:
+    return state.has("Void Gate Shard", player, 7)
