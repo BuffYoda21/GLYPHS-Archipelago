@@ -105,6 +105,9 @@ def wizard_true_defeat(state: CollectionState, player: int) -> bool:
 def defeated_spearman(state: CollectionState, player: int) -> bool:
     return state.has("Spearman Defeated", player)
 
+def defeated_null(state: CollectionState, player: int) -> bool:
+    return state.has("Defeat Null", player)
+
 def act_1_available(state: CollectionState, player: int) -> bool:
     return state.has("Act 1 Unlocked", player)
 

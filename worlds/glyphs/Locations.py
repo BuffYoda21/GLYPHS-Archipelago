@@ -197,8 +197,8 @@ event_locations = {
     "Solve Flower Puzzle":                  LocData(84, "Region 2 - Sector 4 End"),
     "Collapse Unlock":                      LocData(85, "Region 3"),
     "Defeat Spearman":                      LocData(86, "Region 4 - Entrance"),
-    "Defeat Wraith":                        LocData(87, "Region 4 - Lower"),
-    "Defeat Vessel":                        LocData(88, "Region 4 - Lower"),
+    "Good Ending":                          LocData(87, "Region 4 - Lower"),
+    "Last Fracture":                        LocData(88, "Region 4 - Lower"),
     "False Ending":                         LocData(89, "Collapse"),
     "Smilemask Ending":                     LocData(90, "Smile Shop"),
     "Defeat Null":                          LocData(91, "Dark Region"),
@@ -206,7 +206,7 @@ event_locations = {
     "Omnipotence Ending":                   LocData(93, "Act 1"),
     "Clear Act 1":                          LocData(94, "Act 1"),
     "Clear Act 2":                          LocData(95, "Act 2"),
-    "Defeat Wraith Prime":                  LocData(96, "Act 3"),
+    "True Ending":                          LocData(96, "Act 3"),
     "Clear Epilogue":                       LocData(97, "Epilogue"),
 }
 
