@@ -49,12 +49,12 @@ def create_regions(world: "GlyphsWorld"):
     smile_shop = create_region_and_connect(world, "Smile Shop", region2s1)
     dark_region = create_region_and_connect(world, "Dark Region", region2low)
     the_between = create_region_and_connect(world, "The Between", region2lf)
-    act1 = create_region_and_connect(world, "Act 1", "Menu -> Act 1", menu)
-    act2 = create_region_and_connect(world, "Act 2", "Act 1 -> Act 2", act1)
-    menu.connect(act2, "Menu -> Act 2")
-    act3 = create_region_and_connect(world, "Act 3", "Act 2 -> Act 3", act2)
-    menu.connect(act3, "Menu -> Act 3")
-    epilogue = create_region_and_connect(world, "Epilogue", "Act 1 -> Epilogue", act1)
+    act1 = create_region_and_connect(world, "Act 1", menu)
+    act2 = create_region_and_connect(world, "Act 2", act1)
+    auto_connect(menu, act2)
+    act3 = create_region_and_connect(world, "Act 3", act2)
+    auto_connect(menu, act3)
+    epilogue = create_region_and_connect(world, "Epilogue", act1)
 
 def create_region(world: "GlyphsWorld", name: str) -> Region:
     reg = Region(name, world.player, world.multiworld)
