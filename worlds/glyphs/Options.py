@@ -57,20 +57,23 @@ class Multiplayer(Toggle):
 #     """
 #     display_name = "Randomize World Spawn"
 
-class LocationPool(Choice):
-    """
-    Determines what locations will be shuffled in the world.
-    False Ending: Includes all locations relevent to the false ending
-    Good Ending: Includes all locations relevent to the good ending
-    Full Tomb: Like Good Ending but includes the between and master puzzles in the pool
-    Outer Void: Includes Full Tomb and Outer Void locations
-    """
-    display_name = "Location Pool"
-    option_false_ending = 1
-    option_good_ending = 2
-    option_full_tomb = 3
-    option_outer_void = 4
-    default = option_false_ending
+# Actually not sure how I would do this.
+# The goal setting should be enough to prevent major spoilers but some later game items may be revealed.
+#
+# class LocationPool(Choice):
+#    """
+#    Determines what locations will be shuffled in the world.
+#    False Ending: Includes all locations relevent to the false ending
+#    Good Ending: Includes all locations relevent to the good ending
+#    Full Tomb: Like Good Ending but includes the between and master puzzles in the pool
+#    Outer Void: Includes Full Tomb and Outer Void locations
+#    """
+#    display_name = "Location Pool"
+#    option_false_ending = 1
+#    option_good_ending = 2
+#    option_full_tomb = 3
+#    option_outer_void = 4
+#    default = option_false_ending
 
 class HatLocations(Toggle):
     """
@@ -254,7 +257,6 @@ class GlyphsOptions(PerGameCommonOptions):
     Multiplayer:            Multiplayer
 
     # Randomization Options
-    LocationPool:           LocationPool
     HatLocations:           HatLocations
     Shopsanity:             Shopsanity
     RandomShopPrices:       RandomShopPrices
@@ -282,7 +284,7 @@ class GlyphsOptions(PerGameCommonOptions):
 # Its entirely up to you how you want to organize it
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, GenericParries, Multiplayer],
-    "Randomization Options": [LocationPool, HatLocations, Shopsanity, RandomShopPrices, EnableTraps, TrapTypes, UnreasonableLocations],
+    "Randomization Options": [HatLocations, Shopsanity, RandomShopPrices, EnableTraps, TrapTypes, UnreasonableLocations],
     "Logical Options": [SwordlessCombat, BulletCombat, DashPuzzlesSolved, LocicalWallJumps, LogicalWallJumpChains],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
