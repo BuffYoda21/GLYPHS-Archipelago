@@ -95,7 +95,20 @@ def set_rules(world: "GlyphsWorld"):
 
 
     # Victory condition rule!
-    world.multiworld.completion_condition[player] = lambda: state.has("Victory", player)
+    victory: lambda: False
+    if options.Goal.value == options.Goal.option_false_ending:
+        victory = lambda: state.has("False Ending")
+    elif options.Goal.value == options.Goal.option_good_ending:
+        victory = lambda: state.has("Good Ending")
+    elif options.Goal.value == options.Goal.option_true_ending:
+        victory = lambda: state.has("True Ending")
+    elif options.Goal.value == options.Goal.option_all_star_endings:
+        victory = lambda: state.has("Perfect Clarity") and state.has("Smilemask Ending") and state.has("Omnipotence Ending")
+    elif options.Goal.value == options.Goal.option_epilouge:
+        victory = lambda: state.has("Epilouge Ending")
+    elif options.Goal.value == options.Goal.option_all_endings:
+        victory = lambda: state.has("False Ending") and state.has("Good Ending") and state.has("True Ending") and state.has("Perfect Clarity") and state.has("Smilemask Ending") and state.has("Omnipotence Ending") and state.has("Epilouge Ending")
+    world.multiworld.completion_condition[player] = victory
 
 def connect_regions(world: MultiWorld, player: int, source: str, target: str, rule=None) -> Entrance:
     sourceRegion = world.get_region(source, player)
