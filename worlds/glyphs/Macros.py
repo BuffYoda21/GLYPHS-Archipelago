@@ -45,7 +45,7 @@ def serpent_door_open(state: CollectionState, player: int) -> bool:
     return state.has("Serpent Lock Activated", player, 3)
 
 def stalker_sigils_present(state: CollectionState, player: int) -> bool:
-    return state.has("False Ending")
+    return state.has("False Ending", player)
 
 def shadow_chase_open(state: CollectionState, player: int) -> bool:
     return state.has("Stalker Sigil Collected", player, 3)
@@ -119,3 +119,25 @@ def act_3_available(state: CollectionState, player: int) -> bool:
 
 def void_gate_open(state: CollectionState, player: int) -> bool:
     return state.has("Void Gate Shard", player, 7)
+
+def can_solve_flower_puzzle(state: CollectionState, player: int) -> bool:
+    return defeated_gilded_serpent(state, player) and can_dash(state, player) and can_press_green_buttons(state, player) and has_grapple(state, player)
+
+def can_access_all_silver_shards(state: CollectionState, player: int) -> bool:
+    return (
+        state.can_reach_location("Silver Shard Puzzle 1", player) and
+        state.can_reach_location("Silver Shard Puzzle 2", player) and
+        state.can_reach_location("Silver Shard Puzzle 3", player) and
+        state.can_reach_location("Silver Shard Puzzle 4", player) and
+        state.can_reach_location("Silver Shard Puzzle 5", player) and
+        state.can_reach_location("Silver Shard Puzzle 6", player) and
+        state.can_reach_location("Silver Shard Puzzle 7", player) and
+        state.can_reach_location("Silver Shard Puzzle 8", player) and
+        state.can_reach_location("Silver Shard Puzzle 9", player) and
+        state.can_reach_location("Silver Shard Puzzle 10", player) and
+        state.can_reach_location("Silver Shard Puzzle 11", player) and
+        state.can_reach_location("Silver Shard Puzzle 12", player) and
+        state.can_reach_location("Silver Shard Puzzle 13", player) and
+        state.can_reach_location("Silver Shard Puzzle 14", player) and
+        state.can_reach_location("Silver Shard Puzzle 15", player)
+    )
