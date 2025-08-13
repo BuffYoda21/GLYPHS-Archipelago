@@ -51,7 +51,7 @@ def set_rules(world: "GlyphsWorld"):
     connect_regions(world, player, "Region 4 - Entrance",       "Region 2 - Sector 4",      lambda: wizard_true_defeat(state, player))
     connect_regions(world, player, "Region 4 - Entrance",       "Region 4 - Upper",         lambda: can_dash_attack(state, player)            and defeated_spearman(state, player))
     connect_regions(world, player, "Region 4 - Upper",          "Region 4 - Central",       lambda: can_dash_attack(state, player)            and can_parry(state, player))
-    connect_regions(world, player, "Region 4 - Central",        "Region 4 - Lower",         lambda: can_dash_attack(state, player)            and can_parry(state, player))
+    connect_regions(world, player, "Region 4 - Central",        "Region 4 - Lower",         lambda: can_dash(state, player)                   and can_parry(state, player)                  and can_press_green_buttons(state, player))
     connect_regions(world, player, "Region 3",                  "Region 4 - Lower",         lambda: can_solve_flower_puzzle(state, player))
     connect_regions(world, player, "Region 3",                  "Collapse",                 lambda: collapse_available(state, player) )
     connect_regions(world, player, "Region 2 - Sector 2",       "Smile Shop",               lambda: can_dash(state, player)                   and can_press_green_buttons(state, player))
@@ -67,7 +67,7 @@ def set_rules(world: "GlyphsWorld"):
     connect_regions(world, player, "Menu",                      "Act 3",                    lambda: act_3_available(state, player))
     connect_regions(world, player, "Act 1",                     "Act 2",                    lambda: void_gate_open(state, player)             and can_dash_attack(state, player))
     connect_regions(world, player, "Act 2",                     "Act 3",                    lambda: can_fight(state, player)                  and can_dash_attack(state, player))
-    connect_regions(world, player, "Act 1",                     "Epilogue",                 lambda: can_dash(state, player) and state.has("Shroud", player))     
+    connect_regions(world, player, "Act 1",                     "Epilogue",                 lambda: can_dash(state, player)                   and state.has("Shroud", player))     
 
 
     # Event Locations
@@ -107,6 +107,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string("Color Cypher Room Pickup",    lambda: can_dash(state, player))
     set_rule_from_string("Master Puzzle 2",             lambda: can_dash(state, player) and has_grapple(state, player))
 
+
     # Region 2
     set_rule_from_string("Silver Shard Puzzle 4",       lambda: can_dash(state, player))
     set_rule_from_string("Silver Shard Puzzle 5",       lambda: can_dash(state, player) and can_press_green_buttons(state, player))
@@ -131,6 +132,32 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string("George Reward",               lambda: can_dash(state, player) and state.has("Seeds", player, 10))
     set_rule_from_string("Shadow Chase Pickup",         lambda: can_dash(state, player) and has_grapple(state, player) and can_press_green_buttons(state, player))
     set_rule_from_string("Master Puzzle 1",             lambda: can_dash(state, player) and state.has("Silver Shard", player, 15) and (options.DashPuzzlesSolved.value or can_access_all_silver_shards(state, player)))
+
+
+    # Region 3
+    set_rule_from_string("Green Stone Trial",           lambda: can_dash(state, player) and has_grapple(state, player) and can_press_green_buttons(state, player))
+    set_rule_from_string("Blue Stone Trial",            lambda: can_dash(state, player) and has_grapple(state, player) and can_press_green_buttons(state, player))
+    set_rule_from_string("Red Stone Trial",             lambda: can_dash(state, player) and has_grapple(state, player) and can_fight(state, player))
+    set_rule_from_string("Silver Shard Puzzle 10",      lambda: can_dash(state, player) and has_grapple(state, player) and can_press_green_buttons(state, player))
+    set_rule_from_string("Silver Shard Puzzle 11",      lambda: can_dash(state, player) and has_grapple(state, player) and can_press_green_buttons(state, player))
+    set_rule_from_string("Silver Shard Puzzle 12",      lambda: can_dash(state, player))
+    set_rule_from_string("Silver Shard Puzzle 13",      lambda: can_dash(state, player) and has_grapple(state, player))
+    set_rule_from_string("Silver Shard Puzzle 14",      lambda: can_dash(state, player) and has_grapple(state, player) and can_press_green_buttons(state, player))
+    set_rule_from_string("Smile Token Puzzle 2",        lambda: can_dash(state, player) and has_grapple(state, player))
+    set_rule_from_string("Smile Token Puzzle 7",        lambda: can_dash(state, player) and has_grapple(state, player) and can_press_green_buttons(state, player))
+    set_rule_from_string("Master Puzzle 3",             lambda: can_dash_attack(state, player) and has_grapple(state, player) and has_sword(state, player))
+    
+
+    # Region 4
+    set_rule_from_string("Spearman Reward",                     lambda: can_dash_attack(state, player) and has_grapple(state, player) and can_fight(state, player))
+    set_rule_from_string("Multiparry Gold Shard Puzzle",        lambda: can_dash(state, player) and has_grapple(state, player) and can_parry(state, player))
+    set_rule_from_string("Platforming Gold Shard Room",         lambda: can_dash(state, player) and has_grapple(state, player) and can_parry(state, player) and has_sword(state, player))
+    set_rule_from_string("Flower Puzzle Reward",                lambda: can_solve_flower_puzzle(state, player))
+    set_rule_from_string("Smile Token Puzzle 4",                lambda: can_dash(state, player) and has_grapple(state, player) and can_parry(state, player))
+    set_rule_from_string("Smile Token Puzzle 5",                lambda: can_dash(state, player))
+    set_rule_from_string("On top of the Rosetta Stone Pickup",  lambda: can_dash(state, player))
+    set_rule_from_string("Long Parry Platforming Room Pickup",  lambda: can_dash(state, player) and has_grapple(state, player) and can_parry(state, player) and can_press_green_buttons(state, player))
+
 
 
     # Victory condition rule!
