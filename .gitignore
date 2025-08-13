@@ -66,8 +66,7 @@ Output Logs/
 /datapackage
 /datapackage_export.json
 /custom_worlds
-# stubgen output
-/out/
+/data/sprites/alttp/remote
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
