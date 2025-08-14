@@ -154,18 +154,19 @@ class DashPuzzlesSolved(Toggle):
 #     """
 #     display_name = "Multiplayer Cheeses in Logic"
 
+# Lol this is only used in one location
 class LocicalWallJumps(Toggle):
     """
     Considers skips utilizing wall jumps in logic.
     """
     display_name = "Wall Jumps in Logic"
 
-class LogicalWallJumpChains(Toggle):
-    """
-    Considers skips that require multiple consecutive wall jumps in logic.
-    Does nothing if "Wall Jumps in Logic" is not enabled.
-    """
-    display_name = "Wall Jump Chains in Logic"
+#class LogicalWallJumpChains(Toggle):
+#    """
+#    Considers skips that require multiple consecutive wall jumps in logic.
+#    Does nothing if "Wall Jumps in Logic" is not enabled.
+#    """
+#    display_name = "Wall Jump Chains in Logic"
 
 
 
@@ -269,7 +270,7 @@ class GlyphsOptions(PerGameCommonOptions):
     BulletCombat:           BulletCombat
     DashPuzzlesSolved:      DashPuzzlesSolved
     LocicalWallJumps:       LocicalWallJumps
-    LogicalWallJumpChains:  LogicalWallJumpChains
+    # LogicalWallJumpChains:  LogicalWallJumpChains
 
     # Open Settings
     WizardRequirements:     WizardRequirements
@@ -285,6 +286,6 @@ class GlyphsOptions(PerGameCommonOptions):
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, GenericParries, Multiplayer],
     "Randomization Options": [HatLocations, Shopsanity, RandomShopPrices, EnableTraps, TrapTypes, UnreasonableLocations],
-    "Logical Options": [SwordlessCombat, BulletCombat, DashPuzzlesSolved, LocicalWallJumps, LogicalWallJumpChains],
+    "Logical Options": [SwordlessCombat, BulletCombat, DashPuzzlesSolved, LocicalWallJumps],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }

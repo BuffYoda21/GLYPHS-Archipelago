@@ -61,7 +61,7 @@ def set_rules(world: "GlyphsWorld"):
     connect_regions(world, player, "Dark Region",               "Smile Shop",               lambda: can_dash_attack(state, player))
     connect_regions(world, player, "Region 2 - Left",           "The Between",              lambda: can_dash(state, player))
     connect_regions(world, player, "The Between",               "Region 2 - Left")
-    connect_regions(world, player, "The Between",               "Smile Shop",               lambda: can_dash(state, player)                   and options.LocicalWallJumps.value)
+    connect_regions(world, player, "The Between",               "Smile Shop",               lambda: can_dash(state, player))
     connect_regions(world, player, "Menu",                      "Act 1",                    lambda: act_1_available(state, player))
     connect_regions(world, player, "Menu",                      "Act 2",                    lambda: act_2_available(state, player))
     connect_regions(world, player, "Menu",                      "Act 3",                    lambda: act_3_available(state, player))

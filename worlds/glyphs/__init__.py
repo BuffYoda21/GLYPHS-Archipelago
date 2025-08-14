@@ -110,14 +110,23 @@ class GlyphsWorld(World):
     def fill_slot_data(self) -> Dict[str, object]:
         slot_data: Dict[str, object] = {
             "options": {
-                "StartingPlace":            self.options.StartingChapter.value,
-                "ExtraLocations":           self.options.ExtraLocations.value,
-                "TrapChance":               self.options.TrapChance.value,
-                "sMiLETrapWeight":          self.options.sMiLETrapWeight.value,    # Spawns smiles from the smileshop already agroed to the player based on sMiLE value
-                "JohnTrapWeight":           self.options.JohnTrapWeight.value,     # spawns John Spider near the player
-                "SpearTrapWeight":          self.options.SpearTrapWeight.value,    # spawns the spearman's spear rain attack but probably gonna buff damage
-                "DeathTrapWeight":          self.options.DeathTrapWeight.value,    # spawns the funni instakill explosion asset on the player
-
+                "Goal":                    self.options.Goal.value,
+                "GenericParries":          self.options.GenericParries.value,
+                "Multiplayer":             self.options.Multiplayer.value,
+                "HatLocations":            self.options.HatLocations.value,
+                "Shopsanity":              self.options.Shopsanity.value,
+                "UnreasonableLocations":   self.options.UnreasonableLocations.value,
+                "SwordlessCombat":         self.options.SwordlessCombat.value,
+                "BulletCombat":            self.options.BulletCombat.value,
+                "DashPuzzlesSolved":       self.options.DashPuzzlesSolved.value,
+                "LocicalWallJumps":        self.options.LocicalWallJumps.value,
+                "WizardRequirements":      self.options.WizardRequirements.value,
+                "WraithRequirements":      self.options.WraithRequirements.value,
+                "WraithSilverCount":       self.options.WraithSilverCount.value,
+                "WraithGoldCount":         self.options.WraithGoldCount.value,
+                "WraithSmileCount":        self.options.WraithSmileCount.value,
+                "WraithRuneCount":         self.options.WraithRuneCount.value,
+                "WraithGlyphstoneCount":   self.options.WraithGlyphstoneCount.value,
             },
             "Seed": self.multiworld.seed_name,  # to verify the server's multiworld
             "Slot": self.multiworld.player_name[self.player],  # to connect to server
