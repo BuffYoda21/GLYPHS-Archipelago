@@ -84,17 +84,9 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
     junk_list: Dict[str, int] = {}
     trap_list: Dict[str, int] = {}
 
+    # Formatted like this so that I can add more later if needed
     junk_weights = {
-        "HP Refill":        50,
-        "Pink Bow":         10,
-        "Propeller Hat":    10,
-        "Traffic Cone":     10,
-        "John Hat":         10,
-        "Top Hat":          10,
-        "Fez":              10,
-        "Party Hat":        10,
-        "Bomb Hat":         10,
-        "Crown":            10,
+        "HP Refill":        100,
     }
 
     # This grabs all the junk items and trap items
@@ -108,13 +100,18 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
         # It also grabs the trap weights from the options page
         elif trap_chance > 0 and ic == ItemClassification.trap:
             if name == "sMiLE Trap":
-                trap_list[name] = world.options.sMiLETrapWeight.value
+                trap_list[name] = 20
             elif name == "John Trap":
-                trap_list[name] = world.options.JohnTrapWeight.value
+                trap_list[name] = 10
             elif name == "Spear Trap":
-                trap_list[name] = world.options.SpearTrapWeight.value
-            elif name == "Death Trap":
-                trap_list[name] = world.options.DeathTrapWeight.value
+                trap_list[name] = 20
+            elif name == "Enemy Trap":
+                trap_list[name] = 30
+            elif name == "Screen Flip Trap":
+                trap_list[name] = 15
+            elif name == "Instakill Trap":
+                trap_list[name] = 5
+                
 
     # Where all the magic happens of adding the junk and traps randomly
     # AP does all the weight management so we just need to worry about how many are created
@@ -178,39 +175,50 @@ glyphs_items = {
     "Smilemask Ending":         ItemData(32,    ItemClassification.progression_skip_balancing,                      1),
     "Omnipotence Ending":       ItemData(33,    ItemClassification.progression_skip_balancing,                      1),
     "Epilouge Ending":          ItemData(34,    ItemClassification.progression_skip_balancing,                      1),
+    
+    # Limited junk items
+    "Pink Bow":                 ItemData(35,    ItemClassification.filler,                                          1),
+    "Propeller Hat":            ItemData(36,    ItemClassification.filler,                                          1),
+    "Traffic Cone":             ItemData(37,    ItemClassification.filler,                                          1),
+    "John Hat":                 ItemData(38,    ItemClassification.filler,                                          1),
+    "Top Hat":                  ItemData(39,    ItemClassification.filler,                                          1),
+    "Fez":                      ItemData(40,    ItemClassification.filler,                                          1),
+    "Party Hat":                ItemData(41,    ItemClassification.filler,                                          1),
+    "Bomb Hat":                 ItemData(42,    ItemClassification.filler,                                          1),
+    "Crown":                    ItemData(43,    ItemClassification.filler,                                          1),
 }
 
 # I like to split up the items so that its easier to look at and since sometimes you only need to look at one specific type of list
 # An example of that is in create_itempool where I simulated having a starting chapter
 glyphs_chapters = {
-    "Menu":                     ItemData(35,    ItemClassification.progression),    # using this as starting chapter to allow randomized starting spawns
-    "Region 1 - Central":       ItemData(36,    ItemClassification.progression),
-    "Region 1 - Left":          ItemData(37,    ItemClassification.progression),
-    "Region 1 - Upper Left":    ItemData(38,    ItemClassification.progression),
-    "Region 1 - Upper Right":   ItemData(39,    ItemClassification.progression),
-    "Region 2 - Left":          ItemData(40,    ItemClassification.progression),
-    "Region 2 - Central":       ItemData(41,    ItemClassification.progression),
-    "Region 2 - Sector 1":      ItemData(42,    ItemClassification.progression),
-    "Region 2 - Sector 2":      ItemData(43,    ItemClassification.progression),
-    "Region 2 - Sector 4":      ItemData(44,    ItemClassification.progression),
-    "Region 2 - Sector 4 End":  ItemData(45,    ItemClassification.progression),
-    "Region 2 - Lower":         ItemData(46,    ItemClassification.progression),
-    "Region 2 - Serpent Upper": ItemData(47,    ItemClassification.progression),
-    "Region 2 - Serpent Lower": ItemData(48,    ItemClassification.progression),
-    "Region 2 - Shadow Chase":  ItemData(49,    ItemClassification.progression),
-    "Region 3":                 ItemData(50,    ItemClassification.progression),
-    "Region 4 - Entrance":      ItemData(51,    ItemClassification.progression),
-    "Region 4 - Upper":         ItemData(52,    ItemClassification.progression),
-    "Region 4 - Central":       ItemData(53,    ItemClassification.progression),
-    "Region 4 - Lower":         ItemData(54,    ItemClassification.progression),
-    "Collapse":                 ItemData(55,    ItemClassification.progression),
-    "Smile Shop":               ItemData(56,    ItemClassification.progression),
-    "Dark Region":              ItemData(57,    ItemClassification.progression),
-    "The Between":              ItemData(58,    ItemClassification.progression),
-    "Act 1":                    ItemData(59,    ItemClassification.progression),
-    "Act 2":                    ItemData(60,    ItemClassification.progression),
-    "Act 3":                    ItemData(61,    ItemClassification.progression),
-    "Epilogue":                 ItemData(62,    ItemClassification.progression),
+    "Menu":                     ItemData(44,    ItemClassification.progression),    # using this as starting chapter to allow randomized starting spawns
+    "Region 1 - Central":       ItemData(45,    ItemClassification.progression),
+    "Region 1 - Left":          ItemData(46,    ItemClassification.progression),
+    "Region 1 - Upper Left":    ItemData(47,    ItemClassification.progression),
+    "Region 1 - Upper Right":   ItemData(48,    ItemClassification.progression),
+    "Region 2 - Left":          ItemData(49,    ItemClassification.progression),
+    "Region 2 - Central":       ItemData(50,    ItemClassification.progression),
+    "Region 2 - Sector 1":      ItemData(51,    ItemClassification.progression),
+    "Region 2 - Sector 2":      ItemData(52,    ItemClassification.progression),
+    "Region 2 - Sector 4":      ItemData(53,    ItemClassification.progression),
+    "Region 2 - Sector 4 End":  ItemData(54,    ItemClassification.progression),
+    "Region 2 - Lower":         ItemData(55,    ItemClassification.progression),
+    "Region 2 - Serpent Upper": ItemData(56,    ItemClassification.progression),
+    "Region 2 - Serpent Lower": ItemData(57,    ItemClassification.progression),
+    "Region 2 - Shadow Chase":  ItemData(58,    ItemClassification.progression),
+    "Region 3":                 ItemData(59,    ItemClassification.progression),
+    "Region 4 - Entrance":      ItemData(60,    ItemClassification.progression),
+    "Region 4 - Upper":         ItemData(61,    ItemClassification.progression),
+    "Region 4 - Central":       ItemData(62,    ItemClassification.progression),
+    "Region 4 - Lower":         ItemData(63,    ItemClassification.progression),
+    "Collapse":                 ItemData(64,    ItemClassification.progression),
+    "Smile Shop":               ItemData(65,    ItemClassification.progression),
+    "Dark Region":              ItemData(66,    ItemClassification.progression),
+    "The Between":              ItemData(67,    ItemClassification.progression),
+    "Act 1":                    ItemData(68,    ItemClassification.progression),
+    "Act 2":                    ItemData(69,    ItemClassification.progression),
+    "Act 3":                    ItemData(70,    ItemClassification.progression),
+    "Epilogue":                 ItemData(71,    ItemClassification.progression),
 }
 
 # In the way that I made items, I added a way to specify how many of an item should exist
@@ -218,16 +226,7 @@ glyphs_chapters = {
 # There is a better way of doing this but this is my jank
 junk_items = {
     # Junk Items
-    "HP Refill":                ItemData(63,    ItemClassification.filler,                                          0),
-    "Pink Bow":                 ItemData(64,    ItemClassification.filler,                                          0),
-    "Propeller Hat":            ItemData(65,    ItemClassification.filler,                                          0),
-    "Traffic Cone":             ItemData(66,    ItemClassification.filler,                                          0),
-    "John Hat":                 ItemData(67,    ItemClassification.filler,                                          0),
-    "Top Hat":                  ItemData(68,    ItemClassification.filler,                                          0),
-    "Fez":                      ItemData(69,    ItemClassification.filler,                                          0),
-    "Party Hat":                ItemData(70,    ItemClassification.filler,                                          0),
-    "Bomb Hat":                 ItemData(71,    ItemClassification.filler,                                          0),
-    "Crown":                    ItemData(72,    ItemClassification.filler,                                          0),
+    "HP Refill":                ItemData(72,    ItemClassification.filler,                                          0),
 
     # Traps
     "sMiLE Trap":               ItemData(73,    ItemClassification.trap,                                            0),
