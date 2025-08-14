@@ -3,8 +3,6 @@ from dataclasses import dataclass
 from worlds.AutoWorld import PerGameCommonOptions
 from Options import Choice, OptionGroup, OptionSet, Toggle, Range
 
-# If youve ever gone to an options page and seen how sometimes options are grouped
-# This is that
 def create_option_groups() -> List[OptionGroup]:
     option_group_list: List[OptionGroup] = []
     for name, options in glyphs_option_groups.items():
@@ -281,8 +279,6 @@ class GlyphsOptions(PerGameCommonOptions):
     WraithRuneCount:        WraithRuneCount
     WraithGlyphstoneCount:  WraithGlyphstoneCount
 
-# This is where you organize your options
-# Its entirely up to you how you want to organize it
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, GenericParries, Multiplayer],
     "Randomization Options": [HatLocations, Shopsanity, RandomShopPrices, EnableTraps, TrapTypes, UnreasonableLocations],
