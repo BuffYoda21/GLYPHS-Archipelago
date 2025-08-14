@@ -88,9 +88,10 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string("Smilemask Ending",        lambda: state.has("Smile Token", player, 10))
     set_rule_from_string("Defeat Null",             lambda: can_dash_attack(state, player) and has_grapple(state, player) and has_sword(state, player))
     set_rule_from_string("Clarity",                 lambda: defeated_null(state, player) and state.has("Rune Cube", player, 3))
-    set_rule_from_string("Omnipotence Ending",      lambda: can_dash_attack(state, player) and has_grapple(state, player) and void_gate_open(state, player) and state.has("Shroud", player))
-    set_rule_from_string("Clear Act 1",             lambda: act_1_available(state, player) and void_gate_open(state, player) and can_dash_attack(state, player) and has_grapple(state, player) and state.has("Shroud", player))
-    set_rule_from_string("Clear Act 2",             lambda: act_2_available(state, player) and can_dash_attack(state, player) and can_fight(state, player) and can_parry(state, player) and (state.has("Shroud", player) or state.has("Progressive Chicken Hat", player, 1)))
+    set_rule_from_string("Perfect Clarity",         lambda: defeated_null(state, player) and state.has("Rune Cube", player, 3) and (state.has("Shroud", player) or state.has("Progressive Chicken Hat", player, 1)))
+    set_rule_from_string("Omnipotence Ending",      lambda: can_dash(state, player) and void_gate_open(state, player))
+    set_rule_from_string("Clear Act 1",             lambda: void_gate_open(state, player) and can_dash_attack(state, player) and has_grapple(state, player) and state.has("Shroud", player))
+    set_rule_from_string("Clear Act 2",             lambda: has_sword(state, player) and can_dash_attack(state, player) and (state.has("Shroud", player) or state.has("Progressive Chicken Hat", player, 1)) and has_grapple(state, player) and can_parry(state, player) and state.has("Gold Shard", player, 1))
     set_rule_from_string("True Ending",             lambda: can_fight(state, player) and can_parry(state, player) and (state.has("Shroud", player) or state.has("Progressive Chicken Hat", player, 1)) and state.has("Gold Shard", player, 3))
     set_rule_from_string("Clear Epilogue",          lambda: can_dash(state, player) and has_grapple(state, player) and state.has("Shroud", player) and state.has("Progressive Chicken Hat", player, 1))
 
@@ -158,6 +159,46 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string("On top of the Rosetta Stone Pickup",  lambda: can_dash(state, player))
     set_rule_from_string("Long Parry Platforming Room Pickup",  lambda: can_dash(state, player) and has_grapple(state, player) and can_parry(state, player) and can_press_green_buttons(state, player))
 
+
+    # Collapse
+    set_rule_from_string("Escape Normal Sequence Pickup",        lambda: can_dash(state, player) and has_grapple(state, player))
+
+
+    # Smile Shop
+    set_rule_from_string("Smile Shop Item 1",                    lambda: can_dash(state, player) and state.has("Smile Token", player, 10))
+    set_rule_from_string("Smile Shop Item 2",                    lambda: can_dash(state, player) and state.has("Smile Token", player, 10))
+    set_rule_from_string("Smile Shop Item 3",                    lambda: can_dash_attack(state, player) and state.has("Smile Token", player, 10))   # item normally not available until you have dash attack
+    set_rule_from_string("Smile Shop Item 4",                    lambda: can_dash(state, player) and can_parry(state, player) and state.has("Smile Token", player, 10)) # item not normally available until you have parry
+    set_rule_from_string("Dash Puzzle Reward",                   lambda: can_dash(state, player))
+    set_rule_from_string("Respawn Reward")
+
+
+    # Dark Region
+    set_rule_from_string("Secret Room Pickup",                   lambda: can_dash_attack(state, player) and has_grapple(state, player) and has_sword(state, player))
+    set_rule_from_string("Large Room Pickup in the Corner",      lambda: can_dash_attack(state, player) and has_grapple(state, player) and has_sword(state, player))
+
+
+    # The Between
+    set_rule_from_string("Between Reward",                       lambda: state.has("Progressive Sword", player, 2) and state.has("Progressive Dash Orb", player, 3) and has_grapple(state, player) and can_parry(state, player) and state.has("Progressive Chicken Hat", player, 1) and state.has("Shroud", player) and state.has("Silver Shard", player, 15) and state.has("Gold Shard", player, 1))
+
+
+    # Act 1
+    set_rule_from_string("Void Gate Shard Location 1",           lambda: can_dash(state, player))
+    set_rule_from_string("Void Gate Shard Location 2",           lambda: can_dash(state, player) and state.has("Shroud", player))
+    set_rule_from_string("Void Gate Shard Location 3",           lambda: can_dash(state, player) or state.has("Shroud", player))
+    set_rule_from_string("Void Gate Shard Location 4",           lambda: can_dash(state, player))
+    set_rule_from_string("Void Gate Shard Location 5",           lambda: can_dash(state, player) and has_grapple(state, player))
+    set_rule_from_string("Void Gate Shard Location 6",           lambda: can_dash(state, player))
+    set_rule_from_string("Void Gate Shard Location 7",           lambda: can_dash(state, player))
+    set_rule_from_string("John Room Pickup",                     lambda: can_dash(state, player))
+
+
+    # Act 2
+    set_rule_from_string("Boss Rush Heal 1",                     lambda: can_fight_parryable_enemy(state, player))
+    set_rule_from_string("Boss Rush Heal 2",                     lambda: has_sword(state, player) and can_dash_attack(state, player) and (state.has("Shroud", player) or state.has("Progressive Chicken Hat", player, 1)))
+    set_rule_from_string("Boss Rush Heal 3",                     lambda: has_sword(state, player) and can_dash_attack(state, player) and (state.has("Shroud", player) or state.has("Progressive Chicken Hat", player, 1)))
+    set_rule_from_string("Boss Rush Heal 4",                     lambda: has_sword(state, player) and can_dash_attack(state, player) and (state.has("Shroud", player) or state.has("Progressive Chicken Hat", player, 1)) and has_grapple(state, player))
+    set_rule_from_string("Pink Bow Pickup",                      lambda: can_dash(state, player) or has_grapple(state, player))
 
 
     # Victory condition rule!
