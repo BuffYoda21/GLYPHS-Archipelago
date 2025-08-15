@@ -77,8 +77,6 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
         else:
             junk_pool.append(world.create_item(
                 world.random.choices(list(junk_list.keys()), weights=list(junk_list.values()), k=1)[0]))
-            if junk_pool[-1].name != "HP Refill":
-                junk_weights[junk_pool[-1].name] = 0
 
     return junk_pool
 
