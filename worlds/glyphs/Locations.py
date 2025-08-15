@@ -48,6 +48,8 @@ def is_valid_location(world: "GlyphsWorld", name) -> bool:
         return False
     if location_pool_type == LocationPoolType.OuterVoid(world) and not name in glyphs_outer_void_locations and not name in glyphs_full_tomb_locations and not name in glyphs_good_ending_locations and not name in glyphs_false_ending_locations:
         return False
+    if not world.options.UnreasonableLocations.value and name == "Respawn Reward":
+        return False
     return True
 
 glyphs_false_ending_locations = {
