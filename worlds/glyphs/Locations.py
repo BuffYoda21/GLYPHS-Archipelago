@@ -28,8 +28,6 @@ def location_pool_type(world: "GlyphsWorld") -> LocationPoolType:
 def get_total_locations(world: "GlyphsWorld") -> int:
     total = 0
     for name in location_table:
-        if not location_pool_type == LocationPoolType.FalseEnding(world) and not name in glyphs_false_ending_locations:
-            continue
         if is_valid_location(world, name):
             total += 1
 
@@ -40,7 +38,15 @@ def get_location_names() -> Dict[str, int]:
     return names
 
 def is_valid_location(world: "GlyphsWorld", name) -> bool:
-    if not location_pool_type == LocationPoolType.FalseEnding(world) and not name in glyphs_false_ending_locations:
+    if name in event_locations:
+        return True
+    if location_pool_type == LocationPoolType.FalseEnding(world) and not name in glyphs_false_ending_locations:
+        return False
+    if location_pool_type == LocationPoolType.GoodEnding(world) and not name in glyphs_good_ending_locations and not name in glyphs_false_ending_locations:
+        return False
+    if location_pool_type == LocationPoolType.FullTomb(world) and not name in glyphs_full_tomb_locations and not name in glyphs_good_ending_locations and not name in glyphs_false_ending_locations:
+        return False
+    if location_pool_type == LocationPoolType.OuterVoid(world) and not name in glyphs_outer_void_locations and not name in glyphs_full_tomb_locations and not name in glyphs_good_ending_locations and not name in glyphs_false_ending_locations:
         return False
     return True
 
@@ -54,7 +60,7 @@ glyphs_false_ending_locations = {
     "Silver Shard Puzzle 3":                LocData(6,  "Region 1 - Upper Right"),
     "Smile Token Puzzle 3":                 LocData(7,  "Region 1 - Central"),
     "Smile Token Puzzle 9":                 LocData(8,  "Region 1 - Left"),
-    "Color Cypher Room Pickup":             LocData(9, "Region 1 - Upper Right"),
+    "Color Cypher Room Pickup":             LocData(9,  "Region 1 - Upper Right"),
 
     # Region 2
     "Silver Shard Puzzle 4":                LocData(10, "Region 2 - Central"),
@@ -124,7 +130,7 @@ glyphs_good_ending_locations = {
 
 glyphs_full_tomb_locations = {
     # Region 1
-    "Master Puzzle 2":                      LocData(59,  "Region 1 - Central"),
+    "Master Puzzle 2":                      LocData(59, "Region 1 - Central"),
 
     # Region 2
     "Master Puzzle 1":                      LocData(60, "Region 2 - Sector 2"),
