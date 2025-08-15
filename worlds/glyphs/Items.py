@@ -19,12 +19,39 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
             continue
         else:
             itempool.append(create_item(world, chapter))
-    
-    goal = create_item(world, "Goal")
-    world.multiworld.get_location("add dynamic goal here", world.player).place_locked_item(goal)    # dont forget to change this
+
+    place_event_items(world)
+    place_goals(world)
     itempool += create_junk_items(world, get_total_locations(world) - len(itempool) - 1)
 
     return itempool
+
+def place_event_items(world: "GlyphsWorld") -> None:
+    world.multiworld.get_location("Defeat Runic Construct", world.player).place_locked_item(glyphs_events["Runic Construct Defeated"])
+    world.multiworld.get_location("Serpent Lock 1", world.player).place_locked_item(glyphs_events["Serpent Lock Activated"])
+    world.multiworld.get_location("Serpent Lock 2", world.player).place_locked_item(glyphs_events["Serpent Lock Activated"])
+    world.multiworld.get_location("Serpent Lock 3", world.player).place_locked_item(glyphs_events["Serpent Lock Activated"])
+    world.multiworld.get_location("Defeat Gilded Serpent", world.player).place_locked_item(glyphs_events["Gilded Serpent Defeated"])
+    world.multiworld.get_location("Stalker Sigil 1", world.player).place_locked_item(glyphs_events["Stalker Sigil Collected"])
+    world.multiworld.get_location("Stalker Sigil 2", world.player).place_locked_item(glyphs_events["Stalker Sigil Collected"])
+    world.multiworld.get_location("Stalker Sigil 3", world.player).place_locked_item(glyphs_events["Stalker Sigil Collected"])
+    world.multiworld.get_location("Solve Flower Puzzle", world.player).place_locked_item(glyphs_events["Solved Flower Puzzle"])
+    world.multiworld.get_location("Collapse Unlock", world.player).place_locked_item(glyphs_events["Collapse Unlocked"])
+    world.multiworld.get_location("Defeat Spearman", world.player).place_locked_item(glyphs_events["Spearman Defeated"])
+    world.multiworld.get_location("Defeat Null", world.player).place_locked_item(glyphs_events["Null Defeated"])
+    world.multiworld.get_location("Clarity", world.player).place_locked_item(glyphs_events["Clarity"])
+    world.multiworld.get_location("Last Fracture", world.player).place_locked_item(glyphs_events["Act 1 Unlocked"])
+    world.multiworld.get_location("Clear Act 1", world.player).place_locked_item(glyphs_events["Act 2 Unlocked"])
+    world.multiworld.get_location("Clear Act 2", world.player).place_locked_item(glyphs_events["Act 3 Unlocked"])
+
+def place_goals(world: "GlyphsWorld") -> None:
+    world.multiworld.get_location("False Ending", world.player).place_locked_item(glyphs_goals["False Ending"])
+    world.multiworld.get_location("Good Ending", world.player).place_locked_item(glyphs_goals["Good Ending"])
+    world.multiworld.get_location("True Ending", world.player).place_locked_item(glyphs_goals["True Ending"])
+    world.multiworld.get_location("Perfect Clarity", world.player).place_locked_item(glyphs_goals["Perfect Clarity"])
+    world.multiworld.get_location("Smilemask Ending", world.player).place_locked_item(glyphs_goals["Smilemask Ending"])
+    world.multiworld.get_location("Omnipotence Ending", world.player).place_locked_item(glyphs_goals["Omnipotence Ending"])
+    world.multiworld.get_location("Clear Epilouge", world.player).place_locked_item(glyphs_goals["Epilouge Ending"])
 
 def create_item(world: "GlyphsWorld", name: str) -> Item:
     data = item_table[name]
@@ -41,7 +68,6 @@ def create_multiple_items(world: "GlyphsWorld", name: str, count: int,
     return itemlist
 
 def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
-    trap_chance = world.options.TrapChance.value
     junk_pool: List[Item] = []
     junk_list: Dict[str, int] = {}
     trap_list: Dict[str, int] = {}
@@ -56,7 +82,7 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
         if ic == ItemClassification.filler:
             junk_list[name] = junk_weights.get(name)
 
-        elif trap_chance > 0 and ic == ItemClassification.trap:
+        elif ic == ItemClassification.trap:
             if name == "sMiLE Trap":
                 trap_list[name] = 20
             elif name == "John Trap":
@@ -71,7 +97,7 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
                 trap_list[name] = 5
                 
     for i in range(count):
-        if trap_chance > 0 and world.random.randint(1, 100) <= trap_chance:
+        if world.random.randint(1, 100) <= 70:
             junk_pool.append(world.create_item(
                 world.random.choices(list(trap_list.keys()), weights=list(trap_list.values()), k=1)[0]))
         else:
@@ -102,8 +128,20 @@ glyphs_items = {
     "Red Stone":                ItemData(14,    ItemClassification.progression,                                     1),
     "Blue Stone":               ItemData(15,    ItemClassification.progression,                                     1),
     "Seeds":                    ItemData(16,    ItemClassification.progression_skip_balancing,                      10),
+    
+    # Limited junk items
+    "Pink Bow":                 ItemData(37,    ItemClassification.filler,                                          1),
+    "Propeller Hat":            ItemData(38,    ItemClassification.filler,                                          1),
+    "Traffic Cone":             ItemData(39,    ItemClassification.filler,                                          1),
+    "John Hat":                 ItemData(40,    ItemClassification.filler,                                          1),
+    "Top Hat":                  ItemData(41,    ItemClassification.filler,                                          1),
+    "Fez":                      ItemData(42,    ItemClassification.filler,                                          1),
+    "Party Hat":                ItemData(43,    ItemClassification.filler,                                          1),
+    "Bomb Hat":                 ItemData(44,    ItemClassification.filler,                                          1),
+    "Crown":                    ItemData(45,    ItemClassification.filler,                                          1),
+}
 
-    # Events (not shuffled)
+glyphs_events = {
     "Runic Construct Defeated": ItemData(17,    ItemClassification.progression_skip_balancing,                      1),
     "Gilded Serpent Defeated":  ItemData(18,    ItemClassification.progression_skip_balancing,                      1),
     "Collapse Unlocked":        ItemData(19,    ItemClassification.progression_skip_balancing,                      1),
@@ -117,26 +155,16 @@ glyphs_items = {
     "Act 1 Unlocked":           ItemData(27,    ItemClassification.progression_skip_balancing,                      1),
     "Act 2 Unlocked":           ItemData(28,    ItemClassification.progression_skip_balancing,                      1),
     "Act 3 Unlocked":           ItemData(29,    ItemClassification.progression_skip_balancing,                      1),
+}
 
-    # Goal items (still not sure this is how I want to structure this)
-    "False Ending":             ItemData(30,    ItemClassification.progression_skip_balancing,                      1),
-    "Good Ending":              ItemData(31,    ItemClassification.progression_skip_balancing,                      1),
-    "True Ending":              ItemData(32,    ItemClassification.progression_skip_balancing,                      1),
-    "Perfect Clarity":          ItemData(33,    ItemClassification.progression_skip_balancing,                      1),
-    "Smilemask Ending":         ItemData(34,    ItemClassification.progression_skip_balancing,                      1),
-    "Omnipotence Ending":       ItemData(35,    ItemClassification.progression_skip_balancing,                      1),
-    "Epilouge Ending":          ItemData(36,    ItemClassification.progression_skip_balancing,                      1),
-    
-    # Limited junk items
-    "Pink Bow":                 ItemData(37,    ItemClassification.filler,                                          1),
-    "Propeller Hat":            ItemData(38,    ItemClassification.filler,                                          1),
-    "Traffic Cone":             ItemData(39,    ItemClassification.filler,                                          1),
-    "John Hat":                 ItemData(40,    ItemClassification.filler,                                          1),
-    "Top Hat":                  ItemData(41,    ItemClassification.filler,                                          1),
-    "Fez":                      ItemData(42,    ItemClassification.filler,                                          1),
-    "Party Hat":                ItemData(43,    ItemClassification.filler,                                          1),
-    "Bomb Hat":                 ItemData(44,    ItemClassification.filler,                                          1),
-    "Crown":                    ItemData(45,    ItemClassification.filler,                                          1),
+glyphs_goals = {
+    "False Ending":             ItemData(30,    ItemClassification.progression_skip_balancing),
+    "Good Ending":              ItemData(31,    ItemClassification.progression_skip_balancing),
+    "True Ending":              ItemData(32,    ItemClassification.progression_skip_balancing),
+    "Perfect Clarity":          ItemData(33,    ItemClassification.progression_skip_balancing),
+    "Smilemask Ending":         ItemData(34,    ItemClassification.progression_skip_balancing),
+    "Omnipotence Ending":       ItemData(35,    ItemClassification.progression_skip_balancing),
+    "Epilouge Ending":          ItemData(36,    ItemClassification.progression_skip_balancing),
 }
 
 glyphs_chapters = {
@@ -185,6 +213,8 @@ junk_items = {
 
 item_table = {
     **glyphs_items,
+    **glyphs_events,
+    **glyphs_goals,
     **glyphs_chapters,
     **junk_items
 }
