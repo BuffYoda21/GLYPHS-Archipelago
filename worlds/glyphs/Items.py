@@ -1,6 +1,6 @@
 import logging
 from BaseClasses import Item, ItemClassification
-from .Types import ItemData, ChapterType, GlyphsItem, chapter_type_to_name
+from .Types import ItemData, GlyphsItem
 from .Locations import get_total_locations
 from typing import List, Dict, TYPE_CHECKING
 
@@ -9,7 +9,7 @@ if TYPE_CHECKING:
 
 def create_itempool(world: "GlyphsWorld") -> List[Item]:
     itempool: List[Item] = []
-    starting_chapter = chapter_type_to_name[ChapterType(world.options.StartingChapter)]
+    starting_chapter = "Menu"
     
     for chapter in glyphs_chapters.keys():
         print("-------------------------")
@@ -135,41 +135,41 @@ glyphs_items = {
     "Seeds":                    ItemData(16,    ItemClassification.progression_skip_balancing,                      10),
     
     # Limited junk items
-    "Pink Bow":                 ItemData(37,    ItemClassification.filler,                                          1),
-    "Propeller Hat":            ItemData(38,    ItemClassification.filler,                                          1),
-    "Traffic Cone":             ItemData(39,    ItemClassification.filler,                                          1),
-    "John Hat":                 ItemData(40,    ItemClassification.filler,                                          1),
-    "Top Hat":                  ItemData(41,    ItemClassification.filler,                                          1),
-    "Fez":                      ItemData(42,    ItemClassification.filler,                                          1),
-    "Party Hat":                ItemData(43,    ItemClassification.filler,                                          1),
-    "Bomb Hat":                 ItemData(44,    ItemClassification.filler,                                          1),
-    "Crown":                    ItemData(45,    ItemClassification.filler,                                          1),
+    "Pink Bow":                 ItemData(17,    ItemClassification.filler,                                          1),
+    "Propeller Hat":            ItemData(18,    ItemClassification.filler,                                          1),
+    "Traffic Cone":             ItemData(19,    ItemClassification.filler,                                          1),
+    "John Hat":                 ItemData(20,    ItemClassification.filler,                                          1),
+    "Top Hat":                  ItemData(21,    ItemClassification.filler,                                          1),
+    "Fez":                      ItemData(22,    ItemClassification.filler,                                          1),
+    "Party Hat":                ItemData(23,    ItemClassification.filler,                                          1),
+    "Bomb Hat":                 ItemData(24,    ItemClassification.filler,                                          1),
+    "Crown":                    ItemData(25,    ItemClassification.filler,                                          1),
 }
 
 glyphs_events = {
-    "Runic Construct Defeated": ItemData(17,    ItemClassification.progression_skip_balancing,                      1),
-    "Gilded Serpent Defeated":  ItemData(18,    ItemClassification.progression_skip_balancing,                      1),
-    "Collapse Unlocked":        ItemData(19,    ItemClassification.progression_skip_balancing,                      1),
-    "Wizard True Defeat":       ItemData(20,    ItemClassification.progression_skip_balancing,                      1),
-    "Null Defeated":            ItemData(21,    ItemClassification.progression_skip_balancing,                      1),
-    "Spearman Defeated":        ItemData(22,    ItemClassification.progression_skip_balancing,                      1),
-    "Serpent Lock Activated":   ItemData(23,    ItemClassification.progression_skip_balancing,                      3),
-    "Stalker Sigil Collected":  ItemData(24,    ItemClassification.progression_skip_balancing,                      3),
-    "Solved Flower Puzzle":     ItemData(25,    ItemClassification.progression_skip_balancing,                      1),
-    "Clarity":                  ItemData(26,    ItemClassification.progression_skip_balancing,                      1),
-    "Act 1 Unlocked":           ItemData(27,    ItemClassification.progression_skip_balancing,                      1),
-    "Act 2 Unlocked":           ItemData(28,    ItemClassification.progression_skip_balancing,                      1),
-    "Act 3 Unlocked":           ItemData(29,    ItemClassification.progression_skip_balancing,                      1),
+    "Runic Construct Defeated": ItemData(26,    ItemClassification.progression_skip_balancing,                      1),
+    "Gilded Serpent Defeated":  ItemData(27,    ItemClassification.progression_skip_balancing,                      1),
+    "Collapse Unlocked":        ItemData(28,    ItemClassification.progression_skip_balancing,                      1),
+    "Wizard True Defeat":       ItemData(29,    ItemClassification.progression_skip_balancing,                      1),
+    "Null Defeated":            ItemData(30,    ItemClassification.progression_skip_balancing,                      1),
+    "Spearman Defeated":        ItemData(31,    ItemClassification.progression_skip_balancing,                      1),
+    "Serpent Lock Activated":   ItemData(32,    ItemClassification.progression_skip_balancing,                      3),
+    "Stalker Sigil Collected":  ItemData(33,    ItemClassification.progression_skip_balancing,                      3),
+    "Solved Flower Puzzle":     ItemData(34,    ItemClassification.progression_skip_balancing,                      1),
+    "Clarity":                  ItemData(35,    ItemClassification.progression_skip_balancing,                      1),
+    "Act 1 Unlocked":           ItemData(36,    ItemClassification.progression_skip_balancing,                      1),
+    "Act 2 Unlocked":           ItemData(37,    ItemClassification.progression_skip_balancing,                      1),
+    "Act 3 Unlocked":           ItemData(38,    ItemClassification.progression_skip_balancing,                      1),
 }
 
 glyphs_goals = {
-    "False Ending":             ItemData(30,    ItemClassification.progression_skip_balancing),
-    "Good Ending":              ItemData(31,    ItemClassification.progression_skip_balancing),
-    "True Ending":              ItemData(32,    ItemClassification.progression_skip_balancing),
-    "Perfect Clarity":          ItemData(33,    ItemClassification.progression_skip_balancing),
-    "Smilemask Ending":         ItemData(34,    ItemClassification.progression_skip_balancing),
-    "Omnipotence Ending":       ItemData(35,    ItemClassification.progression_skip_balancing),
-    "Epilouge Ending":          ItemData(36,    ItemClassification.progression_skip_balancing),
+    "False Ending":             ItemData(39,    ItemClassification.progression_skip_balancing),
+    "Good Ending":              ItemData(40,    ItemClassification.progression_skip_balancing),
+    "True Ending":              ItemData(41,    ItemClassification.progression_skip_balancing),
+    "Perfect Clarity":          ItemData(42,    ItemClassification.progression_skip_balancing),
+    "Smilemask Ending":         ItemData(43,    ItemClassification.progression_skip_balancing),
+    "Omnipotence Ending":       ItemData(44,    ItemClassification.progression_skip_balancing),
+    "Epilouge Ending":          ItemData(45,    ItemClassification.progression_skip_balancing),
 }
 
 glyphs_chapters = {
