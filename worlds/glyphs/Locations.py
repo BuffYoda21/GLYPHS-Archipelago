@@ -180,6 +180,7 @@ event_locations = {
     "Smilemask Ending":                     LocData(90, "Smile Shop"),
     "Defeat Null":                          LocData(91, "Dark Region"),
     "Clarity":                              LocData(92, "Dark Region"),
+    "Perfect Clarity":                      LocData(93, "Dark Region"),
     "Omnipotence Ending":                   LocData(93, "Act 1"),
     "Clear Act 1":                          LocData(94, "Act 1"),
     "Clear Act 2":                          LocData(95, "Act 2"),
