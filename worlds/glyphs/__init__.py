@@ -8,7 +8,7 @@ from .Options import GlyphsOptions
 from .Regions import create_regions
 
 class GlyphsWeb(WebWorld):
-    theme = "Party"                                                                         # idk just gonna wait on changing this
+    theme = "stone"
     
     tutorials = [Tutorial(
         "Multiworld Setup Guide",
