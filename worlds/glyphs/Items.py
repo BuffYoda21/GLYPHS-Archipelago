@@ -28,30 +28,30 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
 
 def place_event_items(world: "GlyphsWorld") -> None:
     world.multiworld.get_location("Defeat Runic Construct", world.player).place_locked_item(glyphs_events["Runic Construct Defeated"])
-    world.multiworld.get_location("Serpent Lock 1", world.player).place_locked_item(glyphs_events["Serpent Lock Activated"])
-    world.multiworld.get_location("Serpent Lock 2", world.player).place_locked_item(glyphs_events["Serpent Lock Activated"])
-    world.multiworld.get_location("Serpent Lock 3", world.player).place_locked_item(glyphs_events["Serpent Lock Activated"])
-    world.multiworld.get_location("Defeat Gilded Serpent", world.player).place_locked_item(glyphs_events["Gilded Serpent Defeated"])
-    world.multiworld.get_location("Stalker Sigil 1", world.player).place_locked_item(glyphs_events["Stalker Sigil Collected"])
-    world.multiworld.get_location("Stalker Sigil 2", world.player).place_locked_item(glyphs_events["Stalker Sigil Collected"])
-    world.multiworld.get_location("Stalker Sigil 3", world.player).place_locked_item(glyphs_events["Stalker Sigil Collected"])
-    world.multiworld.get_location("Solve Flower Puzzle", world.player).place_locked_item(glyphs_events["Solved Flower Puzzle"])
-    world.multiworld.get_location("Collapse Unlock", world.player).place_locked_item(glyphs_events["Collapse Unlocked"])
-    world.multiworld.get_location("Defeat Spearman", world.player).place_locked_item(glyphs_events["Spearman Defeated"])
-    world.multiworld.get_location("Defeat Null", world.player).place_locked_item(glyphs_events["Null Defeated"])
-    world.multiworld.get_location("Clarity", world.player).place_locked_item(glyphs_events["Clarity"])
-    world.multiworld.get_location("Last Fracture", world.player).place_locked_item(glyphs_events["Act 1 Unlocked"])
-    world.multiworld.get_location("Clear Act 1", world.player).place_locked_item(glyphs_events["Act 2 Unlocked"])
-    world.multiworld.get_location("Clear Act 2", world.player).place_locked_item(glyphs_events["Act 3 Unlocked"])
+    world.multiworld.get_location("Serpent Lock 1",         world.player).place_locked_item(glyphs_events["Serpent Lock Activated"])
+    world.multiworld.get_location("Serpent Lock 2",         world.player).place_locked_item(glyphs_events["Serpent Lock Activated"])
+    world.multiworld.get_location("Serpent Lock 3",         world.player).place_locked_item(glyphs_events["Serpent Lock Activated"])
+    world.multiworld.get_location("Defeat Gilded Serpent",  world.player).place_locked_item(glyphs_events["Gilded Serpent Defeated"])
+    world.multiworld.get_location("Stalker Sigil 1",        world.player).place_locked_item(glyphs_events["Stalker Sigil Collected"])
+    world.multiworld.get_location("Stalker Sigil 2",        world.player).place_locked_item(glyphs_events["Stalker Sigil Collected"])
+    world.multiworld.get_location("Stalker Sigil 3",        world.player).place_locked_item(glyphs_events["Stalker Sigil Collected"])
+    world.multiworld.get_location("Solve Flower Puzzle",    world.player).place_locked_item(glyphs_events["Solved Flower Puzzle"])
+    world.multiworld.get_location("Collapse Unlock",        world.player).place_locked_item(glyphs_events["Collapse Unlocked"])
+    world.multiworld.get_location("Defeat Spearman",        world.player).place_locked_item(glyphs_events["Spearman Defeated"])
+    world.multiworld.get_location("Defeat Null",            world.player).place_locked_item(glyphs_events["Null Defeated"])
+    world.multiworld.get_location("Clarity",                world.player).place_locked_item(glyphs_events["Clarity"])
+    world.multiworld.get_location("Last Fracture",          world.player).place_locked_item(glyphs_events["Act 1 Unlocked"])
+    world.multiworld.get_location("Clear Act 1",            world.player).place_locked_item(glyphs_events["Act 2 Unlocked"])
+    world.multiworld.get_location("Clear Act 2",            world.player).place_locked_item(glyphs_events["Act 3 Unlocked"])
 
 def place_goals(world: "GlyphsWorld") -> None:
-    world.multiworld.get_location("False Ending", world.player).place_locked_item(glyphs_goals["False Ending"])
-    world.multiworld.get_location("Good Ending", world.player).place_locked_item(glyphs_goals["Good Ending"])
-    world.multiworld.get_location("True Ending", world.player).place_locked_item(glyphs_goals["True Ending"])
-    world.multiworld.get_location("Perfect Clarity", world.player).place_locked_item(glyphs_goals["Perfect Clarity"])
-    world.multiworld.get_location("Smilemask Ending", world.player).place_locked_item(glyphs_goals["Smilemask Ending"])
-    world.multiworld.get_location("Omnipotence Ending", world.player).place_locked_item(glyphs_goals["Omnipotence Ending"])
-    world.multiworld.get_location("Clear Epilouge", world.player).place_locked_item(glyphs_goals["Epilouge Ending"])
+    world.multiworld.get_location("False Ending",           world.player).place_locked_item(glyphs_goals["False Ending"])
+    world.multiworld.get_location("Good Ending",            world.player).place_locked_item(glyphs_goals["Good Ending"])
+    world.multiworld.get_location("True Ending",            world.player).place_locked_item(glyphs_goals["True Ending"])
+    world.multiworld.get_location("Perfect Clarity",        world.player).place_locked_item(glyphs_goals["Perfect Clarity"])
+    world.multiworld.get_location("Smilemask Ending",       world.player).place_locked_item(glyphs_goals["Smilemask Ending"])
+    world.multiworld.get_location("Omnipotence Ending",     world.player).place_locked_item(glyphs_goals["Omnipotence Ending"])
+    world.multiworld.get_location("Clear Epilouge",         world.player).place_locked_item(glyphs_goals["Epilouge Ending"])
 
 def create_item(world: "GlyphsWorld", name: str) -> Item:
     data = item_table[name]
@@ -83,20 +83,25 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
             junk_list[name] = junk_weights.get(name)
 
         elif ic == ItemClassification.trap:
-            if name == "sMiLE Trap":
+            trap_list[name] = 0
+            if name == "sMiLE Trap" and "Smile Trap" in world.options.TrapTypes.value:
                 trap_list[name] = 20
-            elif name == "John Trap":
+            elif name == "John Trap" and "John Trap" in world.options.TrapTypes.value:
                 trap_list[name] = 10
-            elif name == "Spear Trap":
+            elif name == "Spear Trap" and "Spear Trap" in world.options.TrapTypes.value:
                 trap_list[name] = 20
-            elif name == "Enemy Trap":
+            elif name == "Enemy Trap" and "Enemy Trap" in world.options.TrapTypes.value:
                 trap_list[name] = 30
-            elif name == "Screen Flip Trap":
+            elif name == "Screen Flip Trap" and "Screen Flip Trap" in world.options.TrapTypes.value:
                 trap_list[name] = 15
-            elif name == "Instakill Trap":
+            elif name == "Instakill Trap" and "Instakill Trap" in world.options.TrapTypes.value:
                 trap_list[name] = 5
                 
     for i in range(count):
+        if not world.options.EnableTraps.value:
+            junk_pool.append(world.create_item(
+                world.random.choices(list(junk_list.keys()), weights=list(junk_list.values()), k=1)[0]))
+            continue
         if world.random.randint(1, 100) <= 70:
             junk_pool.append(world.create_item(
                 world.random.choices(list(trap_list.keys()), weights=list(trap_list.values()), k=1)[0]))
