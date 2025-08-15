@@ -6,7 +6,6 @@ from .Locations import get_location_names, get_total_locations
 from .Items import create_item, create_itempool, item_table
 from .Options import GlyphsOptions
 from .Regions import create_regions
-from .Types import ChapterType, chapter_type_to_name
 
 class GlyphsWeb(WebWorld):
     theme = "Party"                                                                         # idk just gonna wait on changing this
@@ -40,7 +39,7 @@ class GlyphsWorld(World):
         super().__init__(multiworld, player)
 
     def generate_early(self):
-        starting_chapter = chapter_type_to_name[ChapterType(self.options.StartingChapter)]
+        starting_chapter = "Menu"
         self.multiworld.push_precollected(self.create_item(starting_chapter))
 
     def create_regions(self):
