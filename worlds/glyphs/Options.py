@@ -191,11 +191,11 @@ class WraithRequirements(Choice):
     option_none = 1
     option_vanilla = 2
     option_intended = 3
-    option_silver_shards = 2
-    option_gold_shards = 3
-    option_smile_tokens = 4
-    option_rune_cubes = 5
-    option_glyphstones = 6
+    option_silver_shards = 4
+    option_gold_shards = 5
+    option_smile_tokens = 6
+    option_rune_cubes = 7
+    option_glyphstones = 8
 
 class WraithSilverCount(Range):
     """
