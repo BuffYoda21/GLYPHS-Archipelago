@@ -44,13 +44,13 @@ def is_valid_location(world: "GlyphsWorld", name) -> bool:
         return True
     if world.options.Shopsanity.value and name in glyphs_shopsanity_locations:
         return True
-    if location_pool_type == LocationPoolType.FalseEnding(world) and not name in glyphs_false_ending_locations:
+    if location_pool_type(world) == LocationPoolType.FalseEnding and not name in glyphs_false_ending_locations:
         return False
-    if location_pool_type == LocationPoolType.GoodEnding(world) and not name in glyphs_good_ending_locations and not name in glyphs_false_ending_locations:
+    if location_pool_type(world) == LocationPoolType.GoodEnding and not name in glyphs_good_ending_locations and not name in glyphs_false_ending_locations:
         return False
-    if location_pool_type == LocationPoolType.FullTomb(world) and not name in glyphs_full_tomb_locations and not name in glyphs_good_ending_locations and not name in glyphs_false_ending_locations:
+    if location_pool_type(world) == LocationPoolType.FullTomb and not name in glyphs_full_tomb_locations and not name in glyphs_good_ending_locations and not name in glyphs_false_ending_locations:
         return False
-    if location_pool_type == LocationPoolType.OuterVoid(world) and not name in glyphs_outer_void_locations and not name in glyphs_full_tomb_locations and not name in glyphs_good_ending_locations and not name in glyphs_false_ending_locations:
+    if location_pool_type(world) == LocationPoolType.OuterVoid and not name in glyphs_outer_void_locations and not name in glyphs_full_tomb_locations and not name in glyphs_good_ending_locations and not name in glyphs_false_ending_locations:
         return False
     return True
 
