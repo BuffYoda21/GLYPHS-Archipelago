@@ -188,14 +188,14 @@ class WraithRequirements(Choice):
     Glyphstones: Boss room requires a configurable number of glyphstones
     """
     display_name = "Wraith Requirements"
-    option_none = 1
-    option_vanilla = 2
-    option_intended = 3
-    option_silver_shards = 4
-    option_gold_shards = 5
-    option_smile_tokens = 6
-    option_rune_cubes = 7
-    option_glyphstones = 8
+    option_none = 0
+    option_vanilla = 1
+    option_intended = 2
+    option_silver_shards = 3
+    option_gold_shards = 4
+    option_smile_tokens = 5
+    option_rune_cubes = 6
+    option_glyphstones = 7
 
 class WraithSilverCount(Range):
     """
@@ -259,7 +259,7 @@ class GlyphsOptions(PerGameCommonOptions):
     RandomShopPrices:       RandomShopPrices
     EnableTraps:            EnableTraps
     TrapTypes:              TrapTypes
-    UnreasonableLocatons:   UnreasonableLocations
+    UnreasonableLocations:   UnreasonableLocations
 
     # Logical Options
     SwordlessCombat:        SwordlessCombat
