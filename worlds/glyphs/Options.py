@@ -22,7 +22,7 @@ class Goal(Choice):
     option_good_ending = 2
     option_true_ending = 3
     option_all_star_endings = 4
-    option_epilouge = 5
+    option_epilogue = 5
     option_all_endings = 6
     default = option_true_ending
 
@@ -55,20 +55,21 @@ class Multiplayer(Toggle):
 #     """
 #     display_name = "Randomize World Spawn"
 
-class LocationPool(Choice):
-    """
-    Determines what locations will be shuffled in the world.
-    False Ending: Includes all locations relevent to the false ending
-    Good Ending: Includes all locations relevent to the good ending
-    Full Tomb: Like Good Ending but includes the between and master puzzles in the pool
-    Outer Void: Includes Full Tomb and Outer Void locations
-    """
-    display_name = "Location Pool"
-    option_false_ending = 1
-    option_good_ending = 2
-    option_full_tomb = 3
-    option_outer_void = 4
-    default = option_false_ending
+## Ending selection should already filter down locations its self
+# class LocationPool(Choice):
+#     """
+#     Determines what locations will be shuffled in the world.
+#     False Ending: Includes all locations relevent to the false ending
+#     Good Ending: Includes all locations relevent to the good ending
+#     Full Tomb: Like Good Ending but includes the between and master puzzles in the pool
+#     Outer Void: Includes Full Tomb and Outer Void locations
+#     """
+#     display_name = "Location Pool"
+#     option_false_ending = 1
+#     option_good_ending = 2
+#     option_full_tomb = 3
+#     option_outer_void = 4
+#     default = option_false_ending
 
 # class HatLocations(Toggle):
 #     """
@@ -77,12 +78,12 @@ class LocationPool(Choice):
 #     """
 #     display_name = "Include Hat Puzzles"
 
-class Shopsanity(Toggle):
-    """
-    Shuffles smile shop items into the pool.
-    Also removes the refund button (spend wisely).
-    """
-    display_name = "Shopsanity"
+# class Shopsanity(Toggle):
+#     """
+#     Shuffles smile shop items into the pool.
+#     Also removes the refund button (spend wisely).
+#     """
+#     display_name = "Shopsanity"
 
 class RandomShopPrices(Toggle):
     """
@@ -253,9 +254,9 @@ class GlyphsOptions(PerGameCommonOptions):
     Multiplayer:            Multiplayer
 
     # Randomization Options
-    LocationPool:           LocationPool
+  # LocationPool:           LocationPool
   # HatLocations:           HatLocations
-    Shopsanity:             Shopsanity
+  # Shopsanity:             Shopsanity
     RandomShopPrices:       RandomShopPrices
     EnableTraps:            EnableTraps
     TrapTypes:              TrapTypes
@@ -279,7 +280,7 @@ class GlyphsOptions(PerGameCommonOptions):
 
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, GenericParries, Multiplayer],
-    "Randomization Options": [LocationPool, Shopsanity, RandomShopPrices, EnableTraps, TrapTypes, UnreasonableLocations],
+    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, UnreasonableLocations],
     "Logical Options": [SwordlessCombat, BulletCombat, DashPuzzlesSolved, LocicalWallJumps],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }

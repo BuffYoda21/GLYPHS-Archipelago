@@ -32,7 +32,6 @@ class GlyphsWorld(World):
     item_name_to_id = {name: data.ap_code for name, data in item_table.items()}
     location_name_to_id = get_location_names()
     options_dataclass = GlyphsOptions
-    options = GlyphsOptions
     web = GlyphsWeb()
 
     def __init__(self, multiworld: "MultiWorld", player: int):
@@ -57,8 +56,6 @@ class GlyphsWorld(World):
                 "Goal":                    self.options.Goal.value,
                 "GenericParries":          self.options.GenericParries.value,
                 "Multiplayer":             self.options.Multiplayer.value,
-                "HatLocations":            self.options.HatLocations.value,
-                "Shopsanity":              self.options.Shopsanity.value,
                 "UnreasonableLocations":   self.options.UnreasonableLocations.value,
                 "SwordlessCombat":         self.options.SwordlessCombat.value,
                 "BulletCombat":            self.options.BulletCombat.value,
