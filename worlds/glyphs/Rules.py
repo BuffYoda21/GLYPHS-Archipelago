@@ -78,7 +78,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string("Collapse Unlock",                     lambda: can_dash(state, player)                     and wizard_fight_available(state, player)           and can_fight_parryable_enemy(state, player))
     set_rule_from_string("Defeat Spearman",                     lambda: can_dash_attack(state, player)              and can_press_green_buttons(state, player)          and has_grapple(state, player)                                      and defeated_gilded_serpent(state, player))
     set_rule_from_string("Good Ending",                         lambda: can_fight(state, player)                    and can_dash_attack(state, player)                  and can_parry(state, player)                                        and has_grapple(state, player)                          and wraith_fight_available(state, player)           and state.has("Gold Shard", player, 3))
-    set_rule_from_string("Last Fracture",                       lambda: has_clarity(state, player)                  and wraith_fight_available(state, player)           and state.has("Defeat Wraith", player))
+    set_rule_from_string("Last Fracture",                       lambda: has_clarity(state, player)                  and wraith_fight_available(state, player)           and state.has("Good Ending", player))
     set_rule_from_string("False Ending",                        lambda: can_dash(state, player)                     and has_grapple(state, player))
     set_rule_from_string("Smilemask Ending",                    lambda: state.has("Smile Token", player, 10))
     set_rule_from_string("Defeat Null",                         lambda: can_dash_attack(state, player)              and has_grapple(state, player)                      and has_sword(state, player))
@@ -88,7 +88,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string("Clear Act 1",                         lambda: void_gate_open(state, player)               and can_dash_attack(state, player)                  and has_grapple(state, player)                                      and state.has("Shroud", player))
     set_rule_from_string("Clear Act 2",                         lambda: has_sword(state, player)                    and can_dash_attack(state, player)                  and (state.has("Shroud", player)                                    or state.has("Progressive Chicken Hat", player, 1))     and has_grapple(state, player)                      and can_parry(state, player)            and state.has("Gold Shard", player, 1))
     set_rule_from_string("True Ending",                         lambda: can_fight(state, player)                    and can_parry(state, player)                        and (state.has("Shroud", player)                                    or state.has("Progressive Chicken Hat", player, 1))     and state.has("Gold Shard", player, 3))
-    set_rule_from_string("Clear Epilogue",                      lambda: can_dash(state, player)                     and has_grapple(state, player)                      and state.has("Shroud", player)                                     and state.has("Progressive Chicken Hat", player, 1))
+    set_rule_from_string("Epilouge Ending",                     lambda: can_dash(state, player)                     and has_grapple(state, player)                      and state.has("Shroud", player)                                     and state.has("Progressive Chicken Hat", player, 1))
 
 
     # Region 1
