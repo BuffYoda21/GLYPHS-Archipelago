@@ -48,7 +48,7 @@ def stalker_sigils_present(state: CollectionState, player: int) -> bool:
     return state.has("False Ending", player)
 
 def shadow_chase_open(state: CollectionState, player: int) -> bool:
-    return state.has("Stalker Sigil Collected", player, 3)
+    return state.has("Stalker Sigil 1", player) and state.has("Stalker Sigil 2", player) and state.has("Stalker Sigil 3", player)
 
 def has_clarity(state: CollectionState, player: int) -> bool:
     return state.has("Clarity", player)
@@ -91,31 +91,31 @@ def has_wraith_glyphstones(state: CollectionState, player: int) -> bool:
     return state.has("Glyphstone", player, options.WraithGlyphstoneCount.value)
 
 def defeated_runic_construct(state: CollectionState, player: int) -> bool:
-    return state.has("Runic Construct Defeated", player)
+    return state.has("Defeat Runic Construct", player)
 
 def defeated_gilded_serpent(state: CollectionState, player: int) -> bool:
-    return state.has("Gilded Serpent Defeated", player)
+    return state.has("Defeat Gilded Serpent", player)
 
 def collapse_available(state: CollectionState, player: int) -> bool:
-    return state.has("Collapse Unlocked", player)
+    return state.has("Collapse Unlock", player)
 
 def wizard_true_defeat(state: CollectionState, player: int) -> bool:
     return state.has("Wizard True Defeat", player)
 
 def defeated_spearman(state: CollectionState, player: int) -> bool:
-    return state.has("Spearman Defeated", player)
+    return state.has("Defeat Spearman", player)
 
 def defeated_null(state: CollectionState, player: int) -> bool:
     return state.has("Defeat Null", player)
 
 def act_1_available(state: CollectionState, player: int) -> bool:
-    return state.has("Act 1 Unlocked", player)
+    return state.has("Last Fracture", player)
 
 def act_2_available(state: CollectionState, player: int) -> bool:
-    return state.has("Act 2 Unlocked", player)
+    return state.has("Clear Act 1", player)
 
 def act_3_available(state: CollectionState, player: int) -> bool:
-    return state.has("Act 3 Unlocked", player)
+    return state.has("Clear Act 2", player)
 
 def void_gate_open(state: CollectionState, player: int) -> bool:
     return state.has("Void Gate Shard", player, 7)

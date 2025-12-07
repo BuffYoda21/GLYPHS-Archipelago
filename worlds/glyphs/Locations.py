@@ -148,7 +148,7 @@ event_locations = {
     "Clear Act 1":                          LocData(95, "Act 1"),
     "Clear Act 2":                          LocData(96, "Act 2"),
     "True Ending":                          LocData(97, "Act 3"),
-    "Clear Epilogue":                       LocData(98, "Epilogue"),
+    "Epilogue Ending":                      LocData(98, "Epilogue"),
 }
 
 location_table = {
