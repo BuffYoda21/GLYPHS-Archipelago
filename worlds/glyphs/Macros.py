@@ -42,7 +42,7 @@ def can_fight_parryable_enemy(state: CollectionState, player: int) -> bool:
     )
 
 def serpent_door_open(state: CollectionState, player: int) -> bool:
-    return state.has("Serpent Lock Activated", player, 3)
+    return state.has("Serpent Lock 1", player) and state.has("Serpent Lock 2", player) and state.has("Serpent Lock 3", player)
 
 def stalker_sigils_present(state: CollectionState, player: int) -> bool:
     return state.has("False Ending", player)
