@@ -30,35 +30,39 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
     return itempool
 
 def place_event_items(world: "GlyphsWorld") -> None:
-    world.multiworld.get_location("Defeat Runic Construct", world.player).place_locked_item(glyphs_events["Defeat Runic Construct"])
-    world.multiworld.get_location("Serpent Lock 1",         world.player).place_locked_item(glyphs_events["Serpent Lock 1"])
-    world.multiworld.get_location("Serpent Lock 2",         world.player).place_locked_item(glyphs_events["Serpent Lock 2"])
-    world.multiworld.get_location("Serpent Lock 3",         world.player).place_locked_item(glyphs_events["Serpent Lock 3"])
-    world.multiworld.get_location("Defeat Gilded Serpent",  world.player).place_locked_item(glyphs_events["Defeat Gilded Serpent"])
-    world.multiworld.get_location("Stalker Sigil 1",        world.player).place_locked_item(glyphs_events["Stalker Sigil 1"])
-    world.multiworld.get_location("Stalker Sigil 2",        world.player).place_locked_item(glyphs_events["Stalker Sigil 2"])
-    world.multiworld.get_location("Stalker Sigil 3",        world.player).place_locked_item(glyphs_events["Stalker Sigil 3"])
-    world.multiworld.get_location("Solve Flower Puzzle",    world.player).place_locked_item(glyphs_events["Solve Flower Puzzle"])
-    world.multiworld.get_location("Collapse Unlock",        world.player).place_locked_item(glyphs_events["Collapse Unlock"])
-    world.multiworld.get_location("Defeat Spearman",        world.player).place_locked_item(glyphs_events["Defeat Spearman"])
-    world.multiworld.get_location("Defeat Null",            world.player).place_locked_item(glyphs_events["Defeat Null"])
-    world.multiworld.get_location("Clarity",                world.player).place_locked_item(glyphs_events["Clarity"])
-    world.multiworld.get_location("Last Fracture",          world.player).place_locked_item(glyphs_events["Last Fracture"])
-    world.multiworld.get_location("Clear Act 1",            world.player).place_locked_item(glyphs_events["Clear Act 1"])
-    world.multiworld.get_location("Clear Act 2",            world.player).place_locked_item(glyphs_events["Clear Act 2"])
+    world.multiworld.get_location("Defeat Runic Construct", world.player).place_locked_item(create_event_item(world, "Defeat Runic Construct"))
+    world.multiworld.get_location("Serpent Lock 1",         world.player).place_locked_item(create_event_item(world, "Serpent Lock 1"))
+    world.multiworld.get_location("Serpent Lock 2",         world.player).place_locked_item(create_event_item(world, "Serpent Lock 2"))
+    world.multiworld.get_location("Serpent Lock 3",         world.player).place_locked_item(create_event_item(world, "Serpent Lock 3"))
+    world.multiworld.get_location("Defeat Gilded Serpent",  world.player).place_locked_item(create_event_item(world, "Defeat Gilded Serpent"))
+    world.multiworld.get_location("Stalker Sigil 1",        world.player).place_locked_item(create_event_item(world, "Stalker Sigil 1"))
+    world.multiworld.get_location("Stalker Sigil 2",        world.player).place_locked_item(create_event_item(world, "Stalker Sigil 2"))
+    world.multiworld.get_location("Stalker Sigil 3",        world.player).place_locked_item(create_event_item(world, "Stalker Sigil 3"))
+    world.multiworld.get_location("Solve Flower Puzzle",    world.player).place_locked_item(create_event_item(world, "Solve Flower Puzzle"))
+    world.multiworld.get_location("Collapse Unlock",        world.player).place_locked_item(create_event_item(world, "Collapse Unlock"))
+    world.multiworld.get_location("Defeat Spearman",        world.player).place_locked_item(create_event_item(world, "Defeat Spearman"))
+    world.multiworld.get_location("Defeat Null",            world.player).place_locked_item(create_event_item(world, "Defeat Null"))
+    world.multiworld.get_location("Clarity",                world.player).place_locked_item(create_event_item(world, "Clarity"))
+    world.multiworld.get_location("Last Fracture",          world.player).place_locked_item(create_event_item(world, "Last Fracture"))
+    world.multiworld.get_location("Clear Act 1",            world.player).place_locked_item(create_event_item(world, "Clear Act 1"))
+    world.multiworld.get_location("Clear Act 2",            world.player).place_locked_item(create_event_item(world, "Clear Act 2"))
 
 def place_goals(world: "GlyphsWorld") -> None:
-    world.multiworld.get_location("False Ending",           world.player).place_locked_item(glyphs_goals["False Ending"])
-    world.multiworld.get_location("Good Ending",            world.player).place_locked_item(glyphs_goals["Good Ending"])
-    world.multiworld.get_location("True Ending",            world.player).place_locked_item(glyphs_goals["True Ending"])
-    world.multiworld.get_location("Perfect Clarity",        world.player).place_locked_item(glyphs_goals["Perfect Clarity"])
-    world.multiworld.get_location("Smilemask Ending",       world.player).place_locked_item(glyphs_goals["Smilemask Ending"])
-    world.multiworld.get_location("Omnipotence Ending",     world.player).place_locked_item(glyphs_goals["Omnipotence Ending"])
-    world.multiworld.get_location("Epilogue Ending",        world.player).place_locked_item(glyphs_goals["Epilogue Ending"])
+    world.multiworld.get_location("False Ending",           world.player).place_locked_item(create_event_item(world, "False Ending"))
+    world.multiworld.get_location("Good Ending",            world.player).place_locked_item(create_event_item(world, "Good Ending"))
+    world.multiworld.get_location("True Ending",            world.player).place_locked_item(create_event_item(world, "True Ending"))
+    world.multiworld.get_location("Perfect Clarity",        world.player).place_locked_item(create_event_item(world, "Perfect Clarity"))
+    world.multiworld.get_location("Smilemask Ending",       world.player).place_locked_item(create_event_item(world, "Smilemask Ending"))
+    world.multiworld.get_location("Omnipotence Ending",     world.player).place_locked_item(create_event_item(world, "Omnipotence Ending"))
+    world.multiworld.get_location("Epilogue Ending",        world.player).place_locked_item(create_event_item(world, "Epilogue Ending"))
 
 def create_item(world: "GlyphsWorld", name: str) -> Item:
     data = item_table[name]
     return GlyphsItem(name, data.classification, data.ap_code, world.player)
+
+def create_event_item(world: "GlyphsWorld", name: str) -> Item:
+    data = item_table[name]
+    return GlyphsItem(name, data.classification, None, world.player)
 
 def create_multiple_items(world: "GlyphsWorld", name: str, count: int,
                           item_type: ItemClassification = ItemClassification.progression) -> List[Item]:
