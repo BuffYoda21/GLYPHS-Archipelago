@@ -6,6 +6,7 @@ from .Locations import get_location_names, get_total_locations
 from .Items import create_item, create_itempool, item_table
 from .Options import GlyphsOptions
 from .Regions import create_regions
+from .Rules import set_rules
 
 class GlyphsWeb(WebWorld):
     theme = "stone"
@@ -40,6 +41,9 @@ class GlyphsWorld(World):
     def generate_early(self):
         starting_chapter = "Menu"
         self.multiworld.push_precollected(self.create_item(starting_chapter))
+    
+    def set_rules(self):
+        set_rules(self)
 
     def create_regions(self):
         create_regions(self)
