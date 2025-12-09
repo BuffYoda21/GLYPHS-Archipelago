@@ -10,7 +10,7 @@ if TYPE_CHECKING:
 def set_rules(world: "GlyphsWorld"):
     player = world.player
     options = world.options
-    state = CollectionState(world)
+    state = CollectionState(world.multiworld)
 
     # Region Access
     # -------------------------------------from--------------------------to--------------------------------conditions--------------------------------
