@@ -6,7 +6,7 @@ from .Locations import get_location_names, get_total_locations
 from .Items import create_item, create_itempool, item_table
 from .Options import GlyphsOptions
 from .Regions import create_regions
-from .Rules import set_rules
+from .Rules import set_rules, connect_entrances
 
 class GlyphsWeb(WebWorld):
     theme = "stone"
@@ -47,6 +47,9 @@ class GlyphsWorld(World):
 
     def create_regions(self):
         create_regions(self)
+
+    def connect_entrances(self):
+        connect_entrances(self)
 
     def create_items(self):
         self.multiworld.itempool += create_itempool(self)
