@@ -126,7 +126,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "Near Shooters Pickup",                lambda state: can_dash(state, player))
     set_rule_from_string(world, "Collapsed Tunnel Pickup",             lambda state: True)
     set_rule_from_string(world, "Nest Room Pickup",                    lambda state: can_dash(state, player))
-    set_rule_from_string(world, "Serpent Boss Room Pickup",            lambda state: can_dash(state, player)                     and (options.LogicalWallJumps.value                 or (state.can_reach_region("Region 2 - Serpent Upper")              and can_press_green_buttons(state, player)              and defeated_gilded_serpent(state, player))))
+    set_rule_from_string(world, "Serpent Boss Room Pickup",            lambda state: can_dash(state, player)                     and (options.LogicalWallJumps.value                 or (state.can_reach_region("Region 2 - Serpent Upper", player)      and can_press_green_buttons(state, player)              and defeated_gilded_serpent(state, player))))
     set_rule_from_string(world, "Shadow Chase Reward",                 lambda state: can_dash(state, player)                     and has_grapple(state, player)                      and can_press_green_buttons(state, player))
     set_rule_from_string(world, "Water Room Pickup",                   lambda state: can_solve_flower_puzzle(state, player))
     set_rule_from_string(world, "George Reward",                       lambda state: can_dash(state, player)                     and state.has("Seeds", player, 10))
