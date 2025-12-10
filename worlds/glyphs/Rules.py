@@ -204,17 +204,17 @@ def set_rules(world: "GlyphsWorld"):
     # Victory condition rule!
     victory: lambda state: False
     if options.Goal.value == options.Goal.option_false_ending:
-        victory = lambda state: state.has("False Ending")
+        victory = lambda state: state.has("False Ending", player)
     elif options.Goal.value == options.Goal.option_good_ending:
-        victory = lambda state: state.has("Good Ending")
+        victory = lambda state: state.has("Good Ending", player)
     elif options.Goal.value == options.Goal.option_true_ending:
-        victory = lambda state: state.has("True Ending")
+        victory = lambda state: state.has("True Ending", player)
     elif options.Goal.value == options.Goal.option_all_star_endings:
-        victory = lambda state: state.has("Perfect Clarity") and state.has("Smilemask Ending") and state.has("Omnipotence Ending")
+        victory = lambda state: state.has("Perfect Clarity", player) and state.has("Smilemask Ending", player) and state.has("Omnipotence Ending", player)
     elif options.Goal.value == options.Goal.option_Epilogue:
-        victory = lambda state: state.has("Epilogue Ending")
+        victory = lambda state: state.has("Epilogue Ending", player)
     elif options.Goal.value == options.Goal.option_all_endings:
-        victory = lambda state: state.has("False Ending") and state.has("Good Ending") and state.has("True Ending") and state.has("Perfect Clarity") and state.has("Smilemask Ending") and state.has("Omnipotence Ending") and state.has("Epilogue Ending")
+        victory = lambda state: state.has("False Ending", player) and state.has("Good Ending", player) and state.has("True Ending", player) and state.has("Perfect Clarity", player) and state.has("Smilemask Ending", player) and state.has("Omnipotence Ending", player) and state.has("Epilogue Ending", player)
     world.multiworld.completion_condition[player] = victory
 
 def connect_areas(world: "GlyphsWorld", source: str, target: str, rule=None) -> Entrance:
