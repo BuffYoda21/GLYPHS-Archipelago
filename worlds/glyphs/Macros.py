@@ -1,5 +1,8 @@
 from BaseClasses import CollectionState
 from typing import TYPE_CHECKING
+from .Options import GlyphsOptions
+
+options: GlyphsOptions
 
 if TYPE_CHECKING:
     from . import GlyphsWorld
@@ -56,21 +59,22 @@ def wizard_fight_available(state: CollectionState, player: int, world: "GlyphsWo
     return state.has("Glyphstones", player, world.options.WizardRequirements.value)
 
 def wraith_fight_available(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    if world.options.WraithRequirements.value == world.options.WraithRequirements.none:
+    key = world.options.WraithRequirements.current_key.lower()
+    if key == "none":
         return True
-    if world.options.WraithRequirements.value == world.options.WraithRequirements.vanilla:
+    if key == "vanilla":
         return state.has("Silver Shard", player, 15)
-    if world.options.WraithRequirements.value == world.options.WraithRequirements.intended:
+    if key == "intended":
         return state.has("Silver Shard", player, 15) and state.has("Glyphstone", player, 3)
-    if world.options.WraithRequirements.value == world.options.WraithRequirements.silver_shards:
+    if key == "silver_shards":
         return has_wraith_silvers(state, player, world)
-    if world.options.WraithRequirements.value == world.options.WraithRequirements.gold_shards:
+    if key == "gold_shards":
         return has_wraith_golds(state, player, world)
-    if world.options.WraithRequirements.value == world.options.WraithRequirements.smile_tokens:
+    if key == "smile_tokens":
         return has_wraith_smiles(state, player, world)
-    if world.options.WraithRequirements.value == world.options.WraithRequirements.rune_cubes:
+    if key == "rune_cubes":
         return has_wraith_runes(state, player, world)
-    if world.options.WraithRequirements.value == world.options.WraithRequirements.glyphstones:
+    if key == "glyphstones":
         return has_wraith_glyphstones(state, player, world)
     return False
 
