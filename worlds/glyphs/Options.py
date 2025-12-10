@@ -151,7 +151,7 @@ class DashPuzzlesSolved(Toggle):
 #     display_name = "Multiplayer Cheeses in Logic"
 
 # Lol this is only used in one location
-class LocicalWallJumps(Toggle):
+class LogicalWallJumps(Toggle):
     """
     Considers skips utilizing wall jumps in logic.
     """
@@ -260,13 +260,13 @@ class GlyphsOptions(PerGameCommonOptions):
     RandomShopPrices:       RandomShopPrices
     EnableTraps:            EnableTraps
     TrapTypes:              TrapTypes
-    UnreasonableLocations:   UnreasonableLocations
+    UnreasonableLocations:  UnreasonableLocations
 
     # Logical Options
     SwordlessCombat:        SwordlessCombat
     BulletCombat:           BulletCombat
     DashPuzzlesSolved:      DashPuzzlesSolved
-    LocicalWallJumps:       LocicalWallJumps
+    LogicalWallJumps:       LogicalWallJumps
   # LogicalWallJumpChains:  LogicalWallJumpChains
 
     # Open Settings
@@ -281,6 +281,6 @@ class GlyphsOptions(PerGameCommonOptions):
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, GenericParries, Multiplayer],
     "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, UnreasonableLocations],
-    "Logical Options": [SwordlessCombat, BulletCombat, DashPuzzlesSolved, LocicalWallJumps],
+    "Logical Options": [SwordlessCombat, BulletCombat, DashPuzzlesSolved, LogicalWallJumps],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
