@@ -170,7 +170,8 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "Smile Shop Item 3",                   lambda: can_dash_attack(state, player)              and state.has("Smile Token", player, 10))           # item normally not available until you have dash attack
     set_rule_from_string(world, "Smile Shop Item 4",                   lambda: can_dash(state, player)                     and state.has("Smile Token", player, 10)            and can_parry(state, player))  # item not normally available until you have parry
     set_rule_from_string(world, "Dash Puzzle Reward",                  lambda: can_dash(state, player))
-    set_rule_from_string(world, "Respawn Reward")
+    if world.options.UnreasonableLocations.value:
+        set_rule_from_string(world, "Respawn Reward")
 
 
     # Dark Region
