@@ -197,6 +197,7 @@ class WraithRequirements(Choice):
     option_smile_tokens = 5
     option_rune_cubes = 6
     option_glyphstones = 7
+    default = option_vanilla
 
 class WraithSilverCount(Range):
     """
