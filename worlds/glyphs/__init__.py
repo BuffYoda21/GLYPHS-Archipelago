@@ -67,7 +67,7 @@ class GlyphsWorld(World):
                 "SwordlessCombat":         self.options.SwordlessCombat.value,
                 "BulletCombat":            self.options.BulletCombat.value,
                 "DashPuzzlesSolved":       self.options.DashPuzzlesSolved.value,
-                "LocicalWallJumps":        self.options.LocicalWallJumps.value,
+                "LogicalWallJumps":        self.options.LogicalWallJumps.value,
                 "WizardRequirements":      self.options.WizardRequirements.value,
                 "WraithRequirements":      self.options.WraithRequirements.value,
                 "WraithSilverCount":       self.options.WraithSilverCount.value,

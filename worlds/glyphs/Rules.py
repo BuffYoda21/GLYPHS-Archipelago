@@ -35,6 +35,7 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Region 2 - Sector 2",       "Region 2 - Serpent Upper", lambda state: can_dash(state, player)                   and can_press_green_buttons(state, player))
     connect_areas(world, "Region 2 - Serpent Upper",  "Region 2 - Serpent Lower", lambda state: can_dash(state, player)                   and can_press_green_buttons(state, player))
     connect_areas(world, "Region 2 - Serpent Lower",  "Region 2 - Lower",         lambda state: defeated_gilded_serpent(state, player)    and has_grapple(state, player))
+    connect_areas(world, "Region 2 - Sector 4",       "Region 2 - Shadow Chase",  lambda state: can_dash(state, player)                   and can_press_green_buttons(state, player)    and shadow_chase_open(state, player))
     connect_areas(world, "Region 2 - Lower",          "Region 3",                 lambda state: True)
     connect_areas(world, "Region 2 - Central",        "Region 4 - Entrance",      lambda state: wizard_true_defeat(state, player))
     connect_areas(world, "Region 2 - Sector 4",       "Region 4 - Entrance",      lambda state: wizard_true_defeat(state, player))
@@ -43,7 +44,7 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Region 4 - Upper",          "Region 4 - Central",       lambda state: can_dash_attack(state, player)            and can_parry(state, player))
     connect_areas(world, "Region 4 - Central",        "Region 4 - Lower",         lambda state: can_dash(state, player)                   and can_parry(state, player)                  and can_press_green_buttons(state, player))
     connect_areas(world, "Region 3",                  "Region 4 - Lower",         lambda state: can_solve_flower_puzzle(state, player))
-    connect_areas(world, "Region 3",                  "Collapse",                 lambda state: collapse_available(state, player) )
+    connect_areas(world, "Region 3",                  "Collapse",                 lambda state: collapse_available(state, player))
     connect_areas(world, "Region 2 - Sector 2",       "Smile Shop",               lambda state: can_dash(state, player)                   and can_press_green_buttons(state, player))
     connect_areas(world, "Smile Shop",                "Region 1 - Central",       lambda state: True)
     connect_areas(world, "Region 2 - Lower",          "Dark Region",              lambda state: can_dash(state, player))
@@ -79,7 +80,8 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "Stalker Sigil 2",                     lambda state: stalker_sigils_present(state, player)       and can_dash(state, player)                         and can_press_green_buttons(state, player))
     set_rule_from_string(world, "Stalker Sigil 3",                     lambda state: stalker_sigils_present(state, player))
     set_rule_from_string(world, "Solve Flower Puzzle",                 lambda state: can_dash(state, player)                     and can_press_green_buttons(state, player)          and has_grapple(state, player)                                      and defeated_gilded_serpent(state, player))
-    set_rule_from_string(world, "Collapse Unlock",                     lambda state: can_dash(state, player)                     and wizard_fight_available(state, player, world)    and can_fight_parryable_enemy(state, player, world))
+    set_rule_from_string(world, "Collapse Unlock",                     lambda state: can_dash(state, player)                     and wizard_fight_available(state, player, world)    and can_fight_parryable_enemy(state, player, world)) # These two are the last things still breaking logic
+    set_rule_from_string(world, "Wizard True Defeat",                  lambda state: can_dash_attack(state, player)              and wizard_fight_available(state, player, world)    and can_fight_parryable_enemy(state, player, world)) #
     set_rule_from_string(world, "Defeat Spearman",                     lambda state: can_dash_attack(state, player)              and can_press_green_buttons(state, player)          and has_grapple(state, player)                                      and defeated_gilded_serpent(state, player))
     set_rule_from_string(world, "Good Ending",                         lambda state: can_fight(state, player, world)             and can_dash_attack(state, player)                  and can_parry(state, player)                                        and has_grapple(state, player)                          and wraith_fight_available(state, player, world)    and state.has("Gold Shard", player, 3))
     set_rule_from_string(world, "Last Fracture",                       lambda state: has_clarity(state, player)                  and wraith_fight_available(state, player, world)    and state.has("Good Ending", player))
@@ -94,6 +96,8 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "True Ending",                         lambda state: can_fight(state, player, world)             and can_parry(state, player)                        and (state.has("Shroud", player)                                    or state.has("Progressive Chicken Hat", player, 1))     and state.has("Gold Shard", player, 3))
     set_rule_from_string(world, "Epilogue Ending",                     lambda state: can_dash(state, player)                     and has_grapple(state, player)                      and state.has("Shroud", player)                                     and state.has("Progressive Chicken Hat", player, 1))
 
+    # Starting Item
+    set_rule_from_string(world, "Starting Item",                       lambda state: True)
 
     # Region 1
     set_rule_from_string(world, "Sword Pedestal",                      lambda state: True)
