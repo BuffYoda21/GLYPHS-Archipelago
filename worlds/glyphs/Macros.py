@@ -56,7 +56,7 @@ def has_clarity(state: CollectionState, player: int) -> bool:
     return state.has("Clarity", player)
 
 def wizard_fight_available(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return state.has("Glyphstones", player, world.options.WizardRequirements.value)
+    return state.has("Glyphstone", player, world.options.WizardRequirements.value)
 
 def wraith_fight_available(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
     key = world.options.WraithRequirements.current_key.lower()

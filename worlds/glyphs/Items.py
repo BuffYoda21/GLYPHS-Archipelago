@@ -40,6 +40,7 @@ def place_event_items(world: "GlyphsWorld") -> None:
     world.multiworld.get_location("Stalker Sigil 3",        world.player).place_locked_item(create_event_item(world, "Stalker Sigil 3"))
     world.multiworld.get_location("Solve Flower Puzzle",    world.player).place_locked_item(create_event_item(world, "Solve Flower Puzzle"))
     world.multiworld.get_location("Collapse Unlock",        world.player).place_locked_item(create_event_item(world, "Collapse Unlock"))
+    world.multiworld.get_location("Wizard True Defeat",     world.player).place_locked_item(create_event_item(world, "Wizard True Defeat"))
     world.multiworld.get_location("Defeat Spearman",        world.player).place_locked_item(create_event_item(world, "Defeat Spearman"))
     world.multiworld.get_location("Defeat Null",            world.player).place_locked_item(create_event_item(world, "Defeat Null"))
     world.multiworld.get_location("Clarity",                world.player).place_locked_item(create_event_item(world, "Clarity"))
@@ -124,21 +125,19 @@ glyphs_items = {
     # Upgrades
     "Progressive Sword":        ItemData(1,     ItemClassification.progression | ItemClassification.useful,         True,        2),
     "Progressive Dash Orb":     ItemData(2,     ItemClassification.progression | ItemClassification.useful,         True,        3),
-  # "Map":                      ItemData(3,     ItemClassification.progression + ItemClassification.useful,         True,        1),     # decided to make this not a check for now
+  # "Map":                      ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        1),     # decided to make this not a check for now
     "Grapple":                  ItemData(4,     ItemClassification.progression | ItemClassification.useful,         True,        1),
     "Progressive Parry":        ItemData(5,     ItemClassification.progression | ItemClassification.useful,         True,        2),
-    "Shroud":                   ItemData(6,     ItemClassification.useful,                                          False,       1),
-    "Progressive Chicken Hat":  ItemData(7,     ItemClassification.useful,                                          False,       2),
+    "Shroud":                   ItemData(6,     ItemClassification.progression | ItemClassification.useful,         False,       1),
+    "Progressive Chicken Hat":  ItemData(7,     ItemClassification.progression | ItemClassification.useful,         False,       2),
 
     # Collectables
     "Silver Shard":             ItemData(8,     ItemClassification.progression_skip_balancing,                      True,        15),
-    "Gold Shard":               ItemData(9,     ItemClassification.useful,                                          False,       3),
+    "Gold Shard":               ItemData(9,     ItemClassification.progression | ItemClassification.useful,                                          False,       3),
     "Smile Token":              ItemData(10,    ItemClassification.progression_skip_balancing,                      True,        10),
     "Rune Cube":                ItemData(11,    ItemClassification.progression,                                     True,        3),
     "Void Gate Shard":          ItemData(12,    ItemClassification.progression_skip_balancing,                      True,        7),
-    "Green Stone":              ItemData(13,    ItemClassification.progression,                                     True,        1),
-    "Red Stone":                ItemData(14,    ItemClassification.progression,                                     True,        1),
-    "Blue Stone":               ItemData(15,    ItemClassification.progression,                                     True,        1),
+    "Glyphstone":               ItemData(13,    ItemClassification.progression,                                     True,        3),
     "Seeds":                    ItemData(16,    ItemClassification.progression_skip_balancing,                      True,        10),
     
     # Limited junk items
