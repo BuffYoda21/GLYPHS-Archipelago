@@ -23,8 +23,7 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
     place_goals(world)
 
     total_locs = get_total_locations(world)
-    locked_events = sum(1 for name in event_locations.keys() if is_valid_location(world, name))
-    num_junk_needed = total_locs - locked_events - len(itempool)
+    num_junk_needed = total_locs - len(itempool)
     if num_junk_needed > 0:
         itempool += create_junk_items(world, num_junk_needed)
     return itempool
