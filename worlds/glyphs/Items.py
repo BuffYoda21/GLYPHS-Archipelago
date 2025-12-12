@@ -1,7 +1,7 @@
 import logging
 from BaseClasses import Item, ItemClassification
 from .Types import ItemData, GlyphsItem
-from .Locations import get_total_locations, is_valid_location, event_locations, glyphs_unreasonable_locations
+from .Locations import get_total_locations
 from typing import List, Dict, TYPE_CHECKING
 
 if TYPE_CHECKING:
