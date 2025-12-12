@@ -215,7 +215,7 @@ def set_rules(world: "GlyphsWorld"):
         victory = lambda state: state.has("True Ending", player)
     elif options.Goal.value == options.Goal.option_all_star_endings:
         victory = lambda state: state.has("Perfect Clarity", player) and state.has("Smilemask Ending", player) and state.has("Omnipotence Ending", player)
-    elif options.Goal.value == options.Goal.option_Epilogue:
+    elif options.Goal.value == options.Goal.option_epilogue:
         victory = lambda state: state.has("Epilogue Ending", player)
     elif options.Goal.value == options.Goal.option_all_endings:
         victory = lambda state: state.has("False Ending", player) and state.has("Good Ending", player) and state.has("True Ending", player) and state.has("Perfect Clarity", player) and state.has("Smilemask Ending", player) and state.has("Omnipotence Ending", player) and state.has("Epilogue Ending", player)
