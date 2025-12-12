@@ -128,35 +128,7 @@ glyphs_unreasonable_locations = {
     "Respawn Reward":                       LocData(76, "Smile Shop"),
 }
 
-event_locations = {
-    "Defeat Runic Construct":               LocData(77, "Region 1 - Central"),
-    "Stalker Sigil 1":                      LocData(78, "Region 1 - Central"),
-    "Serpent Lock 1":                       LocData(79, "Region 2 - Sector 1"),
-    "Serpent Lock 2":                       LocData(80, "Region 2 - Sector 2"),
-    "Serpent Lock 3":                       LocData(81, "Region 2 - Sector 4 End"),
-    "Defeat Gilded Serpent":                LocData(82, "Region 2 - Serpent Upper"),
-    "Stalker Sigil 2":                      LocData(83, "Region 2 - Serpent Lower"),
-    "Stalker Sigil 3":                      LocData(84, "Region 2 - Sector 4"),
-    "Solve Flower Puzzle":                  LocData(85, "Region 2 - Sector 4 End"),
-    "Collapse Unlock":                      LocData(86, "Region 3"),
-    "Wizard True Defeat":                   LocData(87, "Region 3"),
-    "Defeat Spearman":                      LocData(88, "Region 4 - Entrance"),
-    "Good Ending":                          LocData(89, "Region 4 - Lower"),
-    "Last Fracture":                        LocData(90, "Region 4 - Lower"),
-    "False Ending":                         LocData(91, "Collapse"),
-    "Smilemask Ending":                     LocData(92, "Smile Shop"),
-    "Defeat Null":                          LocData(93, "Dark Region"),
-    "Clarity":                              LocData(94, "Dark Region"),
-    "Perfect Clarity":                      LocData(95, "Dark Region"),
-    "Omnipotence Ending":                   LocData(96, "Act 1"),
-    "Clear Act 1":                          LocData(97, "Act 1"),
-    "Clear Act 2":                          LocData(98, "Act 2"),
-    "True Ending":                          LocData(99, "Act 3"),
-    "Epilogue Ending":                      LocData(100,"Epilogue"),
-}
-
 location_table = {
     **glyphs_locations,
     **glyphs_unreasonable_locations,
-    **event_locations
 }
