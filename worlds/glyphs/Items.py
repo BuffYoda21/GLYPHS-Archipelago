@@ -124,7 +124,7 @@ glyphs_items = {
     # Upgrades
     "Progressive Sword":             ItemData(1,     ItemClassification.progression | ItemClassification.useful,         True,        2),
     "Progressive Dash Orb":          ItemData(2,     ItemClassification.progression | ItemClassification.useful,         True,        3),
-    "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        0),     # decided to make this a starting item
+  # "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        0),     # decided to make this a starting item
     "Grapple":                       ItemData(4,     ItemClassification.progression | ItemClassification.useful,         True,        1),
     "Progressive Parry":             ItemData(5,     ItemClassification.progression | ItemClassification.useful,         True,        2),
     "Shroud":                        ItemData(6,     ItemClassification.progression | ItemClassification.useful,         False,       1),
@@ -149,6 +149,10 @@ glyphs_items = {
     "Party Hat":                     ItemData(23,    ItemClassification.filler,                                          False,       1),
     "Bomb Hat":                      ItemData(24,    ItemClassification.filler,                                          False,       1),
     "Progressive Chicken Hat":       ItemData(25,    ItemClassification.filler,                                          False,       2),
+}
+
+glyphs_starting_items = {
+    "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        1),
 }
 
 glyphs_unreasonable_locations_items = {
@@ -231,6 +235,8 @@ junk_items = {
 
 item_table = {
     **glyphs_items,
+    **glyphs_unreasonable_locations_items,
+    **glyphs_starting_items,
     **glyphs_events,
     **glyphs_goals,
     **glyphs_chapters,
