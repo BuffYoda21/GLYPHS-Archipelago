@@ -42,7 +42,7 @@ class GlyphsWorld(World):
 
     def generate_early(self):
         starting_chapter = "Menu"
-        self.multiworld.push_precollected(self.create_item(starting_chapter))
+        self.multiworld.push_precollected(GlyphsItem(starting_chapter, ItemClassification.progression, None, self.player))
         self.multiworld.push_precollected(GlyphsItem("Map", ItemClassification.progression | ItemClassification.useful, 3, self.player))
     
     def set_rules(self):
