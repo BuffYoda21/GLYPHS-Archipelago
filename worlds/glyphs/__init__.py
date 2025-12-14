@@ -41,6 +41,7 @@ class GlyphsWorld(World):
     def generate_early(self):
         starting_chapter = "Menu"
         self.multiworld.push_precollected(self.create_item(starting_chapter))
+        self.multiworld.push_precollected(self.create_item("Map"))
     
     def set_rules(self):
         set_rules(self)
