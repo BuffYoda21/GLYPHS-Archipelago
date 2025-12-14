@@ -1,7 +1,9 @@
 import logging
-from BaseClasses import MultiWorld, Item, Tutorial
+from BaseClasses import ItemClassification, MultiWorld, Item, Tutorial
 from worlds.AutoWorld import World, CollectionState, WebWorld
 from typing import Dict
+
+from worlds.glyphs.Types import GlyphsItem
 from .Locations import get_location_names, get_total_locations
 from .Items import create_item, create_itempool, item_table
 from .Options import GlyphsOptions
@@ -41,7 +43,7 @@ class GlyphsWorld(World):
     def generate_early(self):
         starting_chapter = "Menu"
         self.multiworld.push_precollected(self.create_item(starting_chapter))
-        self.multiworld.push_precollected(self.create_item("Map"))
+        self.multiworld.push_precollected(GlyphsItem("Map", ItemClassification.progression | ItemClassification.useful, 3, self.player))
     
     def set_rules(self):
         set_rules(self)
