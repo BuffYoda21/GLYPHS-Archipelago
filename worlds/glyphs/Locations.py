@@ -78,63 +78,64 @@ glyphs_locations = {
     "Smile Token Puzzle 2":                 LocData(44, "Region 3"),
     "Smile Token Puzzle 7":                 LocData(45, "Region 3"),
     "Wizard Reward":                        LocData(46, "Region 3"),
-    "Master Puzzle 3":                      LocData(47, "Region 3"),
+    "Room Below Wizard Pickup":             LocData(47, "Region 3"),
+    "Master Puzzle 3":                      LocData(48, "Region 3"),
 
     # Region 4
-    "Spearman Reward":                      LocData(48, "Region 4 - Upper"),
-    "Multiparry Gold Shard Puzzle":         LocData(49, "Region 4 - Central"),
-    "Platforming Gold Shard Room":          LocData(50, "Region 4 - Central"),
-    "Flower Puzzle Reward":                 LocData(51, "Region 4 - Central"),
-    "Smile Token Puzzle 4":                 LocData(52, "Region 4 - Central"),
-    "Smile Token Puzzle 5":                 LocData(53, "Region 4 - Entrance"),
-    "On top of the Rosetta Stone Pickup":   LocData(54, "Region 4 - Central"),
-    "Long Parry Platforming Room Pickup":   LocData(55, "Region 4 - Lower"),
+    "Spearman Reward":                      LocData(49, "Region 4 - Upper"),
+    "Multiparry Gold Shard Puzzle":         LocData(50, "Region 4 - Central"),
+    "Platforming Gold Shard Room":          LocData(51, "Region 4 - Central"),
+    "Flower Puzzle Reward":                 LocData(52, "Region 4 - Central"),
+    "Smile Token Puzzle 4":                 LocData(53, "Region 4 - Central"),
+    "Smile Token Puzzle 5":                 LocData(54, "Region 4 - Entrance"),
+    "On top of the Rosetta Stone Pickup":   LocData(55, "Region 4 - Central"),
+    "Long Parry Platforming Room Pickup":   LocData(56, "Region 4 - Lower"),
 
     # Dark Region
-    "Secret Room Pickup":                   LocData(56, "Dark Region"),
-    "Large Room Pickup in the Corner":      LocData(57, "Dark Region"),
-    "Null Reward":                          LocData(58, "Dark Region"),
+    "Secret Room Pickup":                   LocData(57, "Dark Region"),
+    "Large Room Pickup in the Corner":      LocData(58, "Dark Region"),
+    "Null Reward":                          LocData(59, "Dark Region"),
 
     # Smile Shop
-    "Smile Shop Item 1":                    LocData(59, "Smile Shop"),
-    "Smile Shop Item 2":                    LocData(60, "Smile Shop"),
-    "Smile Shop Item 3":                    LocData(61, "Smile Shop"),
-    "Smile Shop Item 4":                    LocData(62, "Smile Shop"),
-    "Dash Puzzle Reward":                   LocData(63, "Smile Shop"),
+    "Smile Shop Item 1":                    LocData(60, "Smile Shop"),
+    "Smile Shop Item 2":                    LocData(61, "Smile Shop"),
+    "Smile Shop Item 3":                    LocData(62, "Smile Shop"),
+    "Smile Shop Item 4":                    LocData(63, "Smile Shop"),
+    "Dash Puzzle Reward":                   LocData(64, "Smile Shop"),
 
     # The Between
-    "Between Reward 1":                     LocData(64, "The Between"),
-    "Between Reward 2":                     LocData(65, "The Between"),
+    "Between Reward 1":                     LocData(65, "The Between"),
+    "Between Reward 2":                     LocData(66, "The Between"),
 
     # Collapse
-    "Escape Normal Sequence Pickup":        LocData(66, "Collapse"),
+    "Escape Normal Sequence Pickup":        LocData(67, "Collapse"),
 
     # Act 1
-    "Enter Void Reward":                    LocData(67, "Act 1"),
-    "Void Gate Shard Location 1":           LocData(68, "Act 1"),
-    "Void Gate Shard Location 2":           LocData(69, "Act 1"),
-    "Void Gate Shard Location 3":           LocData(70, "Act 1"),
-    "Void Gate Shard Location 4":           LocData(71, "Act 1"),
-    "Void Gate Shard Location 5":           LocData(72, "Act 1"),
-    "Void Gate Shard Location 6":           LocData(73, "Act 1"),
-    "Void Gate Shard Location 7":           LocData(74, "Act 1"),
-    "John Room Pickup":                     LocData(75, "Act 1"),
+    "Enter Void Reward":                    LocData(68, "Act 1"),
+    "Void Gate Shard Location 1":           LocData(69, "Act 1"),
+    "Void Gate Shard Location 2":           LocData(70, "Act 1"),
+    "Void Gate Shard Location 3":           LocData(71, "Act 1"),
+    "Void Gate Shard Location 4":           LocData(72, "Act 1"),
+    "Void Gate Shard Location 5":           LocData(73, "Act 1"),
+    "Void Gate Shard Location 6":           LocData(74, "Act 1"),
+    "Void Gate Shard Location 7":           LocData(75, "Act 1"),
+    "John Room Pickup":                     LocData(76, "Act 1"),
     
     # Act 2
-    "Free Item":                            LocData(76, "Act 2"),
-    "Boss Rush Heal 1":                     LocData(77, "Act 2"),
-    "Boss Rush Heal 2":                     LocData(78, "Act 2"),
-    "Boss Rush Heal 3":                     LocData(79, "Act 2"),
-    "Boss Rush Heal 4":                     LocData(80, "Act 2"),
-    "Pink Bow Pickup":                      LocData(81, "Act 2"),
+    "Free Item":                            LocData(77, "Act 2"),
+    "Boss Rush Heal 1":                     LocData(78, "Act 2"),
+    "Boss Rush Heal 2":                     LocData(79, "Act 2"),
+    "Boss Rush Heal 3":                     LocData(80, "Act 2"),
+    "Boss Rush Heal 4":                     LocData(81, "Act 2"),
+    "Pink Bow Pickup":                      LocData(82, "Act 2"),
 
     # Act 3
-    "Preminition Reward":                   LocData(82, "Act 3"),
+    "Preminition Reward":                   LocData(83, "Act 3"),
 }
 
 glyphs_unreasonable_locations = {
     # Smile Shop
-    "Respawn Reward":                       LocData(83, "Smile Shop"),
+    "Respawn Reward":                       LocData(84, "Smile Shop"),
 }
 
 location_table = {

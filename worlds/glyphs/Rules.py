@@ -151,6 +151,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "Smile Token Puzzle 2",                lambda state: can_dash(state, player)                     and has_grapple(state, player))
     set_rule_from_string(world, "Smile Token Puzzle 7",                lambda state: can_dash(state, player)                     and has_grapple(state, player)                      and can_press_green_buttons(state, player))
     set_rule_from_string(world, "Wizard Reward",                       lambda state: can_dash_attack(state, player)              and wizard_fight_available(state, player, world)    and can_fight_parryable_enemy(state, player, world))
+    set_rule_from_string(world, "Room Below Wizard Pickup",            lambda state: can_dash(state, player))
     set_rule_from_string(world, "Master Puzzle 3",                     lambda state: can_dash_attack(state, player)              and has_grapple(state, player)                      and has_sword(state, player))
     
 
