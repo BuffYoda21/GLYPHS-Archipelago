@@ -14,8 +14,8 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
         for _ in range(item_data.count or 1):
             itempool.append(create_item(world, item_name))
     
-    if world.options.UnreasonableLocations.value:
-        for item_name, item_data in glyphs_unreasonable_locations_items.items():
+    if world.options.HatShuffle.value:
+        for item_name, item_data in glyphs_hats.items():
             for _ in range(item_data.count or 1):
                 itempool.append(create_item(world, item_name))
         
@@ -138,8 +138,13 @@ glyphs_items = {
     "Void Gate Shard":               ItemData(12,    ItemClassification.progression_skip_balancing,                      True,        7),
     "Glyphstone":                    ItemData(13,    ItemClassification.progression,                                     True,        3),
     "Seeds":                         ItemData(16,    ItemClassification.progression_skip_balancing,                      True,        10),
-    
-    # Limited junk items
+}
+
+glyphs_starting_items = {
+    "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        1),
+}
+
+glyphs_hats = {
     "Pink Bow":                      ItemData(17,    ItemClassification.filler,                                          False,       1),
     "Propeller Hat":                 ItemData(18,    ItemClassification.filler,                                          False,       1),
     "Traffic Cone":                  ItemData(19,    ItemClassification.filler,                                          False,       1),
@@ -148,15 +153,8 @@ glyphs_items = {
     "Fez":                           ItemData(22,    ItemClassification.filler,                                          False,       1),
     "Party Hat":                     ItemData(23,    ItemClassification.filler,                                          False,       1),
     "Bomb Hat":                      ItemData(24,    ItemClassification.filler,                                          False,       1),
-    "Progressive Chicken Hat":       ItemData(25,    ItemClassification.filler,                                          False,       2),
-}
-
-glyphs_starting_items = {
-    "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        1),
-}
-
-glyphs_unreasonable_locations_items = {
-    "Crown":                         ItemData(26,    ItemClassification.filler,                                          False,       1),
+    "Crown":                         ItemData(25,    ItemClassification.filler,                                          False,       1),
+    "Progressive Chicken Hat":       ItemData(26,    ItemClassification.filler,                                          False,       2),
 }
 
 glyphs_events = {
@@ -235,7 +233,7 @@ junk_items = {
 
 item_table = {
     **glyphs_items,
-    **glyphs_unreasonable_locations_items,
+    **glyphs_hats,
     **glyphs_starting_items,
     **glyphs_events,
     **glyphs_goals,

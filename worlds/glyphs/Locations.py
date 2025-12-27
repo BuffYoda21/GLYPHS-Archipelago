@@ -104,38 +104,42 @@ glyphs_locations = {
     "Dash Puzzle Reward":                   LocData(64, "Smile Shop"),
 
     # The Between
-    "Between Reward 1":                     LocData(65, "The Between"),
-    "Between Reward 2":                     LocData(66, "The Between"),
+    "Between Construct":                    LocData(65, "The Between"),
+    "Between Serpent":                      LocData(66, "The Between"),
+    "Between Wizard":                       LocData(67, "The Between"),
+    "Hot Spring":                           LocData(68, "The Between"),
+    "Between Reward 1":                     LocData(69, "The Between"),
+    "Between Reward 2":                     LocData(70, "The Between"),
 
     # Collapse
-    "Escape Normal Sequence Pickup":        LocData(67, "Collapse"),
+    "Escape Normal Sequence Pickup":        LocData(71, "Collapse"),
 
     # Act 1
-    "Enter Void Reward":                    LocData(68, "Act 1"),
-    "Void Gate Shard Location 1":           LocData(69, "Act 1"),
-    "Void Gate Shard Location 2":           LocData(70, "Act 1"),
-    "Void Gate Shard Location 3":           LocData(71, "Act 1"),
-    "Void Gate Shard Location 4":           LocData(72, "Act 1"),
-    "Void Gate Shard Location 5":           LocData(73, "Act 1"),
-    "Void Gate Shard Location 6":           LocData(74, "Act 1"),
-    "Void Gate Shard Location 7":           LocData(75, "Act 1"),
-    "John Room Pickup":                     LocData(76, "Act 1"),
+    "Enter Void Reward":                    LocData(72, "Act 1"),
+    "Void Gate Shard Location 1":           LocData(73, "Act 1"),
+    "Void Gate Shard Location 2":           LocData(74, "Act 1"),
+    "Void Gate Shard Location 3":           LocData(75, "Act 1"),
+    "Void Gate Shard Location 4":           LocData(76, "Act 1"),
+    "Void Gate Shard Location 5":           LocData(77, "Act 1"),
+    "Void Gate Shard Location 6":           LocData(78, "Act 1"),
+    "Void Gate Shard Location 7":           LocData(79, "Act 1"),
+    "John Room Pickup":                     LocData(80, "Act 1"),
     
     # Act 2
-    "Free Item":                            LocData(77, "Act 2"),
-    "Boss Rush Heal 1":                     LocData(78, "Act 2"),
-    "Boss Rush Heal 2":                     LocData(79, "Act 2"),
-    "Boss Rush Heal 3":                     LocData(80, "Act 2"),
-    "Boss Rush Heal 4":                     LocData(81, "Act 2"),
-    "Pink Bow Pickup":                      LocData(82, "Act 2"),
+    "Free Item":                            LocData(81, "Act 2"),
+    "Boss Rush Heal 1":                     LocData(82, "Act 2"),
+    "Boss Rush Heal 2":                     LocData(83, "Act 2"),
+    "Boss Rush Heal 3":                     LocData(84, "Act 2"),
+    "Boss Rush Heal 4":                     LocData(85, "Act 2"),
+    "Pink Bow Pickup":                      LocData(86, "Act 2"),
 
     # Act 3
-    "Preminition Reward":                   LocData(83, "Act 3"),
+    "Preminition Reward":                   LocData(87, "Act 3"),
 }
 
 glyphs_unreasonable_locations = {
     # Smile Shop
-    "Respawn Reward":                       LocData(84, "Smile Shop"),
+    "Respawn Reward":                       LocData(88, "Smile Shop"),
 }
 
 location_table = {

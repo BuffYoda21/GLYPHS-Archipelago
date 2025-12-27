@@ -31,6 +31,7 @@ class StartingSword(Toggle):
     Start the game with the sword.
     """
     display_name = "Starting Sword"
+    default = False
 
 class GenericParries(Toggle):
     """
@@ -38,12 +39,14 @@ class GenericParries(Toggle):
     Parried bullets are 3x more powerful and move faster than normal.
     """
     display_name = "Generic Parries"
+    default = False
 
 class Multiplayer(Toggle):
     """
     Enables multiplayer with other glyphs players in the multiworld that have this option enabled
     """
     display_name = "Multiplayer"
+    default = False
 
 
 
@@ -91,12 +94,14 @@ class RandomShopPrices(Toggle):
     Never exceeds 10 total (or 7 if only false ending locations are shuffled).
     """
     display_name = "Randomize Shop Prices"
+    default = False
 
 class EnableTraps(Toggle):
     """
     Adds traps to the itempool
     """
     display_name = "Enable Traps"
+    default = False
 
 class TrapTypes(OptionSet):
     """
@@ -117,6 +122,15 @@ class UnreasonableLocations(Toggle):
     Include unreasonable item locations in the item pool such as certain hats
     """
     display_name = "Shuffle Unreasonable Locations"
+    default = False
+
+class HatShuffle(Toggle):
+    """
+    Include hats in the item pool
+    If enabled, hats will replace some junk items and traps
+    """
+    display_name = "Shuffle Hats"
+    default = True
 
 
 
@@ -127,6 +141,7 @@ class SwordlessCombat(Toggle):
     Ex: Fighting with only dash attacks
     """
     display_name = "Swordless Combat"
+    default = False
 
 class BulletCombat(Toggle):
     """
@@ -135,12 +150,14 @@ class BulletCombat(Toggle):
     If Generic Parries is enabled, also includes relevant bosses.
     """
     display_name = "Parry Combat"
+    default = False
 
 class DashPuzzlesSolved(Toggle):
     """
     Logic assumes you already have the answer to all the dash puzzles in the game.
     """
     display_name = "Assume Dash Puzzle Solution"
+    default = False
 
 ## Actually might be alot harder to implement than I thought
 # class MultiplayerCheese(Toggle):
@@ -156,6 +173,7 @@ class LogicalWallJumps(Toggle):
     Considers skips utilizing wall jumps in logic.
     """
     display_name = "Wall Jumps in Logic"
+    default = False
 
 #class LogicalWallJumpChains(Toggle):
 #    """
@@ -262,6 +280,7 @@ class GlyphsOptions(PerGameCommonOptions):
     EnableTraps:            EnableTraps
     TrapTypes:              TrapTypes
     UnreasonableLocations:  UnreasonableLocations
+    HatShuffle:             HatShuffle
 
     # Logical Options
     SwordlessCombat:        SwordlessCombat
@@ -281,7 +300,7 @@ class GlyphsOptions(PerGameCommonOptions):
 
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, GenericParries, Multiplayer],
-    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, UnreasonableLocations],
+    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, UnreasonableLocations, HatShuffle],
     "Logical Options": [SwordlessCombat, BulletCombat, DashPuzzlesSolved, LogicalWallJumps],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
