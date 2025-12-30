@@ -48,8 +48,7 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Region 2 - Sector 2",       "Smile Shop",               lambda state: can_dash(state, player)                   and can_press_green_buttons(state, player))
     connect_areas(world, "Smile Shop",                "Region 1 - Central",       lambda state: True)
     connect_areas(world, "Region 2 - Lower",          "Dark Region",              lambda state: can_dash(state, player))
-    connect_areas(world, "Dark Region",               "Region 3",                 lambda state: can_dash(state, player))
-    connect_areas(world, "Dark Region",               "Smile Shop",               lambda state: can_dash_attack(state, player))
+    connect_areas(world, "Dark Region",               "Region 3",                 lambda state: True)
     connect_areas(world, "Region 2 - Left",           "The Between",              lambda state: can_dash(state, player))
     connect_areas(world, "The Between",               "Region 2 - Left",          lambda state: True)
     connect_areas(world, "The Between",               "Smile Shop",               lambda state: can_dash(state, player))
@@ -113,8 +112,8 @@ def set_rules(world: "GlyphsWorld"):
 
 
     # Region 2
-    set_rule_from_string(world, "Silver Shard Puzzle 4",               lambda state: can_dash(state, player))
-    set_rule_from_string(world, "Silver Shard Puzzle 5",               lambda state: can_dash(state, player)                     and can_press_green_buttons(state, player))
+    set_rule_from_string(world, "Silver Shard Puzzle 4",               lambda state: can_dash(state, player)                     and can_press_green_buttons(state, player))
+    set_rule_from_string(world, "Silver Shard Puzzle 5",               lambda state: can_dash(state, player))
     set_rule_from_string(world, "Silver Shard Puzzle 6",               lambda state: can_dash(state, player)                     and can_press_green_buttons(state, player))
     set_rule_from_string(world, "Silver Shard Puzzle 7",               lambda state: can_dash(state, player)                     and can_press_green_buttons(state, player))
     set_rule_from_string(world, "Silver Shard Puzzle 8",               lambda state: can_dash(state, player))
