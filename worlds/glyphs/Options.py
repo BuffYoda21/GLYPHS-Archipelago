@@ -117,13 +117,6 @@ class TrapTypes(OptionSet):
         "Instakill Trap",
     }
 
-class UnreasonableLocations(Toggle):
-    """
-    Include unreasonable item locations in the item pool such as certain hats
-    """
-    display_name = "Shuffle Unreasonable Locations"
-    default = False
-
 class HatShuffle(Toggle):
     """
     Include hats in the item pool
@@ -279,7 +272,6 @@ class GlyphsOptions(PerGameCommonOptions):
     RandomShopPrices:       RandomShopPrices
     EnableTraps:            EnableTraps
     TrapTypes:              TrapTypes
-    UnreasonableLocations:  UnreasonableLocations
     HatShuffle:             HatShuffle
 
     # Logical Options
@@ -300,7 +292,7 @@ class GlyphsOptions(PerGameCommonOptions):
 
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, GenericParries, Multiplayer],
-    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, UnreasonableLocations, HatShuffle],
+    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
     "Logical Options": [SwordlessCombat, BulletCombat, DashPuzzlesSolved, LogicalWallJumps],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }

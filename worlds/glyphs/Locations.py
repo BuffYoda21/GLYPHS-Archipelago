@@ -19,9 +19,8 @@ def get_location_names() -> Dict[str, int]:
     names = {name: data.ap_code for name, data in location_table.items()}
     return names
 
+# Intended to use for YAML options but not currently implemented
 def is_valid_location(world: "GlyphsWorld", name) -> bool:
-    if not world.options.UnreasonableLocations.value and name in glyphs_unreasonable_locations:
-        return False
     return True
 
 glyphs_locations = {
@@ -137,12 +136,6 @@ glyphs_locations = {
     "Preminition Reward":                   LocData(87, "Act 3"),
 }
 
-glyphs_unreasonable_locations = {
-    # Smile Shop
-    "Respawn Reward":                       LocData(88, "Smile Shop"),
-}
-
 location_table = {
     **glyphs_locations,
-    **glyphs_unreasonable_locations,
 }
