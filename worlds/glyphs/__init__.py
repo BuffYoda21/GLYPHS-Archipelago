@@ -66,7 +66,6 @@ class GlyphsWorld(World):
                 "Goal":                    self.options.Goal.value,
                 "GenericParries":          self.options.GenericParries.value,
                 "Multiplayer":             self.options.Multiplayer.value,
-                "UnreasonableLocations":   self.options.UnreasonableLocations.value,
                 "SwordlessCombat":         self.options.SwordlessCombat.value,
                 "BulletCombat":            self.options.BulletCombat.value,
                 "DashPuzzlesSolved":       self.options.DashPuzzlesSolved.value,
