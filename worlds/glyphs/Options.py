@@ -33,6 +33,13 @@ class StartingSword(Toggle):
     display_name = "Starting Sword"
     default = False
 
+class StartingDash(Toggle):
+    """
+    Start the game with dash unlocked.
+    """
+    display_name = "Starting Dash"
+    default = False
+
 class GenericParries(Toggle):
     """
     Allows normal damaging bullets to be parried.
@@ -262,6 +269,7 @@ class GlyphsOptions(PerGameCommonOptions):
     # Game Options
     Goal:                   Goal
     StartingSword:          StartingSword
+    StartingDash:           StartingDash
     GenericParries:         GenericParries
     Multiplayer:            Multiplayer
 
@@ -291,7 +299,7 @@ class GlyphsOptions(PerGameCommonOptions):
     WraithGlyphstoneCount:  WraithGlyphstoneCount
 
 glyphs_option_groups: Dict[str, List[Any]] = {
-    "Game Options": [Goal, StartingSword, GenericParries, Multiplayer],
+    "Game Options": [Goal, StartingSword, StartingDash, GenericParries, Multiplayer],
     "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
     "Logical Options": [SwordlessCombat, BulletCombat, DashPuzzlesSolved, LogicalWallJumps],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],

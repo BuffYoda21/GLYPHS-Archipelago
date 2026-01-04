@@ -11,7 +11,9 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
     itempool: List[Item] = []
 
     if world.options.StartingSword.value:
-        glyphs_items["Progressive Sword"] = ItemData(3, ItemClassification.progression | ItemClassification.useful, True, 1)
+        glyphs_items["Progressive Sword"] = ItemData(3, ItemClassification.progression | ItemClassification.useful, True, glyphs_items["Progressive Sword"].count - 1)
+    if world.options.StartingDash.value:
+        glyphs_items["Progressive Dash Orb"] = ItemData(4, ItemClassification.progression | ItemClassification.useful, True, glyphs_items["Progressive Dash Orb"].count - 1)
 
     for item_name, item_data in glyphs_items.items():
         for _ in range(item_data.count or 1):
