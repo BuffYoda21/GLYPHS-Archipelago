@@ -1,8 +1,9 @@
 import logging
 from BaseClasses import ItemClassification, MultiWorld, Item, Tutorial
 from worlds.AutoWorld import World, CollectionState, WebWorld
-from typing import Dict
+from typing import Dict, TextIO
 
+from worlds.glyphs.SmileShopRando import get_shop_prices
 from worlds.glyphs.Types import GlyphsItem
 from .Locations import get_location_names, get_total_locations
 from .Items import create_item, create_itempool, item_table
@@ -65,6 +66,7 @@ class GlyphsWorld(World):
         return create_item(self, name)
     
     def fill_slot_data(self) -> Dict[str, object]:
+        prices = get_shop_prices(self)
         slot_data: Dict[str, object] = {
             "options": {
                 "Goal":                    self.options.Goal.value,
@@ -82,12 +84,16 @@ class GlyphsWorld(World):
                 "WraithRuneCount":         self.options.WraithRuneCount.value,
                 "WraithGlyphstoneCount":   self.options.WraithGlyphstoneCount.value,
             },
+            "shop_prices": prices,
             "Seed": self.multiworld.seed_name,
             "Slot": self.multiworld.player_name[self.player],
             "TotalLocations": get_total_locations(self)
         }
 
         return slot_data
+
+    def write_spoiler(self, spoiler_handle: TextIO) -> None:
+        spoiler_handle.write(f"\nSmile Shop Prices ({self.player_name}): {get_shop_prices(self)}")
 
     def collect(self, state: "CollectionState", item: "Item") -> bool:
         return super().collect(state, item)
