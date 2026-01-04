@@ -10,6 +10,9 @@ if TYPE_CHECKING:
 def create_itempool(world: "GlyphsWorld") -> List[Item]:
     itempool: List[Item] = []
 
+    if world.options.StartingSword.value:
+        glyphs_items["Progressive Sword"] = ItemData(3, ItemClassification.progression | ItemClassification.useful, True, 1)
+
     for item_name, item_data in glyphs_items.items():
         for _ in range(item_data.count or 1):
             itempool.append(create_item(world, item_name))

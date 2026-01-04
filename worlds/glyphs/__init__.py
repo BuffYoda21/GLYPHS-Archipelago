@@ -44,6 +44,8 @@ class GlyphsWorld(World):
         starting_chapter = "Menu"
         self.multiworld.push_precollected(GlyphsItem(starting_chapter, ItemClassification.progression, None, self.player))
         self.multiworld.push_precollected(GlyphsItem("Map", ItemClassification.progression | ItemClassification.useful, 3, self.player))
+        if self.options.StartingSword.value:
+            self.multiworld.push_precollected(GlyphsItem("Progressive Sword", ItemClassification.progression | ItemClassification.useful, 1, self.player))
     
     def set_rules(self):
         set_rules(self)
