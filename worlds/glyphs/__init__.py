@@ -48,7 +48,7 @@ class GlyphsWorld(World):
         if self.options.StartingSword.value:
             self.multiworld.push_precollected(GlyphsItem("Progressive Sword", ItemClassification.progression | ItemClassification.useful, 1, self.player))
         if self.options.StartingDash.value:
-            self.multiworld.push_precollected(GlyphsItem("Progressive Dash Orb", ItemClassification.progression | ItemClassification.useful, 1, self.player))
+            self.multiworld.push_precollected(GlyphsItem("Progressive Dash Orb", ItemClassification.progression | ItemClassification.useful, 2, self.player))
     
     def set_rules(self):
         set_rules(self)
