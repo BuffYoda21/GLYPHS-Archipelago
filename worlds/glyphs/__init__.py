@@ -6,7 +6,7 @@ from typing import Dict, TextIO
 from worlds.glyphs.SmileShopRando import get_shop_prices
 from worlds.glyphs.Types import GlyphsItem
 from .Locations import get_location_names, get_total_locations
-from .Items import create_item, create_itempool, item_table
+from .Items import create_item, create_itempool, item_table, glyphs_hats
 from .Options import GlyphsOptions
 from .Regions import create_regions
 from .Rules import set_rules, connect_entrances
@@ -49,6 +49,10 @@ class GlyphsWorld(World):
             self.multiworld.push_precollected(GlyphsItem("Progressive Sword", ItemClassification.progression | ItemClassification.useful, 1, self.player))
         if self.options.StartingDash.value:
             self.multiworld.push_precollected(GlyphsItem("Progressive Dash Orb", ItemClassification.progression | ItemClassification.useful, 2, self.player))
+        if not self.options.HatShuffle.value:
+            for item_name, item_data in glyphs_hats.items():
+                for _ in range(item_data.count or 1):
+                    self.multiworld.push_precollected(GlyphsItem(item_name, item_data.classification, item_data.ap_code, self.player))
     
     def set_rules(self):
         set_rules(self)
