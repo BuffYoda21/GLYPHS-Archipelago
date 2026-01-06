@@ -98,18 +98,16 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
 
         elif ic == ItemClassification.trap:
             trap_list[name] = 0
-            if name == "sMiLE Trap" and "Smile Trap" in world.options.TrapTypes.value:
-                trap_list[name] = 20
-            elif name == "John Trap" and "John Trap" in world.options.TrapTypes.value:
+            if name == "John Trap" and "John Trap" in world.options.TrapTypes.value:
                 trap_list[name] = 10
-            elif name == "Spear Trap" and "Spear Trap" in world.options.TrapTypes.value:
-                trap_list[name] = 20
-            elif name == "Enemy Trap" and "Enemy Trap" in world.options.TrapTypes.value:
+            elif name == "Momentum Trap" and "Momentum Trap" in world.options.TrapTypes.value:
+                trap_list[name] = 40
+            elif name == "Slow Trap" and "Slow Trap" in world.options.TrapTypes.value:
                 trap_list[name] = 30
             elif name == "Screen Flip Trap" and "Screen Flip Trap" in world.options.TrapTypes.value:
-                trap_list[name] = 15
-            elif name == "Instakill Trap" and "Instakill Trap" in world.options.TrapTypes.value:
-                trap_list[name] = 5
+                trap_list[name] = 20
+            elif name == "Dash Trap" and "Dash Trap" in world.options.TrapTypes.value:
+                trap_list[name] = 30
                 
     for i in range(count):
         if not world.options.EnableTraps.value:
@@ -230,12 +228,11 @@ junk_items = {
     "HP Refill":                     ItemData(79,    ItemClassification.filler,                                          False,       0),
 
     # Traps
-    "sMiLE Trap":                    ItemData(80,    ItemClassification.trap,                                            False,       0),
-    "John Trap":                     ItemData(81,    ItemClassification.trap,                                            False,       0),
-    "Spear Trap":                    ItemData(82,    ItemClassification.trap,                                            False,       0),
-    "Instakill Trap":                ItemData(83,    ItemClassification.trap,                                            False,       0),
-    "Screen Flip Trap":              ItemData(84,    ItemClassification.trap,                                            False,       0),
-    "Enemy Trap":                    ItemData(85,    ItemClassification.trap,                                            False,       0),
+    "John Trap":                     ItemData(80,    ItemClassification.trap,                                            False,       0),
+    "Momentum Trap":                 ItemData(81,    ItemClassification.trap,                                            False,       0),
+    "Slow Trap":                     ItemData(82,    ItemClassification.trap,                                            False,       0),
+    "Screen Flip Trap":              ItemData(83,    ItemClassification.trap,                                            False,       0),
+    "Dash Trap":                     ItemData(84,    ItemClassification.trap,                                            False,       0),
 }
 
 item_table = {
