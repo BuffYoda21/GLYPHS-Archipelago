@@ -133,6 +133,7 @@ class HatShuffle(Toggle):
     """
     Include hats in the item pool
     If enabled, hats will replace some junk items and traps
+    If disabled, all hats will be included in starting inventory
     """
     display_name = "Shuffle Hats"
     default = True
