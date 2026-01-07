@@ -31,18 +31,6 @@ def has_grapple(state: CollectionState, player: int) -> bool:
 def can_parry(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Parry", player, 1)
 
-def can_fight_parryable_enemy(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return (
-        state.has("Progressive Sword", player, 1)
-        or (
-            (
-                state.has("Progressive Dash Orb", player, 2)
-                or (state.has("Progressive Parry", player, 1) and world.options.GenericParries.value)
-            )
-            and world.options.SwordlessCombat.value
-        )
-    )
-
 def serpent_door_open(state: CollectionState, player: int) -> bool:
     return state.has("Serpent Lock 1", player) and state.has("Serpent Lock 2", player) and state.has("Serpent Lock 3", player)
 
@@ -128,19 +116,19 @@ def can_solve_flower_puzzle(state: CollectionState, player: int) -> bool:
 
 def can_access_all_silver_shards(state: CollectionState, player: int) -> bool:
     return (
-        state.can_reach_location("Silver Shard Puzzle 1", player) and
-        state.can_reach_location("Silver Shard Puzzle 2", player) and
-        state.can_reach_location("Silver Shard Puzzle 3", player) and
-        state.can_reach_location("Silver Shard Puzzle 4", player) and
-        state.can_reach_location("Silver Shard Puzzle 5", player) and
-        state.can_reach_location("Silver Shard Puzzle 6", player) and
-        state.can_reach_location("Silver Shard Puzzle 7", player) and
-        state.can_reach_location("Silver Shard Puzzle 8", player) and
-        state.can_reach_location("Silver Shard Puzzle 9", player) and
-        state.can_reach_location("Silver Shard Puzzle 10", player) and
-        state.can_reach_location("Silver Shard Puzzle 11", player) and
-        state.can_reach_location("Silver Shard Puzzle 12", player) and
-        state.can_reach_location("Silver Shard Puzzle 13", player) and
-        state.can_reach_location("Silver Shard Puzzle 14", player) and
-        state.can_reach_location("Silver Shard Puzzle 15", player)
+        state.can_reach_location("(R1) Silver Shard Puzzle 1 - Map", player) and
+        state.can_reach_location("(R1) Silver Shard Puzzle 2 - Grapple", player) and
+        state.can_reach_location("(R1) Silver Shard Puzzle 3 - Spike Tunnel", player) and
+        state.can_reach_location("(R2S1) Silver Shard Puzzle 4 - Save Button", player) and
+        state.can_reach_location("(R2) Silver Shard Puzzle 5 - Respawn", player) and
+        state.can_reach_location("(R2) Silver Shard Puzzle 6 - Invisible", player) and
+        state.can_reach_location("(R2S2) Silver Shard Puzzle 7 - Timed", player) and
+        state.can_reach_location("(R2) Silver Shard Puzzle 8 - Avoid Respawn", player) and
+        state.can_reach_location("(R2) Silver Shard Puzzle 9 - Color Dash Puzzle", player) and
+        state.can_reach_location("(R3) Silver Shard Puzzle 10 - Mirror", player) and
+        state.can_reach_location("(R3) Silver Shard Puzzle 11 - No Dash", player) and
+        state.can_reach_location("(R3) Silver Shard Puzzle 12 - QR", player) and
+        state.can_reach_location("(R3) Silver Shard Puzzle 13 - Black Button", player) and
+        state.can_reach_location("(R3) Silver Shard Puzzle 14 - Grapple", player) and
+        state.can_reach_location("(R2) Silver Shard Puzzle 15 - Escape Serpent", player)
     )
