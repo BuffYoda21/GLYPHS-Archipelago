@@ -40,13 +40,14 @@ class StartingDash(Toggle):
     display_name = "Starting Dash"
     default = False
 
-class GenericParries(Toggle):
-    """
-    Allows normal damaging bullets to be parried.
-    Parried bullets are 3x more powerful and move faster than normal.
-    """
-    display_name = "Generic Parries"
-    default = False
+## Cool idea but practically not great
+# class GenericParries(Toggle):
+#     """
+#     Allows normal damaging bullets to be parried.
+#     Parried bullets are 3x more powerful and move faster than normal.
+#     """
+#     display_name = "Generic Parries"
+#     default = False
 
 class Multiplayer(Toggle):
     """
@@ -156,14 +157,15 @@ class SwordlessCombat(Toggle):
     display_name = "Swordless Combat"
     default = False
 
-class BulletCombat(Toggle):
-    """
-    Considers defeating bosses with only parried projectiles in logic.
-    Does nothing if Swordless Combat is not enabled.
-    If Generic Parries is enabled, also includes relevant bosses.
-    """
-    display_name = "Parry Combat"
-    default = False
+## Doesnt actually seem very practical/fun
+# class BulletCombat(Toggle):
+#     """
+#     Considers defeating bosses with only parried projectiles in logic.
+#     Does nothing if Swordless Combat is not enabled.
+#     If Generic Parries is enabled, also includes relevant bosses.
+#     """
+#     display_name = "Parry Combat"
+#     default = False
 
 class DashPuzzlesSolved(Toggle):
     """
@@ -283,7 +285,7 @@ class GlyphsOptions(PerGameCommonOptions):
     Goal:                   Goal
     StartingSword:          StartingSword
     StartingDash:           StartingDash
-    GenericParries:         GenericParries
+  # GenericParries:         GenericParries
     Multiplayer:            Multiplayer
 
     # Randomization Options
@@ -297,7 +299,7 @@ class GlyphsOptions(PerGameCommonOptions):
 
     # Logical Options
     SwordlessCombat:        SwordlessCombat
-    BulletCombat:           BulletCombat
+  # BulletCombat:           BulletCombat
     DashPuzzlesSolved:      DashPuzzlesSolved
     LogicalWallJumps:       LogicalWallJumps
   # LogicalWallJumpChains:  LogicalWallJumpChains
@@ -312,8 +314,8 @@ class GlyphsOptions(PerGameCommonOptions):
     WraithGlyphstoneCount:  WraithGlyphstoneCount
 
 glyphs_option_groups: Dict[str, List[Any]] = {
-    "Game Options": [Goal, StartingSword, StartingDash, GenericParries, Multiplayer],
+    "Game Options": [Goal, StartingSword, StartingDash, Multiplayer],
     "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
-    "Logical Options": [SwordlessCombat, BulletCombat, DashPuzzlesSolved, LogicalWallJumps],
+    "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
