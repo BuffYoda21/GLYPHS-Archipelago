@@ -98,10 +98,10 @@ class Multiplayer(Toggle):
 class RandomShopPrices(Toggle):
     """
     Randomizes the prices of shop items.
-    Never exceeds 10 total (or 7 if only false ending locations are shuffled).
+    Never exceeds 10 total.
     """
     display_name = "Randomize Shop Prices"
-    default = False
+    default = True
 
 class EnableTraps(Toggle):
     """
@@ -122,6 +122,13 @@ class TrapTypes(OptionSet):
     """
     display_name = "Trap Types"
     valid_keys = {
+        "Momentum Trap",
+        "John Trap",
+        "Slow Trap",
+        "Screen Flip Trap",
+        "Dash Trap",
+    }
+    default = {
         "Momentum Trap",
         "John Trap",
         "Slow Trap",
@@ -221,7 +228,7 @@ class WraithRequirements(Choice):
     option_smile_tokens = 5
     option_rune_cubes = 6
     option_glyphstones = 7
-    default = option_vanilla
+    default = option_none
 
 class WraithSilverCount(Range):
     """
