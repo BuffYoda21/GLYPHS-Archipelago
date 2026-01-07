@@ -49,12 +49,13 @@ class StartingDash(Toggle):
 #     display_name = "Generic Parries"
 #     default = False
 
-class Multiplayer(Toggle):
-    """
-    Enables multiplayer with other glyphs players in the multiworld that have this option enabled
-    """
-    display_name = "Multiplayer"
-    default = False
+## Still coming soon. Just disabled since it isn't implemented yet
+# class Multiplayer(Toggle):
+#     """
+#     Enables multiplayer with other glyphs players in the multiworld that have this option enabled
+#     """
+#     display_name = "Multiplayer"
+#     default = False
 
 
 
@@ -286,7 +287,7 @@ class GlyphsOptions(PerGameCommonOptions):
     StartingSword:          StartingSword
     StartingDash:           StartingDash
   # GenericParries:         GenericParries
-    Multiplayer:            Multiplayer
+  # Multiplayer:            Multiplayer
 
     # Randomization Options
   # LocationPool:           LocationPool
@@ -314,7 +315,7 @@ class GlyphsOptions(PerGameCommonOptions):
     WraithGlyphstoneCount:  WraithGlyphstoneCount
 
 glyphs_option_groups: Dict[str, List[Any]] = {
-    "Game Options": [Goal, StartingSword, StartingDash, Multiplayer],
+    "Game Options": [Goal, StartingSword, StartingDash],
     "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
     "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],

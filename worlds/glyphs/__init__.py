@@ -74,7 +74,7 @@ class GlyphsWorld(World):
         slot_data: Dict[str, object] = {
             "options": {
                 "Goal":                    self.options.Goal.value,
-                "Multiplayer":             self.options.Multiplayer.value,
+                #"Multiplayer":             self.options.Multiplayer.value,
                 "WizardRequirements":      self.options.WizardRequirements.value,
                 "WraithRequirements":      self.options.WraithRequirements.value,
                 "WraithSilverCount":       self.options.WraithSilverCount.value,
