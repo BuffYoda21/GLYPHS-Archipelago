@@ -96,21 +96,21 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
         if ic == ItemClassification.filler:
             junk_list[name] = junk_weights.get(name, 1)
 
-        elif ic == ItemClassification.trap:
-            trap_list[name] = 0
-            if name == "John Trap" and "John Trap" in world.options.TrapTypes.value:
-                trap_list[name] = 10
-            elif name == "Momentum Trap" and "Momentum Trap" in world.options.TrapTypes.value:
-                trap_list[name] = 40
-            elif name == "Slow Trap" and "Slow Trap" in world.options.TrapTypes.value:
-                trap_list[name] = 30
-            elif name == "Screen Flip Trap" and "Screen Flip Trap" in world.options.TrapTypes.value:
-                trap_list[name] = 20
-            elif name == "Dash Trap" and "Dash Trap" in world.options.TrapTypes.value:
-                trap_list[name] = 30
+        # elif ic == ItemClassification.trap:
+        #     trap_list[name] = 0
+        #     if name == "John Trap" and "John Trap" in world.options.TrapTypes.value:
+        #         trap_list[name] = 10
+        #     elif name == "Momentum Trap" and "Momentum Trap" in world.options.TrapTypes.value:
+        #         trap_list[name] = 40
+        #     elif name == "Slow Trap" and "Slow Trap" in world.options.TrapTypes.value:
+        #         trap_list[name] = 30
+        #     elif name == "Screen Flip Trap" and "Screen Flip Trap" in world.options.TrapTypes.value:
+        #         trap_list[name] = 20
+        #     elif name == "Dash Trap" and "Dash Trap" in world.options.TrapTypes.value:
+        #         trap_list[name] = 30
                 
     for i in range(count):
-        if not world.options.EnableTraps.value:
+        if not False: #world.options.EnableTraps.value:
             junk_pool.append(world.create_item(
                 world.random.choices(list(junk_list.keys()), weights=list(junk_list.values()), k=1)[0]))
             continue
