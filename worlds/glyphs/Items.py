@@ -10,17 +10,34 @@ if TYPE_CHECKING:
 def create_itempool(world: "GlyphsWorld") -> List[Item]:
     itempool: List[Item] = []
 
-    world.items = glyphs_items.copy()
+    world.items = {}
+    for item_name, item_data in glyphs_items.items():
+        world.items[item_name] = ItemData(
+            item_data.ap_code,
+            item_data.classification,
+            item_data.advancement,
+            item_data.count
+        )
 
     if world.options.StartingSword.value:
-        world.items["Progressive Sword"] = ItemData(1, ItemClassification.progression | ItemClassification.useful, True, world.items["Progressive Sword"].count - 1)
+        world.items["Progressive Sword"] = ItemData(
+            1, 
+            ItemClassification.progression | ItemClassification.useful, 
+            True, 
+            world.items["Progressive Sword"].count - 1
+        )
     if world.options.StartingDash.value:
-        world.items["Progressive Dash Orb"] = ItemData(2, ItemClassification.progression | ItemClassification.useful, True, world.items["Progressive Dash Orb"].count - 1)
+        world.items["Progressive Dash Orb"] = ItemData(
+            2, 
+            ItemClassification.progression | ItemClassification.useful, 
+            True, 
+            world.items["Progressive Dash Orb"].count - 1
+        )
 
     for item_name, item_data in world.items.items():
         for _ in range(item_data.count or 1):
             itempool.append(create_item(world, item_name))
-    
+
     if world.options.HatShuffle.value:
         for item_name, item_data in glyphs_hats.items():
             for _ in range(item_data.count or 1):
