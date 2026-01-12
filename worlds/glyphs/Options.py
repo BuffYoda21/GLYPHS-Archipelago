@@ -105,39 +105,38 @@ class RandomShopPrices(Toggle):
     display_name = "Randomize Shop Prices"
     default = True
 
-## Disabled since it isn't implemented yet
-# class EnableTraps(Toggle):
-#     """
-#     Adds traps to the itempool
-#     """
-#     display_name = "Enable Traps"
-#     default = False
-# 
-# class TrapTypes(OptionSet):
-#     """
-#     Determines what kinds of traps will be added to the item pool
-#     Valid Keys:
-#     Momentum Trap: Launches the player at a random angle
-#     John Trap: Spawns John for 1 minute
-#     Slow Trap: Slows the player down for a short period of time
-#     Screen Flip Trap: Flips the player's screen for a short period of time
-#     Dash Trap: Slows the player's dash for a short period of time
-#     """
-#     display_name = "Trap Types"
-#     valid_keys = {
-#         "Momentum Trap",
-#         "John Trap",
-#         "Slow Trap",
-#         "Screen Flip Trap",
-#         "Dash Trap",
-#     }
-#     default = {
-#         "Momentum Trap",
-#         "John Trap",
-#         "Slow Trap",
-#         "Screen Flip Trap",
-#         "Dash Trap",
-#     }
+class EnableTraps(Toggle):
+    """
+    Adds traps to the itempool
+    """
+    display_name = "Enable Traps"
+    default = False
+
+class TrapTypes(OptionSet):
+    """
+    Determines what kinds of traps will be added to the item pool
+    Valid Keys:
+    Momentum Trap: Launches the player at a random angle
+    John Trap: Spawns John for 1 minute
+    Slow Trap: Slows the player down for a short period of time
+    Screen Flip Trap: Flips the player's screen for a short period of time
+    Dash Trap: Slows the player's dash for a short period of time
+    """
+    display_name = "Trap Types"
+    valid_keys = {
+        "Momentum Trap",
+        "John Trap",
+        "Slow Trap",
+        "Screen Flip Trap",
+        "Dash Trap",
+    }
+    default = {
+        "Momentum Trap",
+        "John Trap",
+        "Slow Trap",
+        "Screen Flip Trap",
+        "Dash Trap",
+    }
 
 class HatShuffle(Toggle):
     """
@@ -295,8 +294,8 @@ class GlyphsOptions(PerGameCommonOptions):
   # HatLocations:           HatLocations
   # Shopsanity:             Shopsanity
     RandomShopPrices:       RandomShopPrices
-  # EnableTraps:            EnableTraps
-  # TrapTypes:              TrapTypes
+    EnableTraps:            EnableTraps
+    TrapTypes:              TrapTypes
     HatShuffle:             HatShuffle
 
     # Logical Options
@@ -317,7 +316,7 @@ class GlyphsOptions(PerGameCommonOptions):
 
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, StartingDash],
-    "Randomization Options": [RandomShopPrices, HatShuffle],
+    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
     "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
