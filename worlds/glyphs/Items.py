@@ -108,8 +108,8 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
         "HP Refill":        100,
     }
 
-    for name in item_table.keys():
-        ic = item_table[name].classification
+    for name in junk_items.keys():
+        ic = junk_items[name].classification
         if ic == ItemClassification.filler:
             junk_list[name] = junk_weights.get(name, 1)
 
