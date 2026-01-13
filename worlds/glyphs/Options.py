@@ -1,7 +1,7 @@
 from typing import List, Dict, Any
 from dataclasses import dataclass
 from worlds.AutoWorld import PerGameCommonOptions
-from Options import Choice, OptionGroup, OptionSet, Toggle, Range
+from Options import Choice, DeathLink, OptionGroup, OptionSet, Toggle, Range
 
 def create_option_groups() -> List[OptionGroup]:
     option_group_list: List[OptionGroup] = []
@@ -16,6 +16,7 @@ def create_option_groups() -> List[OptionGroup]:
 class Goal(Choice):
     """
     Determines what ending must be reached for Archipelago to consider your game as complete.
+    Note: This option does not affect location/item pools so you still may have to complete more of the game than you would think.
     """
     display_name = "Completion Requirements"
     option_false_ending = 1
@@ -60,6 +61,7 @@ class StartingDash(Toggle):
 
 
 # Randomization Options
+## To be implemented when save button randomization is implemented
 # class RandomizeWorldSpawn(Toggle):
 #     """
 #     Shuffles what save button you start on.
@@ -110,7 +112,7 @@ class EnableTraps(Toggle):
     Adds traps to the itempool
     """
     display_name = "Enable Traps"
-    default = False
+    default = True
 
 class TrapTypes(OptionSet):
     """
@@ -170,9 +172,9 @@ class SwordlessCombat(Toggle):
 
 class DashPuzzlesSolved(Toggle):
     """
-    Logic assumes you already have the answer to all the dash puzzles in the game.
+    Logic assumes you already have the answer to all the puzzles in the game written down somewhere.
     """
-    display_name = "Assume Dash Puzzle Solution"
+    display_name = "Assume Puzzles Solved"
     default = False
 
 ## Actually might be alot harder to implement than I thought
@@ -288,6 +290,7 @@ class GlyphsOptions(PerGameCommonOptions):
     StartingDash:           StartingDash
   # GenericParries:         GenericParries
   # Multiplayer:            Multiplayer
+    DeathLink:              DeathLink
 
     # Randomization Options
   # LocationPool:           LocationPool
@@ -315,7 +318,7 @@ class GlyphsOptions(PerGameCommonOptions):
     WraithGlyphstoneCount:  WraithGlyphstoneCount
 
 glyphs_option_groups: Dict[str, List[Any]] = {
-    "Game Options": [Goal, StartingSword, StartingDash],
+    "Game Options": [Goal, StartingSword, StartingDash, DeathLink],
     "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
     "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
