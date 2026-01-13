@@ -18,6 +18,8 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
             item_data.advancement,
             item_data.count
         )
+    
+    world.items.pop("Map")
 
     if world.options.StartingSword.value:
         world.items["Progressive Sword"] = ItemData(
@@ -146,7 +148,7 @@ glyphs_items = {
     # Upgrades
     "Progressive Sword":             ItemData(1,     ItemClassification.progression | ItemClassification.useful,         True,        2),
     "Progressive Dash Orb":          ItemData(2,     ItemClassification.progression | ItemClassification.useful,         True,        3),
-  # "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        0),     # decided to make this a starting item
+    "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        0),     # decided to make this a starting item
     "Grapple":                       ItemData(4,     ItemClassification.progression | ItemClassification.useful,         True,        1),
     "Progressive Parry":             ItemData(5,     ItemClassification.progression | ItemClassification.useful,         True,        2),
     "Shroud":                        ItemData(6,     ItemClassification.progression | ItemClassification.useful,         False,       1),
@@ -162,10 +164,6 @@ glyphs_items = {
     "Seeds":                         ItemData(16,    ItemClassification.progression_skip_balancing,                      True,        10),
 }
 
-glyphs_starting_items = {
-    "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        1),
-}
-
 glyphs_hats = {
     "Pink Bow":                      ItemData(17,    ItemClassification.filler,                                          False,       1),
     "Propeller Hat":                 ItemData(18,    ItemClassification.filler,                                          False,       1),
@@ -179,85 +177,84 @@ glyphs_hats = {
     "Progressive Chicken Hat":       ItemData(26,    ItemClassification.filler,                                          False,       2),
 }
 
+junk_items = {
+    # Junk Items
+    "HP Refill":                     ItemData(27,    ItemClassification.filler,                                          False,       0),
+
+    # Traps
+    "John Trap":                     ItemData(28,    ItemClassification.trap,                                            False,       0),
+    "Momentum Trap":                 ItemData(29,    ItemClassification.trap,                                            False,       0),
+    "Slow Trap":                     ItemData(30,    ItemClassification.trap,                                            False,       0),
+    "Screen Flip Trap":              ItemData(31,    ItemClassification.trap,                                            False,       0),
+    "Dash Trap":                     ItemData(32,    ItemClassification.trap,                                            False,       0),
+}
+
 glyphs_events = {
-    "Defeat Runic Construct":        ItemData(27,    ItemClassification.progression_skip_balancing,                      True),
-    "Defeat Gilded Serpent":         ItemData(28,    ItemClassification.progression_skip_balancing,                      True),
-    "Collapse Unlock":               ItemData(29,    ItemClassification.progression_skip_balancing,                      True),
-    "Wizard True Defeat":            ItemData(30,    ItemClassification.progression_skip_balancing,                      True),
-    "Defeat Null":                   ItemData(31,    ItemClassification.progression_skip_balancing,                      True),
-    "Defeat Spearman":               ItemData(32,    ItemClassification.progression_skip_balancing,                      True),
-    "Serpent Lock 1":                ItemData(33,    ItemClassification.progression_skip_balancing,                      True),
-    "Serpent Lock 2":                ItemData(34,    ItemClassification.progression_skip_balancing,                      True),
-    "Serpent Lock 3":                ItemData(35,    ItemClassification.progression_skip_balancing,                      True),
-    "Stalker Sigil 1":               ItemData(36,    ItemClassification.progression_skip_balancing,                      True),
-    "Stalker Sigil 2":               ItemData(37,    ItemClassification.progression_skip_balancing,                      True),
-    "Stalker Sigil 3":               ItemData(38,    ItemClassification.progression_skip_balancing,                      True),
-    "Solve Flower Puzzle":           ItemData(39,    ItemClassification.progression_skip_balancing,                      True),
-    "Clarity":                       ItemData(40,    ItemClassification.progression_skip_balancing,                      True),
-    "Last Fracture":                 ItemData(41,    ItemClassification.progression_skip_balancing,                      True),
-    "Clear Act 1":                   ItemData(42,    ItemClassification.progression_skip_balancing,                      True),
-    "Clear Act 2":                   ItemData(43,    ItemClassification.progression_skip_balancing,                      True),
+    "Defeat Runic Construct":        ItemData(1000,  ItemClassification.progression_skip_balancing,                      True),
+    "Defeat Gilded Serpent":         ItemData(1001,  ItemClassification.progression_skip_balancing,                      True),
+    "Collapse Unlock":               ItemData(1002,  ItemClassification.progression_skip_balancing,                      True),
+    "Wizard True Defeat":            ItemData(1003,  ItemClassification.progression_skip_balancing,                      True),
+    "Defeat Null":                   ItemData(1004,  ItemClassification.progression_skip_balancing,                      True),
+    "Defeat Spearman":               ItemData(1005,  ItemClassification.progression_skip_balancing,                      True),
+    "Serpent Lock 1":                ItemData(1006,  ItemClassification.progression_skip_balancing,                      True),
+    "Serpent Lock 2":                ItemData(1007,  ItemClassification.progression_skip_balancing,                      True),
+    "Serpent Lock 3":                ItemData(1008,  ItemClassification.progression_skip_balancing,                      True),
+    "Stalker Sigil 1":               ItemData(1009,  ItemClassification.progression_skip_balancing,                      True),
+    "Stalker Sigil 2":               ItemData(1010,  ItemClassification.progression_skip_balancing,                      True),
+    "Stalker Sigil 3":               ItemData(1011,  ItemClassification.progression_skip_balancing,                      True),
+    "Solve Flower Puzzle":           ItemData(1012,  ItemClassification.progression_skip_balancing,                      True),
+    "Clarity":                       ItemData(1013,  ItemClassification.progression_skip_balancing,                      True),
+    "Last Fracture":                 ItemData(1014,  ItemClassification.progression_skip_balancing,                      True),
+    "Clear Act 1":                   ItemData(1015,  ItemClassification.progression_skip_balancing,                      True),
+    "Clear Act 2":                   ItemData(1016,  ItemClassification.progression_skip_balancing,                      True),
 }
 
 glyphs_goals = {
-    "False Ending":                  ItemData(44,    ItemClassification.progression_skip_balancing,                      True),
-    "Good Ending":                   ItemData(45,    ItemClassification.progression_skip_balancing,                      True),
-    "True Ending":                   ItemData(46,    ItemClassification.progression_skip_balancing,                      True),
-    "Perfect Clarity":               ItemData(47,    ItemClassification.progression_skip_balancing,                      True),
-    "Smilemask Ending":              ItemData(48,    ItemClassification.progression_skip_balancing,                      True),
-    "Omnipotence Ending":            ItemData(49,    ItemClassification.progression_skip_balancing,                      True),
-    "Epilogue Ending":               ItemData(50,    ItemClassification.progression_skip_balancing,                      True),
+    "False Ending":                  ItemData(2000,    ItemClassification.progression_skip_balancing,                      True),
+    "Good Ending":                   ItemData(2001,    ItemClassification.progression_skip_balancing,                      True),
+    "True Ending":                   ItemData(2002,    ItemClassification.progression_skip_balancing,                      True),
+    "Perfect Clarity":               ItemData(2003,    ItemClassification.progression_skip_balancing,                      True),
+    "Smilemask Ending":              ItemData(2004,    ItemClassification.progression_skip_balancing,                      True),
+    "Omnipotence Ending":            ItemData(2005,    ItemClassification.progression_skip_balancing,                      True),
+    "Epilogue Ending":               ItemData(2006,    ItemClassification.progression_skip_balancing,                      True),
 }
 
-glyphs_chapters = {
-    "Menu":                          ItemData(51,    ItemClassification.progression,                                     True),    # using this as starting chapter to allow randomized starting spawns
-    "Region 1 - Central":            ItemData(52,    ItemClassification.progression,                                     True),
-    "Region 1 - Left":               ItemData(53,    ItemClassification.progression,                                     True),
-    "Region 1 - Upper Left":         ItemData(54,    ItemClassification.progression,                                     True),
-    "Region 1 - Upper Right":        ItemData(55,    ItemClassification.progression,                                     True),
-    "Region 2 - Left":               ItemData(56,    ItemClassification.progression,                                     True),
-    "Region 2 - Central":            ItemData(57,    ItemClassification.progression,                                     True),
-    "Region 2 - Sector 1":           ItemData(58,    ItemClassification.progression,                                     True),
-    "Region 2 - Sector 2":           ItemData(59,    ItemClassification.progression,                                     True),
-    "Region 2 - Sector 4":           ItemData(60,    ItemClassification.progression,                                     True),
-    "Region 2 - Sector 4 End":       ItemData(61,    ItemClassification.progression,                                     True),
-    "Region 2 - Lower":              ItemData(62,    ItemClassification.progression,                                     True),
-    "Region 2 - Serpent Upper":      ItemData(63,    ItemClassification.progression,                                     True),
-    "Region 2 - Serpent Lower":      ItemData(64,    ItemClassification.progression,                                     True),
-    "Region 2 - Shadow Chase":       ItemData(65,    ItemClassification.progression,                                     True),
-    "Region 3":                      ItemData(66,    ItemClassification.progression,                                     True),
-    "Region 4 - Entrance":           ItemData(67,    ItemClassification.progression,                                     True),
-    "Region 4 - Upper":              ItemData(68,    ItemClassification.progression,                                     True),
-    "Region 4 - Central":            ItemData(69,    ItemClassification.progression,                                     True),
-    "Region 4 - Lower":              ItemData(70,    ItemClassification.progression,                                     True),
-    "Collapse":                      ItemData(71,    ItemClassification.progression,                                     True),
-    "Smile Shop":                    ItemData(72,    ItemClassification.progression,                                     True),
-    "Dark Region":                   ItemData(73,    ItemClassification.progression,                                     True),
-    "The Between":                   ItemData(74,    ItemClassification.progression,                                     True),
-    "Act 1":                         ItemData(75,    ItemClassification.progression,                                     True),
-    "Act 2":                         ItemData(76,    ItemClassification.progression,                                     True),
-    "Act 3":                         ItemData(77,    ItemClassification.progression,                                     True),
-    "Epilogue":                      ItemData(78,    ItemClassification.progression,                                     True),
-}
-
-junk_items = {
-    # Junk Items
-    "HP Refill":                     ItemData(79,    ItemClassification.filler,                                          False,       0),
-
-    # Traps
-    "John Trap":                     ItemData(80,    ItemClassification.trap,                                            False,       0),
-    "Momentum Trap":                 ItemData(81,    ItemClassification.trap,                                            False,       0),
-    "Slow Trap":                     ItemData(82,    ItemClassification.trap,                                            False,       0),
-    "Screen Flip Trap":              ItemData(83,    ItemClassification.trap,                                            False,       0),
-    "Dash Trap":                     ItemData(84,    ItemClassification.trap,                                            False,       0),
+glyphs_regions = {
+    "Menu":                          ItemData(3000,    ItemClassification.progression,                                     True),    # using this as starting chapter to allow randomized starting spawns
+    "Region 1 - Central":            ItemData(3001,    ItemClassification.progression,                                     True),
+    "Region 1 - Left":               ItemData(3002,    ItemClassification.progression,                                     True),
+    "Region 1 - Upper Left":         ItemData(3003,    ItemClassification.progression,                                     True),
+    "Region 1 - Upper Right":        ItemData(3004,    ItemClassification.progression,                                     True),
+    "Region 2 - Left":               ItemData(3005,    ItemClassification.progression,                                     True),
+    "Region 2 - Central":            ItemData(3006,    ItemClassification.progression,                                     True),
+    "Region 2 - Sector 1":           ItemData(3007,    ItemClassification.progression,                                     True),
+    "Region 2 - Sector 2":           ItemData(3008,    ItemClassification.progression,                                     True),
+    "Region 2 - Sector 4":           ItemData(3009,    ItemClassification.progression,                                     True),
+    "Region 2 - Sector 4 End":       ItemData(3010,    ItemClassification.progression,                                     True),
+    "Region 2 - Lower":              ItemData(3011,    ItemClassification.progression,                                     True),
+    "Region 2 - Serpent Upper":      ItemData(3012,    ItemClassification.progression,                                     True),
+    "Region 2 - Serpent Lower":      ItemData(3013,    ItemClassification.progression,                                     True),
+    "Region 2 - Shadow Chase":       ItemData(3014,    ItemClassification.progression,                                     True),
+    "Region 3":                      ItemData(3015,    ItemClassification.progression,                                     True),
+    "Region 4 - Entrance":           ItemData(3016,    ItemClassification.progression,                                     True),
+    "Region 4 - Upper":              ItemData(3017,    ItemClassification.progression,                                     True),
+    "Region 4 - Central":            ItemData(3018,    ItemClassification.progression,                                     True),
+    "Region 4 - Lower":              ItemData(3019,    ItemClassification.progression,                                     True),
+    "Collapse":                      ItemData(3020,    ItemClassification.progression,                                     True),
+    "Smile Shop":                    ItemData(3021,    ItemClassification.progression,                                     True),
+    "Dark Region":                   ItemData(3022,    ItemClassification.progression,                                     True),
+    "The Between":                   ItemData(3023,    ItemClassification.progression,                                     True),
+    "Act 1":                         ItemData(3024,    ItemClassification.progression,                                     True),
+    "Act 2":                         ItemData(3025,    ItemClassification.progression,                                     True),
+    "Act 3":                         ItemData(3026,    ItemClassification.progression,                                     True),
+    "Epilogue":                      ItemData(3027,    ItemClassification.progression,                                     True),
 }
 
 item_table = {
     **glyphs_items,
     **glyphs_hats,
-    **glyphs_starting_items,
     **glyphs_events,
     **glyphs_goals,
-    **glyphs_chapters,
+    **glyphs_regions,
     **junk_items
 }
