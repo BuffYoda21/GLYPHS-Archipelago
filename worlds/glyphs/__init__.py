@@ -75,6 +75,7 @@ class GlyphsWorld(World):
             "options": {
                 "Goal":                    self.options.Goal.value,
                 #"Multiplayer":             self.options.Multiplayer.value,
+                "DeathLink":               self.options.DeathLink.value,
                 "WizardRequirements":      self.options.WizardRequirements.value,
                 "WraithRequirements":      self.options.WraithRequirements.value,
                 "WraithSilverCount":       self.options.WraithSilverCount.value,
