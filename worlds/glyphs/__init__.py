@@ -43,16 +43,16 @@ class GlyphsWorld(World):
 
     def generate_early(self):
         starting_chapter = "Menu"
-        self.multiworld.push_precollected(GlyphsItem(starting_chapter, ItemClassification.progression, None, self.player))
-        self.multiworld.push_precollected(GlyphsItem("Map", ItemClassification.progression | ItemClassification.useful, 3, self.player))
+        self.multiworld.push_precollected(create_item(self, starting_chapter))
+        self.multiworld.push_precollected(create_item(self, "Map"))
         if self.options.StartingSword.value:
-            self.multiworld.push_precollected(GlyphsItem("Progressive Sword", ItemClassification.progression | ItemClassification.useful, 1, self.player))
+            self.multiworld.push_precollected(create_item(self, "Progressive Sword"))
         if self.options.StartingDash.value:
-            self.multiworld.push_precollected(GlyphsItem("Progressive Dash Orb", ItemClassification.progression | ItemClassification.useful, 2, self.player))
+            self.multiworld.push_precollected(create_item(self, "Progressive Dash Orb"))
         if not self.options.HatShuffle.value:
             for item_name, item_data in glyphs_hats.items():
                 for _ in range(item_data.count or 1):
-                    self.multiworld.push_precollected(GlyphsItem(item_name, item_data.classification, item_data.ap_code, self.player))
+                    self.multiworld.push_precollected(create_item(self, item_name))
     
     def set_rules(self):
         set_rules(self)
