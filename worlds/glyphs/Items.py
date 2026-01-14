@@ -129,7 +129,7 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
                 trap_list[name] = 30
                 
     for i in range(count):
-        if not world.options.EnableTraps.value:
+        if not world.options.EnableTraps.value or not world.options.TrapTypes.value:
             junk_pool.append(world.create_item(
                 world.random.choices(list(junk_list.keys()), weights=list(junk_list.values()), k=1)[0]))
             continue
