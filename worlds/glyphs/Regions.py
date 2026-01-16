@@ -8,28 +8,52 @@ if TYPE_CHECKING:
 
 def create_regions(world: "GlyphsWorld"):
     create_region(world, "Menu")
-    create_region(world, "Region 1 - Upper Left")
-    create_region(world, "Region 1 - Central")
-    create_region(world, "Region 1 - Left")
-    create_region(world, "Region 1 - Upper Right")
-    create_region(world, "Region 2 - Left")
-    create_region(world, "Region 2 - Central")
-    create_region(world, "Region 2 - Sector 1")
-    create_region(world, "Region 2 - Sector 2")
-    create_region(world, "Region 2 - Sector 4")
-    create_region(world, "Region 2 - Sector 4 End")
-    create_region(world, "Region 2 - Serpent Upper")
-    create_region(world, "Region 2 - Serpent Lower")
-    create_region(world, "Region 2 - Lower")
-    create_region(world, "Region 2 - Shadow Chase")
-    create_region(world, "Region 3")
-    create_region(world, "Region 4 - Entrance")
-    create_region(world, "Region 4 - Upper")
-    create_region(world, "Region 4 - Central")
-    create_region(world, "Region 4 - Lower")
+    create_region(world, "Region 1A")
+    create_region(world, "Region 1B")
+    create_region(world, "Region 1C")
+    create_region(world, "Region 1D")
+    create_region(world, "Region 1E")
+    create_region(world, "Region 1F")
+    create_region(world, "Region 2A")
+    create_region(world, "Region 2B")
+    create_region(world, "Region 2C")
+    create_region(world, "Region 2D")
+    create_region(world, "Region 2E")
+    create_region(world, "Region 2F")
+    create_region(world, "Region 2G")
+    create_region(world, "Region 2H")
+    create_region(world, "Region 2I")
+    create_region(world, "Region 2J")
+    create_region(world, "Region 2K")
+    create_region(world, "Region 2L")
+    create_region(world, "Region 2M")
+    create_region(world, "Region 2N")
+    create_region(world, "Region 2O")
+    create_region(world, "Region 2P")
+    create_region(world, "Region 2Q")
+    create_region(world, "Region 3A")
+    create_region(world, "Region 3B")
+    create_region(world, "Region 3C")
+    create_region(world, "Region 3D")
+    create_region(world, "Region 3E")
+    create_region(world, "Region 3F")
+    create_region(world, "Region 3G")
+    create_region(world, "Region 3H")
+    create_region(world, "Region 3I")
+    create_region(world, "Region 4A")
+    create_region(world, "Region 4B")
+    create_region(world, "Region 4C")
+    create_region(world, "Region 4D")
+    create_region(world, "Region 4E")
+    create_region(world, "Region 4F")
+    create_region(world, "Region 4G")
+    create_region(world, "Region 4H")
+    create_region(world, "Region 4I")
+    create_region(world, "Region 4J")
     create_region(world, "Collapse")
     create_region(world, "Smile Shop")
-    create_region(world, "Dark Region")
+    create_region(world, "Dark Region A")
+    create_region(world, "Dark Region B")
     create_region(world, "The Between")
     create_region(world, "Act 1")
     create_region(world, "Act 2")
@@ -37,25 +61,25 @@ def create_regions(world: "GlyphsWorld"):
     create_region(world, "Epilogue")
 
 event_locations = {
-    "Defeat Runic Construct":                "Region 1 - Central",
-    "Stalker Sigil 1":                       "Region 1 - Central",
-    "Serpent Lock 1":                        "Region 2 - Sector 1",
-    "Serpent Lock 2":                        "Region 2 - Sector 2",
-    "Serpent Lock 3":                        "Region 2 - Sector 4 End",
-    "Defeat Gilded Serpent":                 "Region 2 - Serpent Upper",
-    "Stalker Sigil 2":                       "Region 2 - Serpent Lower",
-    "Stalker Sigil 3":                       "Region 2 - Sector 4",
-    "Solve Flower Puzzle":                   "Region 2 - Sector 4 End",
-    "Collapse Unlock":                       "Region 3",
-    "Wizard True Defeat":                    "Region 3",
-    "Defeat Spearman":                       "Region 4 - Entrance",
-    "Good Ending":                           "Region 4 - Lower",
-    "Last Fracture":                         "Region 4 - Lower",
+    "Defeat Runic Construct":                "Region 1E",
+    "Stalker Sigil 1":                       "Region 1E",
+    "Serpent Lock 1":                        "Region 2E",
+    "Serpent Lock 2":                        "Region 2H",
+    "Serpent Lock 3":                        "Region 2M",
+    "Defeat Gilded Serpent":                 "Region 2N",
+    "Stalker Sigil 2":                       "Region 2O",
+    "Stalker Sigil 3":                       "Region 2L",
+    "Solve Flower Puzzle":                   "Region 2M",
+    "Collapse Unlock":                       "Region 3E",
+    "Wizard True Defeat":                    "Region 3E",
+    "Defeat Spearman":                       "Region 4B",
+    "Good Ending":                           "Region 4I",
+    "Last Fracture":                         "Region 4I",
     "False Ending":                          "Collapse",
     "Smilemask Ending":                      "Smile Shop",
-    "Defeat Null":                           "Dark Region",
-    "Clarity":                               "Dark Region",
-    "Perfect Clarity":                       "Dark Region",
+    "Defeat Null":                           "Dark Region A",
+    "Clarity":                               "Dark Region B",
+    "Perfect Clarity":                       "Dark Region B",
     "Omnipotence Ending":                    "Act 1",
     "Clear Act 1":                           "Act 1",
     "Clear Act 2":                           "Act 2",
