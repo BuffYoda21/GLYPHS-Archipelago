@@ -185,7 +185,6 @@ class DashPuzzlesSolved(Toggle):
 #     """
 #     display_name = "Multiplayer Cheeses in Logic"
 
-# Lol this is only used in one location
 class LogicalWallJumps(Toggle):
     """
     Considers skips utilizing wall jumps in logic.
@@ -193,12 +192,19 @@ class LogicalWallJumps(Toggle):
     display_name = "Wall Jumps in Logic"
     default = False
 
-#class LogicalWallJumpChains(Toggle):
-#    """
-#    Considers skips that require multiple consecutive wall jumps in logic.
-#    Does nothing if "Wall Jumps in Logic" is not enabled.
-#    """
-#    display_name = "Wall Jump Chains in Logic"
+class LogicalWallJumpChains(Toggle):
+    """
+    Considers skips that require multiple consecutive wall jumps (2-3) in logic.
+    Does nothing if "Wall Jumps in Logic" is not enabled.
+    """
+    display_name = "Wall Jump Chains in Logic"
+
+class FlowerPuzzleSkips(Toggle):
+    """
+    Considers skips utilizing the flower puzzle in logic.
+    """
+    display_name = "Flower Puzzle in Logic"
+    default = False
 
 
 
@@ -306,7 +312,8 @@ class GlyphsOptions(PerGameCommonOptions):
   # BulletCombat:           BulletCombat
     DashPuzzlesSolved:      DashPuzzlesSolved
     LogicalWallJumps:       LogicalWallJumps
-  # LogicalWallJumpChains:  LogicalWallJumpChains
+    LogicalWallJumpChains:  LogicalWallJumpChains
+    FlowerPuzzleSkips:      FlowerPuzzleSkips
 
     # Open Settings
     WizardRequirements:     WizardRequirements
@@ -320,6 +327,6 @@ class GlyphsOptions(PerGameCommonOptions):
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, StartingDash, DeathLink],
     "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
-    "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps],
+    "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps, LogicalWallJumpChains, FlowerPuzzleSkips],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
