@@ -151,12 +151,12 @@ glyphs_items = {
     "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        0),     # decided to make this a starting item
     "Grapple":                       ItemData(4,     ItemClassification.progression | ItemClassification.useful,         True,        1),
     "Progressive Parry":             ItemData(5,     ItemClassification.progression | ItemClassification.useful,         True,        2),
-    "Shroud":                        ItemData(6,     ItemClassification.progression | ItemClassification.useful,         False,       1),
-    "Progressive Essence of George": ItemData(7,     ItemClassification.progression | ItemClassification.useful,         False,       2),
+    "Shroud":                        ItemData(6,     ItemClassification.progression | ItemClassification.useful,         True,       1),
+    "Progressive Essence of George": ItemData(7,     ItemClassification.progression | ItemClassification.useful,         True,       2),
 
     # Collectables
     "Silver Shard":                  ItemData(8,     ItemClassification.progression_skip_balancing,                      True,        15),
-    "Gold Shard":                    ItemData(9,     ItemClassification.progression | ItemClassification.useful,         False,       3),
+    "Gold Shard":                    ItemData(9,     ItemClassification.progression,                                     True,       3),
     "Smile Token":                   ItemData(10,    ItemClassification.progression_skip_balancing,                      True,        10),
     "Rune Cube":                     ItemData(11,    ItemClassification.progression,                                     True,        3),
     "Void Gate Shard":               ItemData(12,    ItemClassification.progression_skip_balancing,                      True,        7),
@@ -187,6 +187,13 @@ junk_items = {
     "Slow Trap":                     ItemData(30,    ItemClassification.trap,                                            False,       0),
     "Screen Flip Trap":              ItemData(31,    ItemClassification.trap,                                            False,       0),
     "Dash Trap":                     ItemData(32,    ItemClassification.trap,                                            False,       0),
+}
+
+glyphs_gimmicks = {
+    "Bounce Pads":                   ItemData(33,    ItemClassification.progression,                                     True,        1),
+    "Ice":                           ItemData(34,    ItemClassification.progression,                                     True,        1),
+    "Sliding Platforms":             ItemData(35,    ItemClassification.progression,                                     True,        1),
+    "Breakable Platforms":           ItemData(36,    ItemClassification.progression,                                     True,        1),
 }
 
 glyphs_events = {
@@ -281,5 +288,6 @@ item_table = {
     **glyphs_events,
     **glyphs_goals,
     **glyphs_regions,
-    **junk_items
+    **junk_items,
+    **glyphs_gimmicks
 }

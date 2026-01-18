@@ -142,3 +142,8 @@ def can_access_all_silver_shards(state: CollectionState, player: int) -> bool:
         state.can_reach_location("(R3) Silver Shard Puzzle 14 - Grapple", player) and
         state.can_reach_location("(R2) Silver Shard Puzzle 15 - Escape Serpent", player)
     )
+
+def unlocked_gimmick(gimmick: str, state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
+    if not gimmick in world.options.GimmickRando.value:
+        return True
+    return state.has(gimmick, player)

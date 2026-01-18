@@ -132,13 +132,7 @@ class TrapTypes(OptionSet):
         "Screen Flip Trap",
         "Dash Trap",
     }
-    default = {
-        "Momentum Trap",
-        "John Trap",
-        "Slow Trap",
-        "Screen Flip Trap",
-        "Dash Trap",
-    }
+    default = valid_keys
 
 class HatShuffle(Toggle):
     """
@@ -149,6 +143,22 @@ class HatShuffle(Toggle):
     display_name = "Shuffle Hats"
     default = True
 
+class GimmickRando(OptionSet):
+    """
+    Disables various gimmicks until they are unlocked.
+    Bounce Pads: Bounce pads are no longer bouncy until unlocked
+    Ice: Touching ice will act like touching a pink spike until unlocked
+    Sliding Platforms: Sliding platforms will be stationary until unlocked
+    Breakable Platforms: Breakable platforms will not exist until unlocked
+    """
+    display_name = "Gimmick Rando"
+    valid_keys = {
+        "Bounce Pads",
+        "Ice",
+        "Sliding Platforms",
+        "Breakable Platforms",
+    }
+    default = valid_keys
 
 
 # Logical Options
@@ -307,6 +317,7 @@ class GlyphsOptions(PerGameCommonOptions):
     EnableTraps:            EnableTraps
     TrapTypes:              TrapTypes
     HatShuffle:             HatShuffle
+    GimmickRando:           GimmickRando
 
     # Logical Options
     SwordlessCombat:        SwordlessCombat
@@ -327,7 +338,7 @@ class GlyphsOptions(PerGameCommonOptions):
 
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, StartingDash, DeathLink],
-    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
+    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle, GimmickRando],
     "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps, FlowerPuzzleSkips],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
