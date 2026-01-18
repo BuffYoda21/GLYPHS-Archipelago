@@ -19,8 +19,9 @@ def can_dash_attack(state: CollectionState, player: int) -> bool:
 def can_wall_jump(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
     return can_dash(state, player) and world.options.LogicalWallJumps.value
 
-def can_chain_wall_jumps(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return can_wall_jump(state, player, world) and world.options.LogicalWallJumpChains.value
+## Logically will never be needed
+# def can_chain_wall_jumps(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
+#     return can_wall_jump(state, player, world) and world.options.LogicalWallJumpChains.value
 
 def can_press_green_buttons(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Sword", player, 1) or state.has("Progressive Dash Orb", player, 2)

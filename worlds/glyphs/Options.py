@@ -192,12 +192,13 @@ class LogicalWallJumps(Toggle):
     display_name = "Wall Jumps in Logic"
     default = False
 
-class LogicalWallJumpChains(Toggle):
-    """
-    Considers skips that require multiple consecutive wall jumps (2-3) in logic.
-    Does nothing if "Wall Jumps in Logic" is not enabled.
-    """
-    display_name = "Wall Jump Chains in Logic"
+## Logically will never be needed
+# class LogicalWallJumpChains(Toggle):
+#    """
+#    Considers skips that require multiple consecutive wall jumps (2-3) in logic.
+#    Does nothing if "Wall Jumps in Logic" is not enabled.
+#    """
+#    display_name = "Wall Jump Chains in Logic"
 
 class FlowerPuzzleSkips(Toggle):
     """
@@ -312,7 +313,7 @@ class GlyphsOptions(PerGameCommonOptions):
   # BulletCombat:           BulletCombat
     DashPuzzlesSolved:      DashPuzzlesSolved
     LogicalWallJumps:       LogicalWallJumps
-    LogicalWallJumpChains:  LogicalWallJumpChains
+  # LogicalWallJumpChains:  LogicalWallJumpChains
     FlowerPuzzleSkips:      FlowerPuzzleSkips
 
     # Open Settings
@@ -327,6 +328,6 @@ class GlyphsOptions(PerGameCommonOptions):
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, StartingDash, DeathLink],
     "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
-    "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps, LogicalWallJumpChains, FlowerPuzzleSkips],
+    "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps, FlowerPuzzleSkips],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
