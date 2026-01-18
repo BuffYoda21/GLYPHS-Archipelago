@@ -46,7 +46,7 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Region 2G",       "Region 2O",            lambda state: can_start_flower_puzzle(state, player)    and world.options.FlowerPuzzleSkips.value   and can_press_green_buttons(state, player))
     connect_areas(world, "Region 2I",       "Region 2H",            lambda state: can_dash(state, player)                   and can_press_green_buttons(state, player))
     connect_areas(world, "Region 2I",       "Region 2J",            lambda state: can_dash(state, player)                   and can_press_green_buttons(state, player)  or can_wall_jump(state, player, world))
-    connect_areas(world, "Region 2J",       "Region 2I",            lambda state: can_chain_wall_jumps(state, player, world))
+  # connect_areas(world, "Region 2J",       "Region 2I",            lambda state: can_chain_wall_jumps(state, player, world))   # logically will never be needed without save button sanity
     connect_areas(world, "Region 2J",       "Region 2K",            lambda state: shadow_chase_open(state, player))
     connect_areas(world, "Region 2L",       "Region 2M",            lambda state: can_dash(state, player))
     connect_areas(world, "Region 2L",       "Region 4A",            lambda state: wizard_true_defeat(state, player))
