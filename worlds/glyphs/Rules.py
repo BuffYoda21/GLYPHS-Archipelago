@@ -3,6 +3,8 @@ from BaseClasses import Entrance, CollectionState
 from worlds.generic.Rules import set_rule
 from typing import TYPE_CHECKING
 from worlds.glyphs.Macros import *
+from worlds.glyphs.Items import save_button_shards
+from worlds.glyphs.Locations import save_buttons
 
 if TYPE_CHECKING:
     from . import GlyphsWorld
@@ -13,7 +15,8 @@ def connect_entrances(world: "GlyphsWorld"):
 
     # Region Access
     # ----------------------from----------------to---------------------------------------------conditions--------------------------------
-    connect_areas(world, "Menu",            "Region 1A",            lambda state: True)
+    if not world.options.SaveButtonSanity.value:
+        connect_areas(world, "Menu",            "Region 1A",            lambda state: True)
     connect_areas(world, "Region 1A",       "Region 1C",            lambda state: True)
     connect_areas(world, "Region 1A",       "Region 1F",            lambda state: can_dash(state, player))
     connect_areas(world, "Region 1B",       "Region 1C",            lambda state: can_dash(state, player))
@@ -35,7 +38,7 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Region 2B",       "Region 2N",            lambda state: serpent_door_open(state, player))
     connect_areas(world, "Region 2B",       "The Between",          lambda state: can_dash(state, player))
     connect_areas(world, "Region 2C",       "Region 2D",            lambda state: True)
-    connect_areas(world, "Region 2D",       "Region 2C",            lambda state: True) # needs to change when save button sanity is implemented
+    connect_areas(world, "Region 2D",       "Region 2C",            lambda state: not world.options.SaveButtonSanity.value  or state.has("Silver Shard 4 Save Button", player))
   # connect_areas(world, "Region 2E",       "Region 2B",            lambda state: True) # this actually doesnt work since the path is blocked off from this angle if you havn't visited the region before
     connect_areas(world, "Region 2E",       "Region 2D",            lambda state: can_dash(state, player)                   and can_press_green_buttons(state, player))
     connect_areas(world, "Region 2E",       "Region 2G",            lambda state: can_dash(state, player)                   and can_press_green_buttons(state, player))
@@ -72,6 +75,7 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Region 4C",       "Region 4D",            lambda state: can_dash_attack(state, player)            and has_grapple(state, player)              and can_parry(state, player))
     connect_areas(world, "Region 4D",       "Region 4E",            lambda state: can_dash(state, player))
     connect_areas(world, "Region 4D",       "Region 4G",            lambda state: can_dash(state, player)                   and has_grapple(state, player)              and can_parry(state, player)                    and can_press_green_buttons(state, player))
+    connect_areas(world, "Region 4F",       "Region 4G",            lambda state: state.has("Region 4 Save 3 - Bottom Right", player))
     connect_areas(world, "Region 4G",       "Region 4F",            lambda state: True)
     connect_areas(world, "Region 4G",       "Region 4H",            lambda state: can_dash(state, player)                   and has_grapple(state, player)              and can_parry(state, player)                    and can_press_green_buttons(state, player))
     connect_areas(world, "Region 4H",       "Region 4I",            lambda state: can_dash(state, player)                   and has_grapple(state, player)              and can_parry(state, player))
@@ -84,6 +88,13 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Menu",            "Act 2",                lambda state: act_2_available(state, player))
     connect_areas(world, "Menu",            "Act 3",                lambda state: act_3_available(state, player))
     connect_areas(world, "Act 1",           "Epilogue",             lambda state: can_dash(state, player)                   and state.has("Shroud", player))
+
+    if world.options.SaveButtonSanity.value:
+        for item_name in save_button_shards:
+            for location_name in save_buttons:
+                if location_name.endswith(item_name):
+                    region = save_buttons[location_name].region
+                    connect_areas(world, "Menu", region, lambda state, name=item_name: state.has(name, world.player))
 
 
 def set_rules(world: "GlyphsWorld"):
@@ -104,7 +115,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "Defeat Gilded Serpent",                            lambda state: can_dash(state, player)                     and can_fight(state, player, world))
     set_rule_from_string(world, "Stalker Sigil 2",                                  lambda state: stalker_sigils_present(state, player))
     set_rule_from_string(world, "Stalker Sigil 3",                                  lambda state: stalker_sigils_present(state, player))
-    set_rule_from_string(world, "Solve Flower Puzzle",                              lambda state: can_solve_flower_puzzle(state, player))
+    set_rule_from_string(world, "Solve Flower Puzzle",                              lambda state: can_solve_flower_puzzle(state, player)      and (not world.options.SaveButtonSanity.value       or state.has("Region 4 Save 2 - Central Area", player)))
     set_rule_from_string(world, "Collapse Unlock",                                  lambda state: can_dash(state, player)                     and wizard_fight_available(state, player, world)    and can_fight(state, player, world)                       and has_grapple(state, player))
     set_rule_from_string(world, "Wizard True Defeat",                               lambda state: can_dash_attack(state, player)              and wizard_fight_available(state, player, world)    and can_fight(state, player, world)                       and has_grapple(state, player))
     set_rule_from_string(world, "Defeat Spearman",                                  lambda state: can_dash_attack(state, player)              and can_fight(state, player, world))
@@ -114,7 +125,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "Smilemask Ending",                                 lambda state: state.has("Smile Token", player, 10))
     set_rule_from_string(world, "Defeat Null",                                      lambda state: can_dash_attack(state, player)              and has_grapple(state, player)                      and has_sword(state, player))
     set_rule_from_string(world, "Clarity",                                          lambda state: state.has("Rune Cube", player, 3))
-    set_rule_from_string(world, "Perfect Clarity",                                  lambda state: state.has("Rune Cube", player, 3)           and (state.has("Shroud", player)                    or state.has("Progressive Essence of George", player)))
+    set_rule_from_string(world, "Perfect Clarity",                                  lambda state: state.has("Rune Cube", player, 3)           and (state.has("Shroud", player)                    or state.has("Progressive Essence of George", player      or (world.options.SaveButtonSanity.value                    and state.has("Clarity Altar Save Button", player)))))
     set_rule_from_string(world, "Omnipotence Ending",                               lambda state: can_dash(state, player)                     and void_gate_open(state, player))
     set_rule_from_string(world, "Clear Act 1",                                      lambda state: void_gate_open(state, player)               and can_dash_attack(state, player)                  and has_grapple(state, player)                             and state.has("Shroud", player))
     set_rule_from_string(world, "Clear Act 2",                                      lambda state: has_sword(state, player)                    and can_dash_attack(state, player)                  and (state.has("Shroud", player)                           or state.has("Progressive Essence of George", player, 1))  and has_grapple(state, player)              and can_parry(state, player)    and state.has("Gold Shard", player, 1))
@@ -122,11 +133,10 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "Epilogue Ending",                                  lambda state: can_dash(state, player)                     and has_grapple(state, player)                      and state.has("Shroud", player)                            and state.has("Progressive Essence of George", player, 1))
 
     # Region 1
-    set_rule_from_string(world, "(R1) Starting Item",                               lambda state: True)
     set_rule_from_string(world, "(R1) Sword Pedestal",                              lambda state: True)
     set_rule_from_string(world, "(R1) Runic Construct Reward",                      lambda state: defeated_runic_construct(state, player))
     set_rule_from_string(world, "(R1) Map Pedestal",                                lambda state: can_dash(state, player))
-    set_rule_from_string(world, "(R1) Silver Shard Puzzle 1 - Map",                 lambda state: can_dash(state, player))
+    set_rule_from_string(world, "(R1) Silver Shard Puzzle 1 - Map",                 lambda state: can_dash(state, player)                   and (not world.options.SaveButtonSanity.value         or state.has("Region 1 Save 3 - Map", player)))
     set_rule_from_string(world, "(R1) Silver Shard Puzzle 2 - Grapple",             lambda state: can_dash(state, player)                   and has_grapple(state, player))
     set_rule_from_string(world, "(R1) Silver Shard Puzzle 3 - Spike Tunnel",        lambda state: can_dash(state, player))
     set_rule_from_string(world, "(R1) Smile Token Puzzle 1 - Hidden Bounce Pad",    lambda state: can_dash(state, player)                   and has_grapple(state, player))
@@ -144,7 +154,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "(R2) Silver Shard Puzzle 9 - Color Dash Puzzle",   lambda state: can_dash(state, player)                   and (options.DashPuzzlesSolved.value                or state.can_reach_location("(R1) Color Cypher Room Pickup", player)))
     set_rule_from_string(world, "(R2) Silver Shard Puzzle 15 - Escape Serpent",     lambda state: can_dash(state, player)                   and can_press_green_buttons(state, player)          and (defeated_gilded_serpent(state, player)                             or can_fight(state, player, world)))
     set_rule_from_string(world, "(R2S2) Smile Token Puzzle 3 - Car Hall",           lambda state: can_dash(state, player))
-    set_rule_from_string(world, "(R2) Smile Token Puzzle 6 - Above Serpent",        lambda state: can_dash(state, player)                   and defeated_gilded_serpent(state, player))
+    set_rule_from_string(world, "(R2) Smile Token Puzzle 6 - Above Serpent",        lambda state: can_dash(state, player)                   and defeated_gilded_serpent(state, player)          and (not world.options.SaveButtonSanity.value                           or state.has("Region 2 Save 10 - Above Serpent", player)))
     set_rule_from_string(world, "(R2S1) Smile Token Puzzle 8 - Erosion",            lambda state: can_dash(state, player))
     set_rule_from_string(world, "(R2S2) Smile Token Puzzle 10 - Chaos",             lambda state: can_dash_attack(state, player)            and can_parry(state, player)                        and has_grapple(state, player))
     set_rule_from_string(world, "(R2) Gilded Serpent Reward",                       lambda state: True)
@@ -175,17 +185,17 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "(R3) Smile Token Puzzle 7 - No Dash",              lambda state: can_dash(state, player)                   and has_grapple(state, player)                      and can_press_green_buttons(state, player))
     set_rule_from_string(world, "(R3) Wizard Reward",                               lambda state: collapse_available(state, player)         and can_dash(state, player))
     set_rule_from_string(world, "(R3) Room Below Wizard Pickup",                    lambda state: can_dash(state, player)                   and has_grapple(state, player))
-    set_rule_from_string(world, "(R3) Master Puzzle 3 - Counters",                  lambda state: can_dash_attack(state, player)            and has_grapple(state, player)                      and has_sword(state, player))
+    set_rule_from_string(world, "(R3) Master Puzzle 3 - Counters",                  lambda state: can_dash_attack(state, player)            and has_grapple(state, player)                      and has_sword(state, player)                                            and (not world.options.SaveButtonSanity.value               or state.has("Region 3 Red Save 2", player)))
     
 
     # Region 4
     set_rule_from_string(world, "(R4) Spearman Reward",                             lambda state: True)
     set_rule_from_string(world, "(R4) Multiparry Gold Shard Puzzle",                lambda state: can_dash(state, player)                     and has_grapple(state, player)                    and can_parry(state, player))
     set_rule_from_string(world, "(R4) Platforming Gold Shard Room",                 lambda state: can_dash(state, player)                     and has_grapple(state, player)                    and can_parry(state, player)                                            and has_sword(state, player))
-    set_rule_from_string(world, "(R4) Flower Puzzle Reward",                        lambda state: can_solve_flower_puzzle(state, player))
+    set_rule_from_string(world, "(R4) Flower Puzzle Reward",                        lambda state: can_solve_flower_puzzle(state, player)      and (not world.options.SaveButtonSanity.value     or state.has("Flower Room Save Button", player)))
     set_rule_from_string(world, "(R4) Smile Token Puzzle 4 - Multiparry",           lambda state: can_dash(state, player)                     and has_grapple(state, player)                    and can_parry(state, player))
     set_rule_from_string(world, "(R4) Smile Token Puzzle 5 - Entrance",             lambda state: can_dash(state, player))
-    set_rule_from_string(world, "(R4) Rosetta Stone Pickup",                        lambda state: can_dash(state, player))
+    set_rule_from_string(world, "(R4) Rosetta Stone Pickup",                        lambda state: can_dash(state, player)                     and (not world.options.SaveButtonSanity.value     or state.has("Region 4 Save 2 - Central Area", player)))
     set_rule_from_string(world, "(R4) Long Parry Platforming Room Pickup",          lambda state: can_dash(state, player)                     and has_grapple(state, player)                    and can_parry(state, player)                                            and can_press_green_buttons(state, player))
 
 
@@ -239,6 +249,8 @@ def set_rules(world: "GlyphsWorld"):
     # Act 3
     set_rule_from_string(world, "(Void 3) Preminition Reward",                      lambda state: True)
 
+    # All save buttons should have no access rules since they all are also entrances to their respective regions
+
     # Victory condition rule!
     victory: lambda state: False
     if options.Goal.value == options.Goal.option_false_ending:
@@ -258,7 +270,31 @@ def set_rules(world: "GlyphsWorld"):
 def connect_areas(world: "GlyphsWorld", source: str, target: str, rule=None) -> Entrance:
     sourceRegion = world.get_region(source)
     targetRegion = world.get_region(target)
-    return sourceRegion.connect(targetRegion, rule=rule)
+    existing_entrance = None
+
+    for entrance in sourceRegion.exits:
+        if entrance.connected_region == targetRegion:
+            existing_entrance = entrance
+            break
+    
+    if existing_entrance is not None:
+        old_rule = existing_entrance.access_rule
+        
+        if rule is None:
+            existing_entrance.access_rule = lambda state: True
+        elif old_rule is None:
+            pass
+        else:
+            existing_entrance.access_rule = lambda state: old_rule(state) or rule(state)
+
+        return existing_entrance
+    else:
+        # standard behavior fallback
+        return sourceRegion.connect(targetRegion, rule=rule)
 
 def set_rule_from_string(world: "GlyphsWorld", location_name: str, rule=None) -> None:
     set_rule(world.get_location(location_name), rule=rule)
+
+def create_warp_point(world: "GlyphsWorld", item_name: str, region_name: str) -> None:
+    print(f"Creating warp: {item_name} -> {region_name}")
+    connect_areas(world, "Menu", region_name, lambda state: state.has(item_name, world.player))

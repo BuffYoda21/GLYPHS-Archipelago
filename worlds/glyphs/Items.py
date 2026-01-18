@@ -44,6 +44,13 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
         for item_name, item_data in glyphs_hats.items():
             for _ in range(item_data.count or 1):
                 itempool.append(create_item(world, item_name))
+    
+    if world.options.SaveButtonSanity.value:
+        for item_name, item_data in save_button_shards.items():
+            for _ in range(item_data.count or 1):
+                if item_name == world.starting_save_button:
+                    continue
+                itempool.append(create_item(world, item_name))
         
     place_event_items(world)
     place_goals(world)
@@ -189,6 +196,45 @@ junk_items = {
     "Dash Trap":                     ItemData(32,    ItemClassification.trap,                                            False,       0),
 }
 
+save_button_shards = {
+    "Region 1 Save 1 - Entrance":                   ItemData(33,    ItemClassification.progression,                                     True),
+    "Region 1 Save 2 - Construct":                  ItemData(34,    ItemClassification.progression,                                     True),
+    "Region 1 Save 3 - Map":                        ItemData(35,    ItemClassification.progression,                                     True),
+    "Region 1 Save 4 - Region 2 Gate":              ItemData(36,    ItemClassification.progression,                                     True),
+    "Region 2 Save 1 - Region 2 Gate":              ItemData(37,    ItemClassification.progression,                                     True),
+    "Region 2 Save 2 - Central Area":               ItemData(38,    ItemClassification.progression,                                     True),
+    "Region 2 Save 3 - Serpent Gate":               ItemData(39,    ItemClassification.progression,                                     True),
+    "Silver Shard 4 Save Button":                   ItemData(40,    ItemClassification.progression,                                     True),
+    "Region 2 Save 4 - Near Serpent Lock 1":        ItemData(41,    ItemClassification.progression,                                     True),
+    "Region 2 Save 5 - Below Smile Shop Entrance":  ItemData(42,    ItemClassification.progression,                                     True),
+    "Smile Shop Entrance Save Button":              ItemData(43,    ItemClassification.progression,                                     True),
+    "Region 2 Save 6 - Near Serpent Lock 2":        ItemData(44,    ItemClassification.progression,                                     True),
+    "Region 2 Save 7 - Near Stalker Door":          ItemData(45,    ItemClassification.progression,                                     True),
+    "Stalker Door Save Button":                     ItemData(46,    ItemClassification.progression,                                     True),
+    "Region 2 Save 8 - Near Collapsed Tunnel":      ItemData(47,    ItemClassification.progression,                                     True),
+    "Region 2 Save 9 - Near Serpent Lock 3":        ItemData(48,    ItemClassification.progression,                                     True),
+    "Region 2 Save 10 - Above Serpent":             ItemData(49,    ItemClassification.progression,                                     True),
+    "Region 2 Save 11 - After Serpent":             ItemData(50,    ItemClassification.progression,                                     True),
+    "Region 2 Save 12 - Before Long Fall":          ItemData(51,    ItemClassification.progression,                                     True),
+    "Region 3 Crossroads Save":                     ItemData(52,    ItemClassification.progression,                                     True),
+    "Region 3 Green Save 1":                        ItemData(53,    ItemClassification.progression,                                     True),
+    "Region 3 Green Save 2":                        ItemData(54,    ItemClassification.progression,                                     True),
+    "Region 3 Green Save 3":                        ItemData(55,    ItemClassification.progression,                                     True),
+    "Region 3 Red Save 1":                          ItemData(56,    ItemClassification.progression,                                     True),
+    "Region 3 Red Save 2":                          ItemData(57,    ItemClassification.progression,                                     True),
+    "Region 3 Blue Save 1":                         ItemData(58,    ItemClassification.progression,                                     True),
+    "Region 3 Blue Save 2":                         ItemData(59,    ItemClassification.progression,                                     True),
+    "Region 3 Blue Save 3":                         ItemData(60,    ItemClassification.progression,                                     True),
+    "Region 4 Save 1 - Before Spearman":            ItemData(61,    ItemClassification.progression,                                     True),
+    "Region 4 Save 2 - Central Area":               ItemData(62,    ItemClassification.progression,                                     True),
+    "Flower Room Save Button":                      ItemData(63,    ItemClassification.progression,                                     True),
+    "Region 4 Save 3 - Bottom Right":               ItemData(64,    ItemClassification.progression,                                     True),
+    "Region 4 Save 4 - The Gate":                   ItemData(65,    ItemClassification.progression,                                     True),
+    "Primary Glyph Save Button":                    ItemData(66,    ItemClassification.progression,                                     True),
+    "Clarity Altar Save Button":                    ItemData(67,    ItemClassification.progression,                                     True),
+    "Between Save Button":                          ItemData(68,    ItemClassification.progression,                                     True),
+}
+
 glyphs_events = {
     "Defeat Runic Construct":        ItemData(1000,  ItemClassification.progression_skip_balancing,                      True),
     "Defeat Gilded Serpent":         ItemData(1001,  ItemClassification.progression_skip_balancing,                      True),
@@ -281,5 +327,11 @@ item_table = {
     **glyphs_events,
     **glyphs_goals,
     **glyphs_regions,
-    **junk_items
+    **junk_items,
+    **save_button_shards,
+}
+
+# needed since these starting locations commonly cause restrictive starts and cause the multiworld to fail generation
+invalid_starting_save_buttons = {
+
 }

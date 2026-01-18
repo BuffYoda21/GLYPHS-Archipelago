@@ -6,7 +6,7 @@ from typing import Dict, TextIO
 from worlds.glyphs.SmileShopRando import get_shop_prices
 from worlds.glyphs.Types import GlyphsItem
 from .Locations import get_location_names, get_total_locations
-from .Items import create_item, create_itempool, item_table, glyphs_hats
+from .Items import create_item, create_itempool, item_table, glyphs_hats, save_button_shards
 from .Options import GlyphsOptions
 from .Regions import create_regions
 from .Rules import set_rules, connect_entrances
@@ -53,6 +53,11 @@ class GlyphsWorld(World):
             for item_name, item_data in glyphs_hats.items():
                 for _ in range(item_data.count or 1):
                     self.multiworld.push_precollected(create_item(self, item_name))
+        if self.options.SaveButtonSanity.value:
+            self.starting_save_button = list(save_button_shards.keys())[self.random.randint(0, len(save_button_shards) - 1)]
+            self.multiworld.push_precollected(create_item(self, self.starting_save_button))
+            print(f"Starting save button: {self.starting_save_button}")
+
     
     def set_rules(self):
         set_rules(self)
@@ -94,6 +99,8 @@ class GlyphsWorld(World):
 
     def write_spoiler(self, spoiler_handle: TextIO) -> None:
         spoiler_handle.write(f"\nSmile Shop Prices ({self.player_name}): {get_shop_prices(self)}")
+        if self.options.SaveButtonSanity.value:
+            spoiler_handle.write(f"\nStarting Save Button: {self.starting_save_button}")
 
     def collect(self, state: "CollectionState", item: "Item") -> bool:
         return super().collect(state, item)

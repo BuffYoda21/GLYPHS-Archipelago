@@ -99,6 +99,15 @@ class StartingDash(Toggle):
 #     """
 #     display_name = "Shopsanity"
 
+class SaveButtonSanity(Toggle):
+    """
+    All save buttons start as broken and save button shards are added to the item pool.
+    When a save button shard is collected, it's cooresponding save button is fixed and registered to the map.
+    WARNING: Greatly alters gameplay flow
+    """
+    display_name = "Save Button Sanity"
+    default = False
+
 class RandomShopPrices(Toggle):
     """
     Randomizes the prices of shop items.
@@ -302,6 +311,7 @@ class GlyphsOptions(PerGameCommonOptions):
   # LocationPool:           LocationPool
   # HatLocations:           HatLocations
   # Shopsanity:             Shopsanity
+    SaveButtonSanity:       SaveButtonSanity
     RandomShopPrices:       RandomShopPrices
     EnableTraps:            EnableTraps
     TrapTypes:              TrapTypes
@@ -326,7 +336,7 @@ class GlyphsOptions(PerGameCommonOptions):
 
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, StartingDash, DeathLink],
-    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
+    "Randomization Options": [SaveButtonSanity, RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
     "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps, LogicalWallJumpChains, FlowerPuzzleSkips],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
