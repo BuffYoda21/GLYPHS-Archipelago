@@ -16,6 +16,12 @@ def can_dash(state: CollectionState, player: int) -> bool:
 def can_dash_attack(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Dash Orb", player, 2)
 
+def can_wall_jump(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
+    return can_dash(state, player) and world.options.LogicalWallJumps.value
+
+def can_chain_wall_jumps(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
+    return can_wall_jump(state, player, world) and world.options.LogicalWallJumpChains.value
+
 def can_press_green_buttons(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Sword", player, 1) or state.has("Progressive Dash Orb", player, 2)
 
@@ -111,8 +117,11 @@ def act_3_available(state: CollectionState, player: int) -> bool:
 def void_gate_open(state: CollectionState, player: int) -> bool:
     return state.has("Void Gate Shard", player, 7)
 
+def can_start_flower_puzzle(state: CollectionState, player: int) -> bool:
+    return state.can_reach_region("Region 1E", player) and can_dash(state, player)
+
 def can_solve_flower_puzzle(state: CollectionState, player: int) -> bool:
-    return defeated_gilded_serpent(state, player) and can_dash(state, player) and can_press_green_buttons(state, player) and has_grapple(state, player)
+    return can_start_flower_puzzle(state, player) and defeated_gilded_serpent(state, player) and can_dash(state, player) and can_press_green_buttons(state, player) and has_grapple(state, player)
 
 def can_access_all_silver_shards(state: CollectionState, player: int) -> bool:
     return (
