@@ -1,0 +1,8 @@
+# The url and branch will change when changes are merged to the main oot3d rando repo
+# Run this command from the project root to propperly filter the submodule down to
+# just the /data/ folder since the rest isn't needed:
+# cd worlds/oot3d/oot3dr && git sparse-checkout init --no-cone && git sparse-checkout set "/data/" && cd -
+[submodule "worlds/oot3d/oot3dr"]
+	path = worlds/oot3d/oot3dr
+	url = https://github.com/BuffYoda21/OoT3D_Randomizer.git
+	branch = json
