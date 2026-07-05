@@ -107,6 +107,13 @@ class RandomShopPrices(Toggle):
     display_name = "Randomize Shop Prices"
     default = True
 
+class RandomButtonColors(Toggle):
+    """
+    Randomizes the color of all buttons.
+    """
+    display_name = "Randomize Button Colors"
+    default = False
+
 class EnableTraps(Toggle):
     """
     Adds traps to the itempool
@@ -304,6 +311,7 @@ class GlyphsOptions(PerGameCommonOptions):
   # HatLocations:           HatLocations
   # Shopsanity:             Shopsanity
     RandomShopPrices:       RandomShopPrices
+    RandomButtonColors:     RandomButtonColors
     EnableTraps:            EnableTraps
     TrapTypes:              TrapTypes
     HatShuffle:             HatShuffle
@@ -327,7 +335,7 @@ class GlyphsOptions(PerGameCommonOptions):
 
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, StartingDash, DeathLink],
-    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
+    "Randomization Options": [RandomShopPrices, RandomButtonColors, EnableTraps, TrapTypes, HatShuffle],
     "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps, FlowerPuzzleSkips],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
