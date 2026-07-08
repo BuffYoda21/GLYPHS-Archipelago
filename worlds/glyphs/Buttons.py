@@ -17,14 +17,19 @@ def randomize_colors(world: "GlyphsWorld", percentage: int = 0) -> None:
     }
     count = len(glyphs_buttons) * percentage / 100
     tmp = glyphs_buttons.copy()
-    while count > 0:
+    for _ in range(int(count)):
         key = world.random.choice(list(tmp.keys()))
         buttons_to_randomize.append(key)
         del tmp[key]
-        count -= 1
     
     for button in buttons_to_randomize:
         world.buttons[button].color = world.buttons[button].validColors[world.random.randint(0, len(world.buttons[button].validColors) - 1)]
+        for _ in range(5): # Attempt to re-randomize any buttons that would force too much early progression
+            if button.startswith("R1") and (world.buttons[button].color == ButtonColor.GREEN or world.buttons[button].color == ButtonColor.YELLOW):
+                world.buttons[button].color = world.buttons[button].validColors[world.random.randint(0, len(world.buttons[button].validColors) - 1)]
+            if button.startswith("R2") and not button.startswith("R2K") and world.buttons[button].color == ButtonColor.YELLOW:
+                world.buttons[button].color = world.buttons[button].validColors[world.random.randint(0, len(world.buttons[button].validColors) - 1)]
+
 
 def get_button_color(world: "GlyphsWorld", button: str) -> ButtonColor:
     return world.buttons[button].color
