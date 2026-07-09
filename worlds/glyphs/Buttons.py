@@ -47,7 +47,7 @@ def get_button_spoiler_data(world: "GlyphsWorld") -> dict[str, str]:
     return button_data
 
 glyphs_buttons = {
-    "R1A Save":                 ButtonData(0,   ButtonColor.RED,    validColors=[ButtonColor.RED, ButtonColor.BLUE, ButtonColor.GREEN, ButtonColor.YELLOW]),
+    "R1A Save":                 ButtonData(0,   ButtonColor.RED,    validColors=[ButtonColor.RED]),
     "R1B Lowest":               ButtonData(1,   ButtonColor.RED,    validColors=[ButtonColor.RED, ButtonColor.BLUE, ButtonColor.GREEN, ButtonColor.YELLOW, ButtonColor.BLACK]),
     "R1B 2nd Lowest":           ButtonData(2,   ButtonColor.RED,    validColors=[ButtonColor.RED, ButtonColor.BLUE, ButtonColor.GREEN, ButtonColor.YELLOW]),
     "R1B 3rd Lowest":           ButtonData(3,   ButtonColor.RED,    validColors=[ButtonColor.RED, ButtonColor.BLUE, ButtonColor.GREEN, ButtonColor.YELLOW, ButtonColor.BLACK]),
