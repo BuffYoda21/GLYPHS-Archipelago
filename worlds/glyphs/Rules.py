@@ -21,7 +21,7 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Region 1C",       "Region 1B",            lambda state: can_wall_jump(state, player, world))
     connect_areas(world, "Region 1C",       "Region 1D",            lambda state: can_press_button(state, player, world, "R1C First")   and (can_wall_jump(state, player, world)    or can_press_button(state, player, world, "R1C Second")))
     connect_areas(world, "Region 1C",       "Region 1F",            lambda state: False)    # with current flower puzzle implementation it makes this check inaccurate but it never actually comes into play
-    connect_areas(world, "Region 1D",       "Region 1B",            lambda state: world.options.FlowerPuzzleSkips.value     and can_press_button("R1B Save")    and flower_puzzle_completion(state, player, world) >= 1)
+    connect_areas(world, "Region 1D",       "Region 1B",            lambda state: world.options.FlowerPuzzleSkips.value     and can_press_button(state, player, world, "R1B Save")    and flower_puzzle_completion(state, player, world) >= 1)
     connect_areas(world, "Region 1D",       "Region 1E",            lambda state: True)
     connect_areas(world, "Region 1E",       "Region 1B",            lambda state: defeated_runic_construct(state, player)   and can_dash(state, player))
     connect_areas(world, "Region 1E",       "Region 1D",            lambda state: can_dash(state, player))
