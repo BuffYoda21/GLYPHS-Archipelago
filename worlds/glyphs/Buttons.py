@@ -274,4 +274,5 @@ glyphs_buttons = {
     "Between rm57":             ButtonData(213, ButtonColor.PINK,   validColors=[ButtonColor.RED, ButtonColor.BLUE, ButtonColor.GREEN, ButtonColor.YELLOW, ButtonColor.PINK]),
     "Between rm66":             ButtonData(214, ButtonColor.BLUE,   validColors=[ButtonColor.RED, ButtonColor.BLUE, ButtonColor.GREEN, ButtonColor.YELLOW]),
     "Between rm71":             ButtonData(215, ButtonColor.RED,    validColors=[ButtonColor.RED, ButtonColor.BLUE, ButtonColor.GREEN, ButtonColor.YELLOW]),
+    "Between Pre-Boss 1":       ButtonData(216, ButtonColor.RED,    validColors=[ButtonColor.RED, ButtonColor.BLUE, ButtonColor.GREEN, ButtonColor.YELLOW]),
 }
