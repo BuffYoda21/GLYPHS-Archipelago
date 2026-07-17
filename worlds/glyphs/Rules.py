@@ -37,7 +37,7 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Region 2C",       "Region 2D",            lambda state: True)
     connect_areas(world, "Region 2D",       "Region 2C",            lambda state: True) # needs to change when save button sanity is implemented
   # connect_areas(world, "Region 2E",       "Region 2B",            lambda state: True) # this actually doesnt work since the path is blocked off from this angle if you havn't visited the region before
-    connect_areas(world, "Region 2E",       "Region 2D",            lambda state: can_dash(state, player)                   and can_press_buttons(state, player, world, ["R2E Lower", "R2E Upper Puzzle", "R2D Save"]))
+    connect_areas(world, "Region 2E",       "Region 2D",            lambda state: can_dash(state, player)                   and can_press_buttons(state, player, world, ["R2E Lower", "R2D Save"])  and (get_button_color(world, "R2D Save") == ButtonColor.GREEN   or can_press_button(state, player, world, "R2E Upper Puzzle")))
     connect_areas(world, "Region 2E",       "Region 2F",            lambda state: can_dash(state, player)                   and can_press_button(state, player, world, "R2G Hidden"))
     connect_areas(world, "Region 2E",       "Region 2G",            lambda state: can_dash(state, player)                   and can_press_button(state, player, world, "R2G Lower"))
     connect_areas(world, "Region 2F",       "Region 2E",            lambda state: True)
