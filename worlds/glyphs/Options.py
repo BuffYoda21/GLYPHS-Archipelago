@@ -116,6 +116,13 @@ class RandomButtonColorPercent(Range):
     range_end = 100
     default = 0
 
+class ExcludeBlack(Toggle):
+    """
+    Ensures no buttons are randomized to black.
+    """
+    display_name = "No Black Buttons"
+    default = False
+
 class EnableTraps(Toggle):
     """
     Adds traps to the itempool
@@ -314,6 +321,7 @@ class GlyphsOptions(PerGameCommonOptions):
   # Shopsanity:                 Shopsanity
     RandomShopPrices:           RandomShopPrices
     RandomButtonColorPercent:   RandomButtonColorPercent
+    ExcludeBlack:               ExcludeBlack
     EnableTraps:                EnableTraps
     TrapTypes:                  TrapTypes
     HatShuffle:                 HatShuffle
@@ -337,7 +345,7 @@ class GlyphsOptions(PerGameCommonOptions):
 
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, StartingDash, DeathLink],
-    "Randomization Options": [RandomShopPrices, RandomButtonColorPercent, EnableTraps, TrapTypes, HatShuffle],
+    "Randomization Options": [RandomShopPrices, RandomButtonColorPercent, ExcludeBlack, EnableTraps, TrapTypes, HatShuffle],
     "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps, FlowerPuzzleSkips],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }

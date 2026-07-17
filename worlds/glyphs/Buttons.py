@@ -29,6 +29,9 @@ def randomize_colors(world: "GlyphsWorld", percentage: int = 0) -> None:
                 world.buttons[button].color = world.buttons[button].validColors[world.random.randint(0, len(world.buttons[button].validColors) - 1)]
             if button.startswith("R2") and not button.startswith("R2K") and world.buttons[button].color == ButtonColor.YELLOW:
                 world.buttons[button].color = world.buttons[button].validColors[world.random.randint(0, len(world.buttons[button].validColors) - 1)]
+        
+        while world.options.ExcludeBlack.value and world.buttons[button].color == ButtonColor.BLACK:
+            world.buttons[button].color = world.buttons[button].validColors[world.random.randint(0, len(world.buttons[button].validColors) - 1)]
 
 
 def get_button_color(world: "GlyphsWorld", button: str) -> ButtonColor:
