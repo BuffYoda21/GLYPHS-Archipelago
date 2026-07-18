@@ -2,6 +2,7 @@ from collections.abc import Callable
 from BaseClasses import Entrance, CollectionState
 from worlds.generic.Rules import set_rule
 from typing import TYPE_CHECKING
+from worlds.glyphs.Buttons import get_button_name
 from worlds.glyphs.Macros import *
 
 if TYPE_CHECKING:
@@ -240,6 +241,67 @@ def set_rules(world: "GlyphsWorld"):
     # Act 3
     set_rule_from_string(world, "(Void 3) Preminition Reward",                      lambda state: True)
 
+    # Randomized Buttons
+    if world.options.ButtonShardPercent.value != 0:
+        set_button_rule(world, "R1A Save",              lambda state: can_press_button(state, player, world, "R1A Save"))
+        set_button_rule(world, "R1B Lowest",            lambda state: can_press_button(state, player, world, "R1B Lowest"))
+        set_button_rule(world, "R1B 2nd Lowest",        lambda state: can_press_buttons(state, player, world, ["R1B Lowest", "R1B 2nd Lowest"])                                                                             and can_dash(state, player))
+        set_button_rule(world, "R1B 3rd Lowest",        lambda state: can_press_buttons(state, player, world, ["R1B Lowest", "R1B 3rd Lowest"])                                                                             and can_dash(state, player))
+        set_button_rule(world, "R1B 4th Lowest",        lambda state: can_press_buttons(state, player, world, ["R1B Lowest", "R1B 3rd Lowest", "R1B 4th Lowest"])                                                           and can_dash(state, player))
+        set_button_rule(world, "R1B 5th Lowest",        lambda state: can_press_buttons(state, player, world, ["R1B Lowest", "R1B 3rd Lowest", "R1B 4th Lowest", "R1B 5th Lowest"])                                         and can_dash(state, player))
+        set_button_rule(world, "R1B 6th Lowest",        lambda state: can_press_buttons(state, player, world, ["R1B Lowest", "R1B 3rd Lowest", "R1B 4th Lowest", "R1B 5th Lowest", "R1B 6th Lowest"])                       and can_dash(state, player))
+        set_button_rule(world, "R1B 7th Lowest",        lambda state: can_press_buttons(state, player, world, ["R1B Lowest", "R1B 3rd Lowest", "R1B 4th Lowest", "R1B 5th Lowest", "R1B 7th Lowest"])                       and (can_wall_jump(state, player, world) or (can_dash(state, player) and can_press_button(state, player, world, "R1B 6th Lowest"))))
+        set_button_rule(world, "R1B Map Room",          lambda state: can_press_buttons(state, player, world, ["R1B Lowest", "R1B 3rd Lowest", "R1B 4th Lowest", "R1B 5th Lowest", "R1B 7th Lowest", "R1B Map Room"])       and (can_wall_jump(state, player, world) or (can_dash(state, player) and can_press_button(state, player, world, "R1B 6th Lowest"))))
+        set_button_rule(world, "R1B Upper Puzzle",      lambda state: can_press_buttons(state, player, world, ["R1B Lowest", "R1B 3rd Lowest", "R1B 4th Lowest", "R1B 5th Lowest", "R1B 7th Lowest", "R1B Upper Puzzle"])   and (can_wall_jump(state, player, world) or (can_dash(state, player) and can_press_button(state, player, world, "R1B 6th Lowest"))))
+        set_button_rule(world, "R1B Lower Puzzle",      lambda state: can_press_buttons(state, player, world, ["R1B Lowest", "R1B Lower Puzzle"])                                                                           and can_dash(state, player))
+        set_button_rule(world, "R1B Save",              lambda state: can_press_buttons(state, player, world, ["R1B Lowest", "R1B 3rd Lowest", "R1B 4th Lowest", "R1B 5th Lowest", "R1B 7th Lowest", "R1B Save"])           and (can_wall_jump(state, player, world) or (can_dash(state, player) and can_press_button(state, player, world, "R1B 6th Lowest"))))
+        set_button_rule(world, "R1C First",             lambda state: can_press_button(state, player, world, "R1C First"))
+        set_button_rule(world, "R1C Second",            lambda state: can_press_buttons(state, player, world, ["R1C First", "R1C Second"]))
+        set_button_rule(world, "R1E Save",              lambda state: can_press_button(state, player, world, "R1E Save"))
+        set_button_rule(world, "R1F Right",             lambda state: can_press_button(state, player, world, "R1F Right")                                                                                                   and can_dash(state, player))
+        set_button_rule(world, "R2A Gate Left",         lambda state: can_press_button(state, player, world, "R2A Gate Left")                                                                                               and can_dash(state, player))
+        set_button_rule(world, "R2A Gate Right",        lambda state: can_press_buttons(state, player, world, ["R2A Gate Left", "R2A Gate Right"])                                                                          and can_dash(state, player))
+        set_button_rule(world, "R2A Left Save",         lambda state: can_press_button(state, player, world, "R2A Left Save"))
+        set_button_rule(world, "R2A Right Save",        lambda state: can_press_buttons(state, player, world, ["R2A Gate Left", "R2A Right Save"])                                                                          and can_dash(state, player))
+        set_button_rule(world, "R2A Upper",             lambda state: can_press_buttons(state, player, world, ["R2A Gate Left", "R2A Upper"])                                                                               and can_dash(state, player))
+        set_button_rule(world, "R2B Puzzle",            lambda state: can_press_button(state, player, world, "R2B Puzzle")                                                                                                  and can_dash(state, player))
+        set_button_rule(world, "R2B Gate Left",         lambda state: can_press_button(state, player, world, "R2B Gate Left")                                                                                               and can_dash(state, player))
+        set_button_rule(world, "R2B Left Save",         lambda state: can_press_button(state, player, world, "R2B Left Save"))
+        set_button_rule(world, "R2B Right Save",        lambda state: can_press_button(state, player, world, "R2B Right Save"))
+        set_button_rule(world, "R2D Save",              lambda state: can_press_button(state, player, world, "R2D Save"))
+        set_button_rule(world, "R2E Lower Save",        lambda state: can_press_button(state, player, world, "R2E Lower Save"))
+        set_button_rule(world, "R2E Upper Save",        lambda state: can_press_buttons(state, player, world, ["R2E Upper Save", "R2E Lower"])                                                                              and can_dash(state, player))
+        set_button_rule(world, "R2E Lower",             lambda state: can_press_button(state, player, world, "R2E Lower")                                                                                                   and can_dash(state, player))
+        set_button_rule(world, "R2E Upper",             lambda state: can_press_buttons(state, player, world, ["R2E Upper", "R2E Lower"])                                                                                   and can_dash(state, player))
+        set_button_rule(world, "R2E Upper Puzzle",      lambda state: can_press_buttons(state, player, world, ["R2E Upper Puzzle", "R2E Lower"])                                                                            and can_dash(state, player))
+        set_button_rule(world, "R2E Serpent Lock 1",    lambda state: can_press_buttons(state, player, world, ["R2E Lower", "R2E Upper", "R2E Serpent Lock 1"])                                                             and can_dash(state, player))
+        set_button_rule(world, "R2F Save",              lambda state: can_press_button(state, player, world, "R2F Save"))
+        set_button_rule(world, "R2G Lower",             lambda state: can_press_button(state, player, world, "R2G Lower")                                                                                                   and can_dash(state, player))
+        set_button_rule(world, "R2G Middle",            lambda state: can_press_buttons(state, player, world, ["R2G Lower", "R2G Middle"])                                                                                  and can_dash(state, player))
+        set_button_rule(world, "R2G Moving Platform",   lambda state: can_press_buttons(state, player, world, ["R2G Lower", "R2G Moving Platform"])                                                                         and can_dash(state, player))
+        set_button_rule(world, "R2G Upper Left",        lambda state: can_press_buttons(state, player, world, ["R2G Lower", "R2G Middle", "R2G Upper Middle", "R2G Upper Left"])                                            and can_dash(state, player))
+        set_button_rule(world, "R2G Upper Middle",      lambda state: can_press_buttons(state, player, world, ["R2G Lower", "R2G Middle", "R2G Upper Middle"])                                                              and can_dash(state, player))
+        set_button_rule(world, "R2G Upper Right",       lambda state: can_press_buttons(state, player, world, ["R2G Lower", "R2G Middle", "R2G Upper Right"])                                                               and can_dash(state, player) and (can_parry(state, player) or can_press_buttons(state, player, world, ["R2G Upper Middle", "R2G Upper Left"])))
+        set_button_rule(world, "R2G Hidden",            lambda state: can_press_button(state, player, world, "R2G Hidden")                                                                                                  and can_dash(state, player))
+        set_button_rule(world, "R2H Save",              lambda state: can_press_button(state, player, world, "R2H Save"))
+        set_button_rule(world, "R2H Lower",             lambda state: can_press_button(state, player, world, "R2H Lower")                                                                                                   and can_dash(state, player))
+        set_button_rule(world, "R2H Serpent Lock 2",    lambda state: can_press_button(state, player, world, "R2H Serpent Lock 2")                                                                                          and can_dash(state, player))
+        set_button_rule(world, "R2I Lower Left",        lambda state: can_press_button(state, player, world, "R2I Lower Left"))
+        set_button_rule(world, "R2I Lower Middle",      lambda state: can_press_button(state, player, world, "R2I Lower Middle"))
+        set_button_rule(world, "R2I Upper Left",        lambda state: can_press_buttons(state, player, world, ["R2I Upper Left", "R2I Upper Middle", "R2I Lower Left", "R2I Lower Middle", "R2I Right"])                    and can_dash(state, player))
+        set_button_rule(world, "R2I Upper Middle",      lambda state: can_press_buttons(state, player, world, ["R2I Upper Middle", "R2I Lower Left", "R2I Lower Middle"])                                                   and can_dash(state, player))
+        set_button_rule(world, "R2I Right",             lambda state: can_press_button(state, player, world, "R2I Right")                                                                                                   and can_dash(state, player))
+        set_button_rule(world, "R2I Save",              lambda state: can_press_button(state, player, world, "R2I Save"))
+        set_button_rule(world, "R2J Gate Left",         lambda state: can_press_button(state, player, world, "R2J Gate Left")                                                                                               and can_dash(state, player))
+        set_button_rule(world, "R2J Save",              lambda state: can_press_button(state, player, world, "R2J Save"))
+        set_button_rule(world, "R2K Chase 1",           lambda state: can_press_button(state, player, world, "R2K Chase 1")                                                                                                 and can_dash(state, player) and has_grapple(state, player))
+        set_button_rule(world, "R2K Chase 2",           lambda state: can_press_buttons(state, player, world, ["R2K Chase 1", "R2K Chase 2"])                                                                               and can_dash(state, player) and has_grapple(state, player))
+        set_button_rule(world, "R2K Chase 3",           lambda state: can_press_buttons(state, player, world, ["R2K Chase 1", "R2K Chase 2", "R2K Chase 3"])                                                                and can_dash(state, player) and has_grapple(state, player))
+        set_button_rule(world, "R2K Chase 4",           lambda state: can_press_buttons(state, player, world, ["R2K Chase 1", "R2K Chase 2", "R2K Chase 3", "R2K Chase 4"])                                                 and can_dash(state, player) and has_grapple(state, player))
+        set_button_rule(world, "R2K Chase 5",           lambda state: can_press_buttons(state, player, world, ["R2K Chase 1", "R2K Chase 2", "R2K Chase 3", "R2K Chase 4", "R2K Chase 5"])                                  and can_dash(state, player) and has_grapple(state, player))
+        set_button_rule(world, "R2K Chase 6",           lambda state: can_press_buttons(state, player, world, ["R2K Chase 1", "R2K Chase 2", "R2K Chase 3", "R2K Chase 4", "R2K Chase 5", "R2K Chase 6"])                   and can_dash(state, player) and has_grapple(state, player))
+        set_button_rule(world, "R2K Chase Hidden",      lambda state: can_press_button(state, player, world, "R2K Chase Hidden")                                                                                            and can_dash(state, player) and has_grapple(state, player))
+
     # Victory condition rule!
     victory: lambda state: False
     if options.Goal.value == options.Goal.option_false_ending:
@@ -263,3 +325,6 @@ def connect_areas(world: "GlyphsWorld", source: str, target: str, rule=None) -> 
 
 def set_rule_from_string(world: "GlyphsWorld", location_name: str, rule=None) -> None:
     set_rule(world.get_location(location_name), rule=rule)
+
+def set_button_rule(world: "GlyphsWorld", button: str, rule=None) -> None:
+    set_rule(world.get_location(get_button_name(world, button)), rule=rule)

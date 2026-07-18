@@ -65,7 +65,7 @@ def create_button_shard_items(world: "GlyphsWorld") -> list[Item]:
 def create_button_locations(world: "GlyphsWorld") -> dict[str, LocData]:
     button_locations: dict[str, LocData] = {}
     for button in world.buttons:
-        button_locations[f"Button {world.buttons[button].id} ({to_generic_readable_region_name(world.buttons[button].region)})"] = LocData(world.buttons[button].id * 10000, world.buttons[button].region)
+        button_locations[get_button_name(world, button)] = LocData(world.buttons[button].id * 10000, world.buttons[button].region)
     return button_locations
 
 def get_button_color(world: "GlyphsWorld", button: str) -> ButtonColor:
@@ -73,6 +73,9 @@ def get_button_color(world: "GlyphsWorld", button: str) -> ButtonColor:
 
 def is_broken(world: "GlyphsWorld", button: str) -> bool:
     return world.buttons[button].isBroken
+
+def get_button_name(world: "GlyphsWorld", button: str) -> str:
+    return f"Button {world.buttons[button].id} ({to_generic_readable_region_name(world.buttons[button].region)})"
 
 def get_shard_name(world: "GlyphsWorld", button: str) -> str:
     return f"Button Shard {world.buttons[button].id}"
