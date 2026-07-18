@@ -27,9 +27,11 @@ class ButtonColor(IntEnum):
         BLACK = 5
 
 class ButtonData:
-    def __init__(self, id: int, color: ButtonColor, validColors: Optional[list[ButtonColor]] = None):
+    def __init__(self, id: int, region: str, color: ButtonColor, validColors: Optional[list[ButtonColor]] = None, isBroken: bool = False):
         self.id = id
+        self.region = region
         self.color = color
+        self.isBroken = isBroken
         if validColors is None:
             validColors = [color]
         else:
@@ -37,7 +39,7 @@ class ButtonData:
 
     
     def __repr__(self) -> str:
-        return f"ButtonData(id={self.id!r}, color={self.color!r})"
+        return f"ButtonData(id={self.id!r}, color={self.color!r}, isBroken={self.isBroken!r})"
 
 class LocData(NamedTuple):
     ap_code: Optional[int]

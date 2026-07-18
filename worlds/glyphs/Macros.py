@@ -1,7 +1,7 @@
 from BaseClasses import CollectionState
 from typing import TYPE_CHECKING
 from .Options import GlyphsOptions
-from .Buttons import get_button_color
+from .Buttons import get_button_color, get_shard_name, is_broken
 from .Types import ButtonColor
 
 options: GlyphsOptions
@@ -32,6 +32,8 @@ def can_press_buttons(state: CollectionState, player: int, world: "GlyphsWorld",
     return True
 
 def can_press_button(state: CollectionState, player: int, world: "GlyphsWorld", button: str) -> bool:
+    if is_broken(world, button) and not state.has(get_shard_name(world, button), player):
+        return False
     color = get_button_color(world, button)
     if color == ButtonColor.RED or color == ButtonColor.BLACK:
         return True

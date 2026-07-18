@@ -1,5 +1,6 @@
 import logging
 from BaseClasses import Item, ItemClassification
+from worlds.glyphs.Buttons import create_button_shard_items
 from .Types import ItemData, GlyphsItem
 from .Locations import get_total_locations
 from typing import List, Dict, TYPE_CHECKING
@@ -44,6 +45,9 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
         for item_name, item_data in glyphs_hats.items():
             for _ in range(item_data.count or 1):
                 itempool.append(create_item(world, item_name))
+    
+    for item in create_button_shard_items(world):
+        itempool.append(item)
         
     place_event_items(world)
     place_goals(world)

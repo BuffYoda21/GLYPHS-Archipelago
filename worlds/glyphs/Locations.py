@@ -23,6 +23,11 @@ def get_location_names() -> Dict[str, int]:
 def is_valid_location(world: "GlyphsWorld", name) -> bool:
     return True
 
+def create_additional_locations(world: "GlyphsWorld") -> None:
+    if world.options.ButtonShardPercent.value != 0:
+        from .Buttons import create_button_locations
+        location_table.update(create_button_locations(world))
+
 glyphs_locations = {
     # Region 1
     "(R1) Starting Item":                               LocData(1,  "Region 1A"),

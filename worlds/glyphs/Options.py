@@ -123,6 +123,16 @@ class ExcludeBlack(Toggle):
     display_name = "No Black Buttons"
     default = False
 
+class ButtonShardPercent(Range):
+    """
+    Percent of buttons to be broken and have shards added to the item pool.
+    If set higher than 0, pressing individual buttons will be added as item locations.
+    """
+    display_name = "Button Shard Percent"
+    range_start = 0
+    range_end = 100
+    default = 0
+
 class EnableTraps(Toggle):
     """
     Adds traps to the itempool
@@ -322,6 +332,7 @@ class GlyphsOptions(PerGameCommonOptions):
     RandomShopPrices:           RandomShopPrices
     RandomButtonColorPercent:   RandomButtonColorPercent
     ExcludeBlack:               ExcludeBlack
+    ButtonShardPercent:         ButtonShardPercent
     EnableTraps:                EnableTraps
     TrapTypes:                  TrapTypes
     HatShuffle:                 HatShuffle
@@ -345,7 +356,7 @@ class GlyphsOptions(PerGameCommonOptions):
 
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, StartingDash, DeathLink],
-    "Randomization Options": [RandomShopPrices, RandomButtonColorPercent, ExcludeBlack, EnableTraps, TrapTypes, HatShuffle],
+    "Randomization Options": [RandomShopPrices, RandomButtonColorPercent, ExcludeBlack, ButtonShardPercent, EnableTraps, TrapTypes, HatShuffle],
     "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps, FlowerPuzzleSkips],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
