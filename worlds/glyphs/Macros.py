@@ -47,6 +47,42 @@ def can_press_button(state: CollectionState, player: int, world: "GlyphsWorld", 
         return can_parry(state, player)
     return True
 
+def between_buttons_missing(state: CollectionState, player: int, world: "GlyphsWorld") -> int:
+    count = 0
+    if not can_press_button(state, player, world, "Between rm1"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm4"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm5"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm10"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm13"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm19"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm28"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm30"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm39"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm40"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm43 Button 1"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm43 Button 2"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm57"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm66"):
+        count += 1
+    if not can_press_button(state, player, world, "Between rm71"):
+        count += 1
+    if not can_press_button(state, player, world, "Between Pre-Boss 1"):
+        count += 1
+    return count
+
 def can_press_green_buttons(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Sword", player, 1) or state.has("Progressive Dash Orb", player, 2)
 
