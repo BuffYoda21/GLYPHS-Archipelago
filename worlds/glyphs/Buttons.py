@@ -51,7 +51,7 @@ def randomize_buttons(world: "GlyphsWorld", color_percentage: int = 0, shard_per
             del tmp[key]
         
         for button in buttons_to_randomize:
-            if button is "R1A Save":    # Special case for starting button
+            if button == "R1A Save":    # Special case for starting button
                 continue
             world.buttons[button].isBroken = True
     
