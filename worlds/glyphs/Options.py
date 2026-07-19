@@ -127,6 +127,8 @@ class ButtonShardPercent(Range):
     """
     Percent of buttons to be broken and have shards added to the item pool.
     If set higher than 0, pressing individual buttons will be added as item locations.
+    IMPORTANT: This option may greatly increase generation time if set to a high value. It is highly recommended
+    to not exceed 80% in medium sized multiworlds and 60% for large multiworlds. This issue will be addressed in the next update.
     """
     display_name = "Button Shard Percent"
     range_start = 0
