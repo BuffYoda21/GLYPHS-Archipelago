@@ -107,6 +107,22 @@ class RandomShopPrices(Toggle):
     display_name = "Randomize Shop Prices"
     default = True
 
+class RandomButtonColorPercent(Range):
+    """
+    Percent of buttons to randomize the color of.
+    """
+    display_name = "Random Button Colors Percent"
+    range_start = 0
+    range_end = 100
+    default = 0
+
+class ExcludeBlack(Toggle):
+    """
+    Ensures no buttons are randomized to black.
+    """
+    display_name = "No Black Buttons"
+    default = False
+
 class EnableTraps(Toggle):
     """
     Adds traps to the itempool
@@ -292,42 +308,44 @@ class WraithGlyphstoneCount(Range):
 @dataclass
 class GlyphsOptions(PerGameCommonOptions):
     # Game Options
-    Goal:                   Goal
-    StartingSword:          StartingSword
-    StartingDash:           StartingDash
-  # GenericParries:         GenericParries
-  # Multiplayer:            Multiplayer
-    DeathLink:              DeathLink
+    Goal:                       Goal
+    StartingSword:              StartingSword
+    StartingDash:               StartingDash
+  # GenericParries:             GenericParries
+  # Multiplayer:                Multiplayer
+    DeathLink:                  DeathLink
 
     # Randomization Options
-  # LocationPool:           LocationPool
-  # HatLocations:           HatLocations
-  # Shopsanity:             Shopsanity
-    RandomShopPrices:       RandomShopPrices
-    EnableTraps:            EnableTraps
-    TrapTypes:              TrapTypes
-    HatShuffle:             HatShuffle
+  # LocationPool:               LocationPool
+  # HatLocations:               HatLocations
+  # Shopsanity:                 Shopsanity
+    RandomShopPrices:           RandomShopPrices
+    RandomButtonColorPercent:   RandomButtonColorPercent
+    ExcludeBlack:               ExcludeBlack
+    EnableTraps:                EnableTraps
+    TrapTypes:                  TrapTypes
+    HatShuffle:                 HatShuffle
 
     # Logical Options
-    SwordlessCombat:        SwordlessCombat
-  # BulletCombat:           BulletCombat
-    DashPuzzlesSolved:      DashPuzzlesSolved
-    LogicalWallJumps:       LogicalWallJumps
-  # LogicalWallJumpChains:  LogicalWallJumpChains
-    FlowerPuzzleSkips:      FlowerPuzzleSkips
+    SwordlessCombat:            SwordlessCombat
+  # BulletCombat:               BulletCombat
+    DashPuzzlesSolved:          DashPuzzlesSolved
+    LogicalWallJumps:           LogicalWallJumps
+  # LogicalWallJumpChains:      LogicalWallJumpChains
+    FlowerPuzzleSkips:          FlowerPuzzleSkips
 
     # Open Settings
-    WizardRequirements:     WizardRequirements
-    WraithRequirements:     WraithRequirements
-    WraithSilverCount:      WraithSilverCount
-    WraithGoldCount:        WraithGoldCount
-    WraithSmileCount:       WraithSmileCount
-    WraithRuneCount:        WraithRuneCount
-    WraithGlyphstoneCount:  WraithGlyphstoneCount
+    WizardRequirements:         WizardRequirements
+    WraithRequirements:         WraithRequirements
+    WraithSilverCount:          WraithSilverCount
+    WraithGoldCount:            WraithGoldCount
+    WraithSmileCount:           WraithSmileCount
+    WraithRuneCount:            WraithRuneCount
+    WraithGlyphstoneCount:      WraithGlyphstoneCount
 
 glyphs_option_groups: Dict[str, List[Any]] = {
     "Game Options": [Goal, StartingSword, StartingDash, DeathLink],
-    "Randomization Options": [RandomShopPrices, EnableTraps, TrapTypes, HatShuffle],
+    "Randomization Options": [RandomShopPrices, RandomButtonColorPercent, ExcludeBlack, EnableTraps, TrapTypes, HatShuffle],
     "Logical Options": [SwordlessCombat, DashPuzzlesSolved, LogicalWallJumps, FlowerPuzzleSkips],
     "Open Settings": [WizardRequirements, WraithRequirements, WraithSilverCount, WraithGoldCount, WraithSmileCount, WraithRuneCount, WraithGlyphstoneCount],
 }
