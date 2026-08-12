@@ -110,6 +110,9 @@ class RandomShopPrices(Toggle):
 class RandomButtonColorPercent(Range):
     """
     Percent of buttons to randomize the color of.
+    IMPORTANT:
+    This option is known to cause issues with the universal tracker.
+    By enabling it, you accept that it will not be fully reliable.
     """
     display_name = "Random Button Colors Percent"
     range_start = 0
