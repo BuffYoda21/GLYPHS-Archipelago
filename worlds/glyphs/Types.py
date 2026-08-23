@@ -4,6 +4,7 @@ from BaseClasses import Location, Item, ItemClassification
 
 class GlyphsLocation(Location):
     game = "GLYPHS"
+    event: bool = False
 
 class GlyphsItem(Item):
     game = "GLYPHS"
@@ -15,7 +16,7 @@ class ItemData:
         self.advancement = advancement
         self.count = count
 
-    def __repr__(self) -> str:  # Helpful for debugging/tests
+    def __repr__(self) -> str:
         return f"ItemData(ap_code={self.ap_code!r}, classification={self.classification!r}, advancement={self.advancement!r}, count={self.count!r})"
 
 class ButtonColor(IntEnum):

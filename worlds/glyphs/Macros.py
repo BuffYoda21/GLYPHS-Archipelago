@@ -19,7 +19,7 @@ def can_dash_attack(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Dash Orb", player, 2)
 
 def can_wall_jump(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return can_dash(state, player) and world.options.LogicalWallJumps.value
+    return can_dash(state, player) and bool(world.options.LogicalWallJumps.value)
 
 ## Logically will never be needed
 # def can_chain_wall_jumps(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
@@ -87,7 +87,7 @@ def can_press_green_buttons(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Sword", player, 1) or state.has("Progressive Dash Orb", player, 2)
 
 def can_fight(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return state.has("Progressive Sword", player, 1) or (state.has("Progressive Dash Orb", player, 2) and world.options.SwordlessCombat.value)
+    return state.has("Progressive Sword", player, 1) or (state.has("Progressive Dash Orb", player, 2) and bool(world.options.SwordlessCombat.value))
 
 def can_warp(state: CollectionState, player: int) -> bool:
     return state.has("Map", player)
@@ -180,13 +180,22 @@ def void_gate_open(state: CollectionState, player: int) -> bool:
 
 # depricated
 def can_start_flower_puzzle(state: CollectionState, player: int) -> bool:
+    """
+    If used in an entrance access rule, wrap with `multiworld.register_indirect_condition(world.get_region("Region 1E"), <foo>)`.
+    """
     return state.can_reach_region("Region 1E", player) and can_dash(state, player)
 
 # depricated
 def can_solve_flower_puzzle(state: CollectionState, player: int) -> bool:
+    """
+    If used in an entrance access rule, wrap with `multiworld.register_indirect_condition(world.get_region("Region 1E"), <foo>)`.
+    """
     return can_start_flower_puzzle(state, player) and defeated_gilded_serpent(state, player) and can_dash(state, player) and can_press_green_buttons(state, player) and has_grapple(state, player)
 
 def flower_puzzle_completion(state: CollectionState, player: int, world: "GlyphsWorld") -> int:
+    """
+    If used in an entrance access rule, wrap with `multiworld.register_indirect_condition(world.get_region("Region 1E"), <foo>)`.
+    """
     completion = 0
     wall_jump = can_wall_jump(state, player, world)
     if state.can_reach_region("Region 1E", player) and can_dash(state, player) and can_press_buttons(state, player, world, ["R1B 4th Lowest", "R1B 5th Lowest"]) and (wall_jump or can_press_button(state, player, world, "R1B 6th Lowest")):
