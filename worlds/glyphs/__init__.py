@@ -1,10 +1,9 @@
-import logging
-from BaseClasses import ItemClassification, MultiWorld, Item, Tutorial
+from BaseClasses import MultiWorld, Item, Tutorial
 from worlds.AutoWorld import World, CollectionState, WebWorld
 from typing import Dict, TextIO
 
-from worlds.glyphs.SmileShopRando import get_shop_prices
-from worlds.glyphs.Types import GlyphsItem
+from .SmileShopRando import get_shop_prices
+from .Types import ButtonData, ItemData
 from .Locations import get_location_names, get_total_locations
 from .Items import create_item, create_itempool, item_table, glyphs_hats
 from .Options import GlyphsOptions
@@ -34,10 +33,14 @@ class GlyphsWorld(World):
     """
 
     game = "GLYPHS"
-    item_name_to_id = {name: data.ap_code for name, data in item_table.items()}
+    item_name_to_id = {name: data.ap_code for name, data in item_table.items() if data.ap_code is not None}
     location_name_to_id = get_location_names()
+    options: GlyphsOptions
     options_dataclass = GlyphsOptions
     web = GlyphsWeb()
+    shop_prices: list[int]
+    buttons: dict[str, ButtonData]
+    items: dict[str, ItemData]
 
     def __init__(self, multiworld: "MultiWorld", player: int):
         super().__init__(multiworld, player)

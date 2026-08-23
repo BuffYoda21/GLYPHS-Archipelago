@@ -1,7 +1,4 @@
-from enum import IntEnum
 from typing import Dict, TYPE_CHECKING
-import logging
-
 from .Types import LocData
 
 if TYPE_CHECKING:
@@ -16,7 +13,7 @@ def get_total_locations(world: "GlyphsWorld") -> int:
     return total
 
 def get_location_names() -> Dict[str, int]:
-    names = {name: data.ap_code for name, data in location_table.items()}
+    names = {name: data.ap_code for name, data in location_table.items() if data.ap_code is not None}
     return names
 
 # Intended to use for YAML options but not currently implemented

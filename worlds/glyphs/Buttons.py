@@ -1,7 +1,6 @@
 from typing import TYPE_CHECKING
 from .Options import GlyphsOptions
 from .Types import ButtonData, ButtonColor
-from enum import IntEnum
 from copy import deepcopy
 
 options: GlyphsOptions
@@ -44,7 +43,7 @@ def get_raw_button_data(world: "GlyphsWorld") -> dict[int, int]:
     return button_data
 
 def get_button_spoiler_data(world: "GlyphsWorld") -> dict[str, str]:
-    button_data: dict[int, int] = {}
+    button_data: dict[str, str] = {}
     for key, value in world.buttons.items():
         button_data[key] = value.color.name
     return button_data

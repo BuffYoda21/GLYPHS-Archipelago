@@ -1,4 +1,3 @@
-import logging
 from BaseClasses import Item, ItemClassification
 from .Types import ItemData, GlyphsItem
 from .Locations import get_total_locations
@@ -22,18 +21,25 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
     world.items.pop("Map")
 
     if world.options.StartingSword.value:
+        sword = world.items["Progressive Sword"]
+        assert sword.count is not None
+
         world.items["Progressive Sword"] = ItemData(
             1, 
             ItemClassification.progression | ItemClassification.useful, 
             True, 
-            world.items["Progressive Sword"].count - 1
+            sword.count - 1
         )
+
     if world.options.StartingDash.value:
+        dash = world.items["Progressive Dash Orb"]
+        assert dash.count is not None
+
         world.items["Progressive Dash Orb"] = ItemData(
             2, 
             ItemClassification.progression | ItemClassification.useful, 
             True, 
-            world.items["Progressive Dash Orb"].count - 1
+            dash.count - 1
         )
 
     for item_name, item_data in world.items.items():

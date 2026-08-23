@@ -1,5 +1,5 @@
 from collections.abc import Callable
-from BaseClasses import Entrance, CollectionState
+from BaseClasses import CollectionRule, Entrance, CollectionState
 from worlds.generic.Rules import set_rule
 from typing import TYPE_CHECKING
 from worlds.glyphs.Macros import *
@@ -16,13 +16,13 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Menu",            "Region 1A",            lambda state: True)
     connect_areas(world, "Region 1A",       "Region 1C",            lambda state: True)
     connect_areas(world, "Region 1A",       "Region 1F",            lambda state: can_dash(state, player))
-    connect_areas(world, "Region 1B",       "Region 1C",            lambda state: can_dash(state, player)                   and (can_wall_jump(state, player, world)    or can_press_buttons(state, player, world, ["R1B Lowest", "R1B 3rd Lowest", "R1B 6th Lowest"])))    and can_press_buttons(state, player, world, ["R1B 4th Lowest", "R1B 5th Lowest"])
+    connect_areas(world, "Region 1B",       "Region 1C",            lambda state: can_dash(state, player)                   and (can_wall_jump(state, player, world)    or can_press_buttons(state, player, world, ["R1B Lowest", "R1B 3rd Lowest", "R1B 6th Lowest"])) and can_press_buttons(state, player, world, ["R1B 4th Lowest", "R1B 5th Lowest"]))
     connect_areas(world, "Region 1B",       "Region 1E",            lambda state: defeated_runic_construct(state, player)   and can_wall_jump(state, player, world))
     connect_areas(world, "Region 1C",       "Region 1B",            lambda state: can_wall_jump(state, player, world))
     connect_areas(world, "Region 1C",       "Region 1D",            lambda state: can_press_button(state, player, world, "R1C First")   and (can_wall_jump(state, player, world)    or can_press_button(state, player, world, "R1C Second")))
     connect_areas(world, "Region 1C",       "Region 1F",            lambda state: False)    # with current flower puzzle implementation it makes this check inaccurate but it never actually comes into play
     world.multiworld.register_indirect_condition(world.get_region("Region 1E"),
-        connect_areas(world, "Region 1D",       "Region 1B",            lambda state: world.options.FlowerPuzzleSkips.value     and can_press_button(state, player, world, "R1B Save")    and flower_puzzle_completion(state, player, world) >= 1)
+        connect_areas(world, "Region 1D",       "Region 1B",            lambda state: bool(world.options.FlowerPuzzleSkips.value)     and can_press_button(state, player, world, "R1B Save")    and flower_puzzle_completion(state, player, world) >= 1)
     )
     connect_areas(world, "Region 1D",       "Region 1E",            lambda state: True)
     connect_areas(world, "Region 1E",       "Region 1B",            lambda state: defeated_runic_construct(state, player)   and can_dash(state, player))
@@ -47,7 +47,7 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Region 2G",       "Region 2F",            lambda state: can_dash(state, player)                   and can_press_button(state, player, world, "R2G Hidden"))
     connect_areas(world, "Region 2G",       "Region 2I",            lambda state: can_dash(state, player)                   and can_press_buttons(state, player, world, ["R2G Middle", "R2G Upper Right"])  and (can_parry(state, player)   or can_press_buttons(state, player, world, ["R2G Upper Left", "R2G Upper Middle"])))
     world.multiworld.register_indirect_condition(world.get_region("Region 1E"),
-        connect_areas(world, "Region 2G",       "Region 2O",            lambda state: world.options.FlowerPuzzleSkips.value     and flower_puzzle_completion(state, player, world) >= 2)
+        connect_areas(world, "Region 2G",       "Region 2O",            lambda state: bool(world.options.FlowerPuzzleSkips.value)     and flower_puzzle_completion(state, player, world) >= 2)
     )
     connect_areas(world, "Region 2I",       "Region 2H",            lambda state: can_dash(state, player)                   and can_press_buttons(state, player, world, ["R2H Lower", "R2I Lower Left", "R2I Lower Middle", "R2I Upper Left", "R2I Upper Middle", "R2I Right"]))
     connect_areas(world, "Region 2I",       "Region 2J",            lambda state: can_wall_jump(state, player, world)       or (can_dash(state, player) and can_press_buttons(state, player, world, ["R2I Lower Left", "R2I Lower Middle", "R2I Right"])))
@@ -62,13 +62,13 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Region 2Q",       "Region 3A",            lambda state: True)
     connect_areas(world, "Region 2Q",       "Dark Region A",        lambda state: can_dash(state, player))
     world.multiworld.register_indirect_condition(world.get_region("Region 1E"),
-        connect_areas(world, "Region 3A",       "Region 2M",            lambda state: world.options.FlowerPuzzleSkips.value     and flower_puzzle_completion(state, player, world) == 3)
+        connect_areas(world, "Region 3A",       "Region 2M",            lambda state: bool(world.options.FlowerPuzzleSkips.value)     and flower_puzzle_completion(state, player, world) == 3)
     )
     connect_areas(world, "Region 3A",       "Region 3B",            lambda state: can_dash(state, player)                   and has_grapple(state, player)              and can_press_button(state, player, world, "R3A Left"))
     connect_areas(world, "Region 3A",       "Region 3E",            lambda state: can_dash(state, player)                   and can_press_buttons(state, player, world, ["R3A Middle Upper", "R3A Middle Lower"]))
     connect_areas(world, "Region 3A",       "Region 3G",            lambda state: can_dash(state, player)                   and has_grapple(state, player))
     world.multiworld.register_indirect_condition(world.get_region("Region 1E"),
-        connect_areas(world, "Region 3A",       "Region 4F",            lambda state: world.options.FlowerPuzzleSkips.value     and can_press_button(state, player, world, "R4F Save")  and flower_puzzle_completion(state, player, world) == 3)
+        connect_areas(world, "Region 3A",       "Region 4F",            lambda state: bool(world.options.FlowerPuzzleSkips.value)     and can_press_button(state, player, world, "R4F Save")  and flower_puzzle_completion(state, player, world) == 3)
     )
     connect_areas(world, "Region 3B",       "Region 3C",            lambda state: can_dash(state, player))
     connect_areas(world, "Region 3C",       "Region 3D",            lambda state: can_dash(state, player)                   and has_grapple(state, player)              and can_press_buttons(state, player, world, ["R3C Left", "R3C Middle", "R3C Right", "R3C Gate Right"]))
@@ -150,7 +150,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "(R2) Silver Shard Puzzle 6 - Invisible",           lambda state: can_dash(state, player)                   and can_press_button(state, player, world, "R2B Puzzle"))
     set_rule_from_string(world, "(R2S2) Silver Shard Puzzle 7 - Timed",             lambda state: can_dash(state, player)                   and can_press_buttons(state, player, world, ["R2G Middle", "R2G Moving Platform"])  and (can_parry(state, player)   or (get_button_color(world, "R2G Upper Middle") != ButtonColor.BLACK    and can_press_buttons(state, player, world, ["R2G Upper Left", "R2G Upper Middle"]))))
     set_rule_from_string(world, "(R2) Silver Shard Puzzle 8 - Avoid Respawn",       lambda state: can_dash(state, player)                   and has_grapple(state, player)  and can_press_button(state, player, world, "R2P Puzzle"))
-    set_rule_from_string(world, "(R2) Silver Shard Puzzle 9 - Color Dash Puzzle",   lambda state: can_dash(state, player)                   and (options.DashPuzzlesSolved.value                or state.can_reach_location("(R1) Color Cypher Room Pickup", player)))
+    set_rule_from_string(world, "(R2) Silver Shard Puzzle 9 - Color Dash Puzzle",   lambda state: can_dash(state, player)                   and (bool(options.DashPuzzlesSolved.value)          or state.can_reach_location("(R1) Color Cypher Room Pickup", player)))
     set_rule_from_string(world, "(R2) Silver Shard Puzzle 15 - Escape Serpent",     lambda state: can_dash(state, player)                   and can_press_button(state, player, world, "R2N Chase 1")   and (defeated_gilded_serpent(state, player)                             or can_fight(state, player, world)))
     set_rule_from_string(world, "(R2S2) Smile Token Puzzle 3 - Car Hall",           lambda state: can_dash(state, player))
     set_rule_from_string(world, "(R2) Smile Token Puzzle 6 - Above Serpent",        lambda state: can_dash(state, player)                   and defeated_gilded_serpent(state, player)          and can_press_button(state, player, world, "R2N Save"))
@@ -168,7 +168,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "(R2) George Reward 1",                             lambda state: can_dash(state, player)                   and state.has("Seeds", player, 10))
     set_rule_from_string(world, "(R2) George Reward 2",                             lambda state: can_dash(state, player)                   and state.has("Seeds", player, 10))
     set_rule_from_string(world, "(R2S2) Shadow Chase Pickup",                       lambda state: can_dash(state, player)                   and has_grapple(state, player)                      and can_press_buttons(state, player, world, ["R2K Chase 1", "R2K Chase 2", "R2K Chase 3", "R2K Chase 4", "R2K Chase 5"]))
-    set_rule_from_string(world, "(R2S2) Master Puzzle 1 - Map",                     lambda state: can_dash(state, player)                   and state.has("Silver Shard", player, 15)           and (options.DashPuzzlesSolved.value                                     or can_access_all_silver_shards(state, player)))
+    set_rule_from_string(world, "(R2S2) Master Puzzle 1 - Map",                     lambda state: can_dash(state, player)                   and state.has("Silver Shard", player, 15)           and (bool(options.DashPuzzlesSolved.value)                              or can_access_all_silver_shards(state, player)))
 
 
     # Region 3
@@ -177,7 +177,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "(R3) Red Stone Trial",                             lambda state: can_fight(state, player, world)           and can_dash(state, player))
     set_rule_from_string(world, "(R3) Silver Shard Puzzle 10 - Mirror",             lambda state: can_dash(state, player)                   and has_grapple(state, player)                      and can_press_buttons(state, player, world, ["R3A Mirror Green", "R3A Mirror Blue"]))
     set_rule_from_string(world, "(R3) Silver Shard Puzzle 11 - No Dash",            lambda state: can_dash(state, player))
-    set_rule_from_string(world, "(R3) Silver Shard Puzzle 12 - QR",                 lambda state: can_dash(state, player)                   and (options.DashPuzzlesSolved.value                or can_press_buttons(state, player, world, ["R3E QR Upper Left", "R3E QR Upper Right", "R3E QR Lower Left", "R3E QR Lower Right"])))
+    set_rule_from_string(world, "(R3) Silver Shard Puzzle 12 - QR",                 lambda state: can_dash(state, player)                   and (bool(options.DashPuzzlesSolved.value)          or can_press_buttons(state, player, world, ["R3E QR Upper Left", "R3E QR Upper Right", "R3E QR Lower Left", "R3E QR Lower Right"])))
     set_rule_from_string(world, "(R3) Silver Shard Puzzle 13 - Black Button",       lambda state: can_dash(state, player)                   and has_grapple(state, player)                      and can_press_buttons(state, player, world, ["R3E Upper", "R3E Puzzle"]))
     set_rule_from_string(world, "(R3) Silver Shard Puzzle 14 - Grapple",            lambda state: can_dash(state, player)                   and has_grapple(state, player))
     set_rule_from_string(world, "(R3) Smile Token Puzzle 2 - Wizard",               lambda state: can_dash(state, player)                   and has_grapple(state, player)                      and can_press_button(state, player, world, "R3E Upper"))
@@ -249,7 +249,7 @@ def set_rules(world: "GlyphsWorld"):
     set_rule_from_string(world, "(Void 3) Preminition Reward",                      lambda state: True)
 
     # Victory condition rule!
-    victory: lambda state: False
+    victory: Callable[[CollectionState], bool] = lambda state: False
     if options.Goal.value == options.Goal.option_false_ending:
         victory = lambda state: state.has("False Ending", player)
     elif options.Goal.value == options.Goal.option_good_ending:
@@ -264,10 +264,10 @@ def set_rules(world: "GlyphsWorld"):
         victory = lambda state: state.has("False Ending", player) and state.has("Good Ending", player) and state.has("True Ending", player) and state.has("Perfect Clarity", player) and state.has("Smilemask Ending", player) and state.has("Omnipotence Ending", player) and state.has("Epilogue Ending", player)
     world.multiworld.completion_condition[player] = victory
 
-def connect_areas(world: "GlyphsWorld", source: str, target: str, rule=None) -> Entrance:
+def connect_areas(world: "GlyphsWorld", source: str, target: str, rule: CollectionRule) -> Entrance:
     sourceRegion = world.get_region(source)
     targetRegion = world.get_region(target)
     return sourceRegion.connect(targetRegion, rule=rule)
 
-def set_rule_from_string(world: "GlyphsWorld", location_name: str, rule=None) -> None:
+def set_rule_from_string(world: "GlyphsWorld", location_name: str, rule: CollectionRule) -> None:
     set_rule(world.get_location(location_name), rule=rule)
