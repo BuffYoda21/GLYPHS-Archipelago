@@ -2,8 +2,8 @@ from BaseClasses import MultiWorld, Item, Tutorial
 from worlds.AutoWorld import World, CollectionState, WebWorld
 from typing import Dict, TextIO
 
-from worlds.glyphs.SmileShopRando import get_shop_prices
-from worlds.glyphs.Types import GlyphsItem
+from .SmileShopRando import get_shop_prices
+from .Types import ButtonData, ItemData
 from .Locations import create_additional_locations, get_location_names, get_total_locations
 from .Items import create_item, create_itempool, item_table, glyphs_hats
 from .Options import GlyphsOptions

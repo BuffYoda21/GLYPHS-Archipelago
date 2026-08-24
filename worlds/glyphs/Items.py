@@ -1,5 +1,5 @@
 from BaseClasses import Item, ItemClassification
-from worlds.glyphs.Buttons import create_button_shard_items
+from .Buttons import create_button_shard_items
 from .Types import ItemData, GlyphsItem
 from .Locations import get_total_locations
 from typing import List, Dict, TYPE_CHECKING

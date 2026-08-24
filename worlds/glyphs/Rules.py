@@ -2,8 +2,8 @@ from collections.abc import Callable
 from BaseClasses import CollectionRule, Entrance, CollectionState
 from worlds.generic.Rules import set_rule
 from typing import TYPE_CHECKING
-from worlds.glyphs.Buttons import get_button_name
-from worlds.glyphs.Macros import *
+from .Buttons import get_button_name
+from .Macros import *
 
 if TYPE_CHECKING:
     from . import GlyphsWorld
@@ -93,7 +93,7 @@ def connect_entrances(world: "GlyphsWorld"):
     connect_areas(world, "Menu",            "Act 1",                lambda state: act_1_available(state, player))
     connect_areas(world, "Menu",            "Act 2",                lambda state: act_2_available(state, player))
     connect_areas(world, "Menu",            "Act 3",                lambda state: act_3_available(state, player))
-    connect_areas(world, "Act 1",           "Epilogue",             lambda state: can_dash(state, player)                   and has_grapple(state, player)              and state.has("Shroud", player)   and can_press_button(state, player, world, "Epilouge 1"))
+    connect_areas(world, "Act 1",           "Epilogue",             lambda state: can_dash(state, player)                   and has_grapple(state, player)              and state.has("Shroud", player)   and can_press_button(state, player, world, "Epilogue 1"))
 
 
 def set_rules(world: "GlyphsWorld"):
@@ -453,7 +453,7 @@ def set_rules(world: "GlyphsWorld"):
         set_button_rule(world, "Void Chase 3",          lambda state: can_press_button(state, player, world, "Void Chase 3")                                                                                                and can_dash(state, player) and has_grapple(state, player) and void_gate_open(state, player))
         set_button_rule(world, "Void Chase 4",          lambda state: can_press_buttons(state, player, world, ["Void Chase 1", "Void Chase 2", "Void Chase 3", "Void Chase Gate", "Void Chase 4"])                          and can_dash(state, player) and has_grapple(state, player) and void_gate_open(state, player))
         set_button_rule(world, "Void Chase Gate",       lambda state: can_press_button(state, player, world, "Void Chase Gate")                                                                                             and can_dash(state, player) and has_grapple(state, player) and void_gate_open(state, player))
-        set_button_rule(world, "Epilouge 1",            lambda state: can_press_button(state, player, world, "Epilouge 1")                                                                                                  and can_dash(state, player))
+        set_button_rule(world, "Epilogue 1",            lambda state: can_press_button(state, player, world, "Epilogue 1")                                                                                                  and can_dash(state, player))
         set_button_rule(world, "Between Save",          lambda state: can_press_button(state, player, world, "Between Save")                                                                                                and can_dash(state, player))
         set_button_rule(world, "Between Gate Left",     lambda state: can_press_button(state, player, world, "Between Gate Left")                                                                                           and can_dash(state, player))
         set_button_rule(world, "Between rm1",           lambda state: can_press_buttons(state, player, world, ["Between Gate Left", "Between rm1"])                                                                         and can_fight(state, player, world) and can_dash_attack(state, player) and has_grapple(state, player) and can_parry(state, player) and between_buttons_missing(state, player, world) <= 8)
@@ -501,8 +501,8 @@ def connect_areas(world: "GlyphsWorld", source: str, target: str, rule: Collecti
     targetRegion = world.get_region(target)
     return sourceRegion.connect(targetRegion, rule=rule)
 
-def set_button_rule(world: "GlyphsWorld", button: str, rule=None) -> None:
+def set_button_rule(world: "GlyphsWorld", button: str, rule: CollectionRule) -> None:
     set_rule(world.get_location(get_button_name(world, button)), rule=rule)
-    
+
 def set_rule_from_string(world: "GlyphsWorld", location_name: str, rule: CollectionRule) -> None:
     set_rule(world.get_location(location_name), rule=rule)
