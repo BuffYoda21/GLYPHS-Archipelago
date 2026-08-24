@@ -1,9 +1,8 @@
 from typing import TYPE_CHECKING
 
-from BaseClasses import Item, ItemClassification
-from .Regions import to_generic_readable_region_name
+from .Util import to_generic_readable_region_name
 from .Options import GlyphsOptions
-from .Types import ButtonData, ButtonColor, GlyphsItem, LocData
+from .Types import ButtonData, ButtonColor
 from copy import deepcopy
 
 options: GlyphsOptions
@@ -53,19 +52,13 @@ def randomize_buttons(world: "GlyphsWorld", color_percentage: int = 0, shard_per
             if button == "R1A Save":    # Special case for starting button
                 continue
             world.buttons[button].isBroken = True
-    
-def create_button_shard_items(world: "GlyphsWorld") -> list[Item]:
-    shard_items: list[Item] = []
+
+def get_broken_buttons(world: "GlyphsWorld") -> list[str]:
+    broken: list[str] = []
     for button in world.buttons:
         if world.buttons[button].isBroken:
-            shard_items.append(GlyphsItem(get_shard_name(world, button), ItemClassification.progression_skip_balancing, world.buttons[button].id * 10000, world.player))
-    return shard_items
-
-def create_button_locations(world: "GlyphsWorld") -> dict[str, LocData]:
-    button_locations: dict[str, LocData] = {}
-    for button in world.buttons:
-        button_locations[get_button_name(world, button)] = LocData(world.buttons[button].id * 10000, world.buttons[button].region)
-    return button_locations
+            broken.append(button)
+    return broken
 
 def get_button_color(world: "GlyphsWorld", button: str) -> ButtonColor:
     return world.buttons[button].color

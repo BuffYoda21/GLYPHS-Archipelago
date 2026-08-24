@@ -4,7 +4,7 @@ from typing import Dict, TextIO
 
 from .Shop import get_shop_prices
 from .Types import ButtonData, ItemData
-from .Locations import create_additional_locations, get_location_names, get_total_locations
+from .Locations import get_location_names, get_total_locations
 from .Items import create_item, create_itempool, item_table, hats
 from .Options import GlyphsOptions
 from .Regions import create_regions
@@ -58,7 +58,6 @@ class GlyphsWorld(World):
                 for _ in range(item_data.count or 1):
                     self.multiworld.push_precollected(create_item(self, item_name))
         randomize_buttons(self, self.options.RandomButtonColorPercent.value, self.options.ButtonShardPercent.value)
-        create_additional_locations(self)
     
     def set_rules(self):
         set_rules(self)

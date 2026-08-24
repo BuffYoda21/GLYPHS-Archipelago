@@ -1,5 +1,5 @@
 from BaseClasses import Item, ItemClassification
-from .Buttons import create_button_shard_items
+from .Buttons import get_broken_buttons, get_shard_name
 from .Types import ItemData, GlyphsItem
 from .Locations import get_total_locations
 from typing import List, Dict, TYPE_CHECKING
@@ -49,8 +49,8 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
             for _ in range(item_data.count or 1):
                 itempool.append(create_item(world, item_name))
     
-    for item in create_button_shard_items(world):
-        itempool.append(item)
+    for button in get_broken_buttons(world):
+        itempool.append(create_item(world, get_shard_name(world, button)))
         
     place_event_items(world)
     place_goals(world)
@@ -196,6 +196,14 @@ junk_items = {
     "Dash Trap":                     ItemData(32,    ItemClassification.trap,                                                   0),
 }
 
+button_shards = {
+    f"Button Shard {shard}": ItemData(
+        shard + 10000,
+        ItemClassification.progression_deprioritized_skip_balancing,
+    )
+    for shard in range(228)
+}
+
 event_items = {
     "Defeat Runic Construct":        ItemData(1000,  ItemClassification.progression_skip_balancing),
     "Defeat Gilded Serpent":         ItemData(1001,  ItemClassification.progression_skip_balancing),
@@ -288,5 +296,6 @@ item_table = {
     **event_items,
     **goal_items,
     **glyphs_regions,
-    **junk_items
+    **junk_items,
+    **button_shards,
 }
