@@ -2,10 +2,10 @@ from BaseClasses import MultiWorld, Item, Tutorial
 from worlds.AutoWorld import World, CollectionState, WebWorld
 from typing import Dict, TextIO
 
-from .SmileShopRando import get_shop_prices
+from .Shop import get_shop_prices
 from .Types import ButtonData, ItemData
 from .Locations import create_additional_locations, get_location_names, get_total_locations
-from .Items import create_item, create_itempool, item_table, glyphs_hats
+from .Items import create_item, create_itempool, item_table, hats
 from .Options import GlyphsOptions
 from .Regions import create_regions
 from .Rules import set_rules, connect_entrances
@@ -54,7 +54,7 @@ class GlyphsWorld(World):
         if self.options.StartingDash.value:
             self.multiworld.push_precollected(create_item(self, "Progressive Dash Orb"))
         if not self.options.HatShuffle.value:
-            for item_name, item_data in glyphs_hats.items():
+            for item_name, item_data in hats.items():
                 for _ in range(item_data.count or 1):
                     self.multiworld.push_precollected(create_item(self, item_name))
         randomize_buttons(self, self.options.RandomButtonColorPercent.value, self.options.ButtonShardPercent.value)

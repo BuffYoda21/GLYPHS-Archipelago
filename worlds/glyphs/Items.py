@@ -11,11 +11,10 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
     itempool: List[Item] = []
 
     world.items = {}
-    for item_name, item_data in glyphs_items.items():
+    for item_name, item_data in progression_items.items():
         world.items[item_name] = ItemData(
             item_data.ap_code,
             item_data.classification,
-            item_data.advancement,
             item_data.count
         )
     
@@ -27,8 +26,7 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
 
         world.items["Progressive Sword"] = ItemData(
             1, 
-            ItemClassification.progression | ItemClassification.useful, 
-            True, 
+            ItemClassification.progression | ItemClassification.useful,
             sword.count - 1
         )
 
@@ -38,8 +36,7 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
 
         world.items["Progressive Dash Orb"] = ItemData(
             2, 
-            ItemClassification.progression | ItemClassification.useful, 
-            True, 
+            ItemClassification.progression | ItemClassification.useful,
             dash.count - 1
         )
 
@@ -48,7 +45,7 @@ def create_itempool(world: "GlyphsWorld") -> List[Item]:
             itempool.append(create_item(world, item_name))
 
     if world.options.HatShuffle.value:
-        for item_name, item_data in glyphs_hats.items():
+        for item_name, item_data in hats.items():
             for _ in range(item_data.count or 1):
                 itempool.append(create_item(world, item_name))
     
@@ -152,144 +149,144 @@ def create_junk_items(world: "GlyphsWorld", count: int) -> List[Item]:
 
     return junk_pool
 
-glyphs_items = {
-# ---Item Name------------------------ap_code-----------------------classifications-------------------------------advancement--count--
+progression_items = {
+# ---Item Name-----------------------------ap_code-----------------------classifications------------------------------------count(default=1)---
     
     # Upgrades
-    "Progressive Sword":             ItemData(1,     ItemClassification.progression | ItemClassification.useful,         True,        2),
-    "Progressive Dash Orb":          ItemData(2,     ItemClassification.progression | ItemClassification.useful,         True,        3),
-    "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,         True,        0),     # decided to make this a starting item
-    "Grapple":                       ItemData(4,     ItemClassification.progression | ItemClassification.useful,         True,        1),
-    "Progressive Parry":             ItemData(5,     ItemClassification.progression | ItemClassification.useful,         True,        2),
-    "Shroud":                        ItemData(6,     ItemClassification.progression | ItemClassification.useful,         False,       1),
-    "Progressive Essence of George": ItemData(7,     ItemClassification.progression | ItemClassification.useful,         False,       2),
+    "Progressive Sword":             ItemData(1,     ItemClassification.progression | ItemClassification.useful,                2),
+    "Progressive Dash Orb":          ItemData(2,     ItemClassification.progression | ItemClassification.useful,                3),
+    "Map":                           ItemData(3,     ItemClassification.progression | ItemClassification.useful,                0),     # decided to make this a starting item
+    "Grapple":                       ItemData(4,     ItemClassification.progression | ItemClassification.useful,                1),
+    "Progressive Parry":             ItemData(5,     ItemClassification.progression | ItemClassification.useful,                2),
+    "Shroud":                        ItemData(6,     ItemClassification.progression | ItemClassification.useful,                1),
+    "Progressive Essence of George": ItemData(7,     ItemClassification.progression | ItemClassification.useful,                2),
 
     # Collectables
-    "Silver Shard":                  ItemData(8,     ItemClassification.progression_skip_balancing,                      True,        15),
-    "Gold Shard":                    ItemData(9,     ItemClassification.progression | ItemClassification.useful,         False,       3),
-    "Smile Token":                   ItemData(10,    ItemClassification.progression_skip_balancing,                      True,        10),
-    "Rune Cube":                     ItemData(11,    ItemClassification.progression,                                     True,        3),
-    "Void Gate Shard":               ItemData(12,    ItemClassification.progression_skip_balancing,                      True,        7),
-    "Glyphstone":                    ItemData(13,    ItemClassification.progression,                                     True,        3),
-    "Seeds":                         ItemData(16,    ItemClassification.progression_skip_balancing,                      True,        10),
+    "Silver Shard":                  ItemData(8,     ItemClassification.progression_skip_balancing | ItemClassification.useful, 15),
+    "Gold Shard":                    ItemData(9,     ItemClassification.progression | ItemClassification.useful,                3),
+    "Smile Token":                   ItemData(10,    ItemClassification.progression_skip_balancing,                             10),
+    "Rune Cube":                     ItemData(11,    ItemClassification.progression,                                            3),
+    "Void Gate Shard":               ItemData(12,    ItemClassification.progression_skip_balancing,                             7),
+    "Glyphstone":                    ItemData(13,    ItemClassification.progression,                                            3),
+    "Seeds":                         ItemData(16,    ItemClassification.progression_deprioritized_skip_balancing,               10),
 }
 
-glyphs_hats = {
-    "Pink Bow":                      ItemData(17,    ItemClassification.filler,                                          False,       1),
-    "Propeller Hat":                 ItemData(18,    ItemClassification.filler,                                          False,       1),
-    "Traffic Cone":                  ItemData(19,    ItemClassification.filler,                                          False,       1),
-    "John Hat":                      ItemData(20,    ItemClassification.filler,                                          False,       1),
-    "Top Hat":                       ItemData(21,    ItemClassification.filler,                                          False,       1),
-    "Fez":                           ItemData(22,    ItemClassification.filler,                                          False,       1),
-    "Party Hat":                     ItemData(23,    ItemClassification.filler,                                          False,       1),
-    "Bomb Hat":                      ItemData(24,    ItemClassification.filler,                                          False,       1),
-    "Crown":                         ItemData(25,    ItemClassification.filler,                                          False,       1),
-    "Progressive Chicken Hat":       ItemData(26,    ItemClassification.filler,                                          False,       2),
+hats = {
+    "Pink Bow":                      ItemData(17,    ItemClassification.filler,                                                 1),
+    "Propeller Hat":                 ItemData(18,    ItemClassification.filler,                                                 1),
+    "Traffic Cone":                  ItemData(19,    ItemClassification.filler,                                                 1),
+    "John Hat":                      ItemData(20,    ItemClassification.filler,                                                 1),
+    "Top Hat":                       ItemData(21,    ItemClassification.filler,                                                 1),
+    "Fez":                           ItemData(22,    ItemClassification.filler,                                                 1),
+    "Party Hat":                     ItemData(23,    ItemClassification.filler,                                                 1),
+    "Bomb Hat":                      ItemData(24,    ItemClassification.filler,                                                 1),
+    "Crown":                         ItemData(25,    ItemClassification.filler,                                                 1),
+    "Progressive Chicken Hat":       ItemData(26,    ItemClassification.filler,                                                 2),
 }
 
 junk_items = {
     # Junk Items
-    "HP Refill":                     ItemData(27,    ItemClassification.filler,                                          False,       0),
+    "HP Refill":                     ItemData(27,    ItemClassification.filler,                                                 0),
 
     # Traps
-    "John Trap":                     ItemData(28,    ItemClassification.trap,                                            False,       0),
-    "Momentum Trap":                 ItemData(29,    ItemClassification.trap,                                            False,       0),
-    "Slow Trap":                     ItemData(30,    ItemClassification.trap,                                            False,       0),
-    "Screen Flip Trap":              ItemData(31,    ItemClassification.trap,                                            False,       0),
-    "Dash Trap":                     ItemData(32,    ItemClassification.trap,                                            False,       0),
+    "John Trap":                     ItemData(28,    ItemClassification.trap,                                                   0),
+    "Momentum Trap":                 ItemData(29,    ItemClassification.trap,                                                   0),
+    "Slow Trap":                     ItemData(30,    ItemClassification.trap,                                                   0),
+    "Screen Flip Trap":              ItemData(31,    ItemClassification.trap,                                                   0),
+    "Dash Trap":                     ItemData(32,    ItemClassification.trap,                                                   0),
 }
 
-glyphs_events = {
-    "Defeat Runic Construct":        ItemData(1000,  ItemClassification.progression_skip_balancing,                      True),
-    "Defeat Gilded Serpent":         ItemData(1001,  ItemClassification.progression_skip_balancing,                      True),
-    "Collapse Unlock":               ItemData(1002,  ItemClassification.progression_skip_balancing,                      True),
-    "Wizard True Defeat":            ItemData(1003,  ItemClassification.progression_skip_balancing,                      True),
-    "Defeat Null":                   ItemData(1004,  ItemClassification.progression_skip_balancing,                      True),
-    "Defeat Spearman":               ItemData(1005,  ItemClassification.progression_skip_balancing,                      True),
-    "Serpent Lock 1":                ItemData(1006,  ItemClassification.progression_skip_balancing,                      True),
-    "Serpent Lock 2":                ItemData(1007,  ItemClassification.progression_skip_balancing,                      True),
-    "Serpent Lock 3":                ItemData(1008,  ItemClassification.progression_skip_balancing,                      True),
-    "Stalker Sigil 1":               ItemData(1009,  ItemClassification.progression_skip_balancing,                      True),
-    "Stalker Sigil 2":               ItemData(1010,  ItemClassification.progression_skip_balancing,                      True),
-    "Stalker Sigil 3":               ItemData(1011,  ItemClassification.progression_skip_balancing,                      True),
-    "Solve Flower Puzzle":           ItemData(1012,  ItemClassification.progression_skip_balancing,                      True),
-    "Clarity":                       ItemData(1013,  ItemClassification.progression_skip_balancing,                      True),
-    "Last Fracture":                 ItemData(1014,  ItemClassification.progression_skip_balancing,                      True),
-    "Clear Act 1":                   ItemData(1015,  ItemClassification.progression_skip_balancing,                      True),
-    "Clear Act 2":                   ItemData(1016,  ItemClassification.progression_skip_balancing,                      True),
+event_items = {
+    "Defeat Runic Construct":        ItemData(1000,  ItemClassification.progression_skip_balancing),
+    "Defeat Gilded Serpent":         ItemData(1001,  ItemClassification.progression_skip_balancing),
+    "Collapse Unlock":               ItemData(1002,  ItemClassification.progression_skip_balancing),
+    "Wizard True Defeat":            ItemData(1003,  ItemClassification.progression_skip_balancing),
+    "Defeat Null":                   ItemData(1004,  ItemClassification.progression_skip_balancing),
+    "Defeat Spearman":               ItemData(1005,  ItemClassification.progression_skip_balancing),
+    "Serpent Lock 1":                ItemData(1006,  ItemClassification.progression_skip_balancing),
+    "Serpent Lock 2":                ItemData(1007,  ItemClassification.progression_skip_balancing),
+    "Serpent Lock 3":                ItemData(1008,  ItemClassification.progression_skip_balancing),
+    "Stalker Sigil 1":               ItemData(1009,  ItemClassification.progression_skip_balancing),
+    "Stalker Sigil 2":               ItemData(1010,  ItemClassification.progression_skip_balancing),
+    "Stalker Sigil 3":               ItemData(1011,  ItemClassification.progression_skip_balancing),
+    "Solve Flower Puzzle":           ItemData(1012,  ItemClassification.progression_skip_balancing),
+    "Clarity":                       ItemData(1013,  ItemClassification.progression_skip_balancing),
+    "Last Fracture":                 ItemData(1014,  ItemClassification.progression_skip_balancing),
+    "Clear Act 1":                   ItemData(1015,  ItemClassification.progression_skip_balancing),
+    "Clear Act 2":                   ItemData(1016,  ItemClassification.progression_skip_balancing),
 }
 
-glyphs_goals = {
-    "False Ending":                  ItemData(2000,    ItemClassification.progression_skip_balancing,                      True),
-    "Good Ending":                   ItemData(2001,    ItemClassification.progression_skip_balancing,                      True),
-    "True Ending":                   ItemData(2002,    ItemClassification.progression_skip_balancing,                      True),
-    "Perfect Clarity":               ItemData(2003,    ItemClassification.progression_skip_balancing,                      True),
-    "Smilemask Ending":              ItemData(2004,    ItemClassification.progression_skip_balancing,                      True),
-    "Omnipotence Ending":            ItemData(2005,    ItemClassification.progression_skip_balancing,                      True),
-    "Epilogue Ending":               ItemData(2006,    ItemClassification.progression_skip_balancing,                      True),
+goal_items = {
+    "False Ending":                  ItemData(2000,    ItemClassification.progression_skip_balancing),
+    "Good Ending":                   ItemData(2001,    ItemClassification.progression_skip_balancing),
+    "True Ending":                   ItemData(2002,    ItemClassification.progression_skip_balancing),
+    "Perfect Clarity":               ItemData(2003,    ItemClassification.progression_skip_balancing),
+    "Smilemask Ending":              ItemData(2004,    ItemClassification.progression_skip_balancing),
+    "Omnipotence Ending":            ItemData(2005,    ItemClassification.progression_skip_balancing),
+    "Epilogue Ending":               ItemData(2006,    ItemClassification.progression_skip_balancing),
 }
 
 # reference map here: https://docs.google.com/drawings/d/11DQQVcq0GAYjFShZs-McEZkcpY2-PP28NdRyncZrORw/edit?usp=sharing
 # note: regions listed here are only for generation, vanilla region names will be listed for the user
 glyphs_regions = {
-    "Menu":                          ItemData(3000,    ItemClassification.progression,                                     True),    # used for both the main menu and map screen for warps and outer void act selection
-    "Region 1A":                     ItemData(3001,    ItemClassification.progression,                                     True),
-    "Region 1B":                     ItemData(3002,    ItemClassification.progression,                                     True),
-    "Region 1C":                     ItemData(3003,    ItemClassification.progression,                                     True),
-    "Region 1D":                     ItemData(3004,    ItemClassification.progression,                                     True),
-    "Region 1E":                     ItemData(3005,    ItemClassification.progression,                                     True),
-    "Region 1F":                     ItemData(3006,    ItemClassification.progression,                                     True),
-    "Region 2A":                     ItemData(3007,    ItemClassification.progression,                                     True),
-    "Region 2B":                     ItemData(3008,    ItemClassification.progression,                                     True),
-    "Region 2C":                     ItemData(3009,    ItemClassification.progression,                                     True),
-    "Region 2D":                     ItemData(3010,    ItemClassification.progression,                                     True),
-    "Region 2E":                     ItemData(3011,    ItemClassification.progression,                                     True),
-    "Region 2F":                     ItemData(3012,    ItemClassification.progression,                                     True),
-    "Region 2G":                     ItemData(3013,    ItemClassification.progression,                                     True),
-    "Region 2H":                     ItemData(3014,    ItemClassification.progression,                                     True),
-    "Region 2I":                     ItemData(3015,    ItemClassification.progression,                                     True),
-    "Region 2J":                     ItemData(3016,    ItemClassification.progression,                                     True),
-    "Region 2K":                     ItemData(3017,    ItemClassification.progression,                                     True),
-    "Region 2L":                     ItemData(3018,    ItemClassification.progression,                                     True),
-    "Region 2M":                     ItemData(3019,    ItemClassification.progression,                                     True),
-    "Region 2N":                     ItemData(3020,    ItemClassification.progression,                                     True),
-    "Region 2O":                     ItemData(3021,    ItemClassification.progression,                                     True),
-    "Region 2P":                     ItemData(3022,    ItemClassification.progression,                                     True),
-    "Region 2Q":                     ItemData(3023,    ItemClassification.progression,                                     True),
-    "Region 3A":                     ItemData(3024,    ItemClassification.progression,                                     True),
-    "Region 3B":                     ItemData(3025,    ItemClassification.progression,                                     True),
-    "Region 3C":                     ItemData(3026,    ItemClassification.progression,                                     True),
-    "Region 3D":                     ItemData(3027,    ItemClassification.progression,                                     True),
-    "Region 3F":                     ItemData(3028,    ItemClassification.progression,                                     True),
-    "Region 3G":                     ItemData(3029,    ItemClassification.progression,                                     True),
-    "Region 3H":                     ItemData(3030,    ItemClassification.progression,                                     True),
-    "Region 3I":                     ItemData(3031,    ItemClassification.progression,                                     True),
-    "Region 4A":                     ItemData(3032,    ItemClassification.progression,                                     True),
-    "Region 4B":                     ItemData(3033,    ItemClassification.progression,                                     True),
-    "Region 4C":                     ItemData(3034,    ItemClassification.progression,                                     True),
-    "Region 4D":                     ItemData(3035,    ItemClassification.progression,                                     True),
-    "Region 4E":                     ItemData(3036,    ItemClassification.progression,                                     True),
-    "Region 4F":                     ItemData(3037,    ItemClassification.progression,                                     True),
-    "Region 4G":                     ItemData(3038,    ItemClassification.progression,                                     True),
-    "Region 4H":                     ItemData(3039,    ItemClassification.progression,                                     True),
-    "Region 4I":                     ItemData(3040,    ItemClassification.progression,                                     True),
-    "Region 4J":                     ItemData(3041,    ItemClassification.progression,                                     True),
-    "Collapse":                      ItemData(3042,    ItemClassification.progression,                                     True),
-    "Smile Shop":                    ItemData(3043,    ItemClassification.progression,                                     True),
-    "Dark Region A":                 ItemData(3044,    ItemClassification.progression,                                     True),
-    "Dark Region B":                 ItemData(3045,    ItemClassification.progression,                                     True),
-    "The Between":                   ItemData(3046,    ItemClassification.progression,                                     True),
-    "Act 1":                         ItemData(3047,    ItemClassification.progression,                                     True),
-    "Act 2":                         ItemData(3048,    ItemClassification.progression,                                     True),
-    "Act 3":                         ItemData(3049,    ItemClassification.progression,                                     True),
-    "Epilogue":                      ItemData(3050,    ItemClassification.progression,                                     True),
+    "Menu":                          ItemData(3000,    ItemClassification.progression),    # used for both the main menu and map screen for warps and outer void act selection
+    "Region 1A":                     ItemData(3001,    ItemClassification.progression),
+    "Region 1B":                     ItemData(3002,    ItemClassification.progression),
+    "Region 1C":                     ItemData(3003,    ItemClassification.progression),
+    "Region 1D":                     ItemData(3004,    ItemClassification.progression),
+    "Region 1E":                     ItemData(3005,    ItemClassification.progression),
+    "Region 1F":                     ItemData(3006,    ItemClassification.progression),
+    "Region 2A":                     ItemData(3007,    ItemClassification.progression),
+    "Region 2B":                     ItemData(3008,    ItemClassification.progression),
+    "Region 2C":                     ItemData(3009,    ItemClassification.progression),
+    "Region 2D":                     ItemData(3010,    ItemClassification.progression),
+    "Region 2E":                     ItemData(3011,    ItemClassification.progression),
+    "Region 2F":                     ItemData(3012,    ItemClassification.progression),
+    "Region 2G":                     ItemData(3013,    ItemClassification.progression),
+    "Region 2H":                     ItemData(3014,    ItemClassification.progression),
+    "Region 2I":                     ItemData(3015,    ItemClassification.progression),
+    "Region 2J":                     ItemData(3016,    ItemClassification.progression),
+    "Region 2K":                     ItemData(3017,    ItemClassification.progression),
+    "Region 2L":                     ItemData(3018,    ItemClassification.progression),
+    "Region 2M":                     ItemData(3019,    ItemClassification.progression),
+    "Region 2N":                     ItemData(3020,    ItemClassification.progression),
+    "Region 2O":                     ItemData(3021,    ItemClassification.progression),
+    "Region 2P":                     ItemData(3022,    ItemClassification.progression),
+    "Region 2Q":                     ItemData(3023,    ItemClassification.progression),
+    "Region 3A":                     ItemData(3024,    ItemClassification.progression),
+    "Region 3B":                     ItemData(3025,    ItemClassification.progression),
+    "Region 3C":                     ItemData(3026,    ItemClassification.progression),
+    "Region 3D":                     ItemData(3027,    ItemClassification.progression),
+    "Region 3F":                     ItemData(3028,    ItemClassification.progression),
+    "Region 3G":                     ItemData(3029,    ItemClassification.progression),
+    "Region 3H":                     ItemData(3030,    ItemClassification.progression),
+    "Region 3I":                     ItemData(3031,    ItemClassification.progression),
+    "Region 4A":                     ItemData(3032,    ItemClassification.progression),
+    "Region 4B":                     ItemData(3033,    ItemClassification.progression),
+    "Region 4C":                     ItemData(3034,    ItemClassification.progression),
+    "Region 4D":                     ItemData(3035,    ItemClassification.progression),
+    "Region 4E":                     ItemData(3036,    ItemClassification.progression),
+    "Region 4F":                     ItemData(3037,    ItemClassification.progression),
+    "Region 4G":                     ItemData(3038,    ItemClassification.progression),
+    "Region 4H":                     ItemData(3039,    ItemClassification.progression),
+    "Region 4I":                     ItemData(3040,    ItemClassification.progression),
+    "Region 4J":                     ItemData(3041,    ItemClassification.progression),
+    "Collapse":                      ItemData(3042,    ItemClassification.progression),
+    "Smile Shop":                    ItemData(3043,    ItemClassification.progression),
+    "Dark Region A":                 ItemData(3044,    ItemClassification.progression),
+    "Dark Region B":                 ItemData(3045,    ItemClassification.progression),
+    "The Between":                   ItemData(3046,    ItemClassification.progression),
+    "Act 1":                         ItemData(3047,    ItemClassification.progression),
+    "Act 2":                         ItemData(3048,    ItemClassification.progression),
+    "Act 3":                         ItemData(3049,    ItemClassification.progression),
+    "Epilogue":                      ItemData(3050,    ItemClassification.progression),
 }
 
 item_table = {
-    **glyphs_items,
-    **glyphs_hats,
-    **glyphs_events,
-    **glyphs_goals,
+    **progression_items,
+    **hats,
+    **event_items,
+    **goal_items,
     **glyphs_regions,
     **junk_items
 }

@@ -10,14 +10,13 @@ class GlyphsItem(Item):
     game = "GLYPHS"
 
 class ItemData:
-    def __init__(self, ap_code: Optional[int], classification: ItemClassification, advancement: bool = False, count: Optional[int] = 1):
+    def __init__(self, ap_code: Optional[int], classification: ItemClassification, count: Optional[int] = 1):
         self.ap_code = ap_code
         self.classification = classification
-        self.advancement = advancement
         self.count = count
 
     def __repr__(self) -> str:
-        return f"ItemData(ap_code={self.ap_code!r}, classification={self.classification!r}, advancement={self.advancement!r}, count={self.count!r})"
+        return f"ItemData(ap_code={self.ap_code!r}, classification={self.classification!r}, count={self.count!r})"
 
 class ButtonColor(IntEnum):
         RED = 0
