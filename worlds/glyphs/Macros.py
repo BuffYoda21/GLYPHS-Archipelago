@@ -25,29 +25,60 @@ def can_wall_jump(state: CollectionState, player: int, world: "GlyphsWorld") -> 
 # def can_chain_wall_jumps(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
 #     return can_wall_jump(state, player, world) and world.options.LogicalWallJumpChains.value
 
-def can_press_buttons(state: CollectionState, player: int, world: "GlyphsWorld", button_list: list[str]) -> bool:
-    for button in button_list:
-        if not can_press_button(state, player, world, button):
+def can_press_buttons(state: CollectionState, player: int, world: "GlyphsWorld", button_list: list[str], allowedFaults: int=0) -> bool:
+    prog_dash: int | None = None
+    parry: bool | None = None
+    sword: bool | None = None
+    faults = 0
+    for key in button_list:
+        if faults > allowedFaults:
             return False
+        button = world.buttons[key]
+
+        if button.isBroken and not state.has(f"Button Shard {button.id}", player):
+            faults += 1
+            continue
+        
+        if button.color in (ButtonColor.RED, ButtonColor.BLACK):
+            continue
+
+        if button.color == ButtonColor.PINK:
+            if parry is None:
+                parry = can_parry(state, player)
+            if not parry:
+                faults += 1
+            continue
+
+        if prog_dash is None:
+            prog_dash = state.count("Progressive Dash Orb", player)
+        if button.color == ButtonColor.BLUE:
+            if prog_dash < 1:
+                faults += 1
+            continue
+        if button.color == ButtonColor.YELLOW:
+            if prog_dash < 2:
+                faults += 1
+            continue
+
+        if sword is None:
+            sword = has_sword(state, player)
+        if button.color == ButtonColor.GREEN:
+            if prog_dash < 2 and not sword:
+                faults += 1
+            continue
+
+    if faults > allowedFaults:
+        return False
     return True
 
-def can_press_button(state: CollectionState, player: int, world: "GlyphsWorld", button: str) -> bool:
-    if is_broken(world, button) and not state.has(get_shard_name(world, button), player):
-        return False
-    color = get_button_color(world, button)
-    if color == ButtonColor.RED or color == ButtonColor.BLACK:
-        return True
-    if color == ButtonColor.BLUE:
-        return can_dash(state, player)
-    if color == ButtonColor.GREEN:
-        return can_press_green_buttons(state, player)
-    if color == ButtonColor.YELLOW:
-        return can_dash_attack(state, player)
-    if color == ButtonColor.PINK:
-        return can_parry(state, player)
-    return True
+def can_press_button(state: CollectionState, player: int, world: "GlyphsWorld", key: str) -> bool:
+    return can_press_buttons(state, player, world, [key])
 
 def between_buttons_missing(state: CollectionState, player: int, world: "GlyphsWorld") -> int:
+    """
+    DEPRICATED
+    Use between_completion instead
+    """
     count = 0
     if not can_press_button(state, player, world, "Between rm1"):
         count += 1
@@ -82,6 +113,12 @@ def between_buttons_missing(state: CollectionState, player: int, world: "GlyphsW
     if not can_press_button(state, player, world, "Between Pre-Boss 1"):
         count += 1
     return count
+
+def between_completion(state: CollectionState, player: int, world: "GlyphsWorld", missing_allowed: int=0) -> bool:
+    missing = 0
+    buttons_to_check = ["Between rm1", "Between rm4", "Between rm5", "Between rm10", "Between rm13", "Between rm19", "Between rm28", "Between rm30", "Between rm39",
+                        "Between rm40", "Between rm43 Button 1", "Between rm43 Button 2", "Between rm57", "Between rm66", "Between rm71", "Between Pre-Boss 1"]
+    return can_press_buttons(state, player, world, buttons_to_check, missing_allowed)
 
 def can_press_green_buttons(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Sword", player, 1) or state.has("Progressive Dash Orb", player, 2)
