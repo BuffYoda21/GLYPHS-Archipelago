@@ -3,7 +3,7 @@ from worlds.AutoWorld import World, CollectionState, WebWorld
 from typing import Dict, TextIO
 
 from .Shop import get_shop_prices
-from .Types import ButtonData, ItemData
+from .Types import ButtonData, ButtonColor, ItemData
 from .Locations import get_location_names, get_total_locations
 from .Items import create_item, create_itempool, item_table, hats
 from .Options import GlyphsOptions
@@ -49,15 +49,41 @@ class GlyphsWorld(World):
         starting_chapter = "Menu"
         self.multiworld.push_precollected(create_item(self, starting_chapter))
         self.multiworld.push_precollected(create_item(self, "Map"))
+
+        early_dash_possibility = True
+        early_sword_possibility = True
+        two_early_dash_possibility = True
+
         if self.options.StartingSword.value:
             self.multiworld.push_precollected(create_item(self, "Progressive Sword"))
+            early_sword_possibility = False
+            two_early_dash_possibility = False
         if self.options.StartingDash.value:
             self.multiworld.push_precollected(create_item(self, "Progressive Dash Orb"))
+            two_early_dash_possibility = False
+            if not self.options.SwordlessCombat.value:
+                early_dash_possibility = False
+        
         if not self.options.HatShuffle.value:
             for item_name, item_data in hats.items():
                 for _ in range(item_data.count or 1):
                     self.multiworld.push_precollected(create_item(self, item_name))
+
         randomize_buttons(self, self.options.RandomButtonColorPercent.value, self.options.ButtonShardPercent.value)
+
+        early_button_1 = self.buttons["R1C First"]
+        early_button_2 = self.buttons["R1C Second"]
+
+        if early_button_1.color != ButtonColor.RED or early_button_2.color != ButtonColor.RED or early_button_1.isBroken or early_button_2.isBroken:
+            early_sword_possibility = False
+            two_early_dash_possibility = False
+
+        if two_early_dash_possibility:
+            self.multiworld.local_early_items[self.player]["Progressive Dash Orb"] = 2
+        elif early_dash_possibility:
+            self.multiworld.local_early_items[self.player]["Progressive Dash Orb"] = 1
+        if early_sword_possibility:
+            self.multiworld.local_early_items[self.player]["Progressive Sword"] = 1
     
     def set_rules(self):
         set_rules(self)
