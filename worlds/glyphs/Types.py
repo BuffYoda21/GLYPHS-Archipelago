@@ -36,6 +36,7 @@ class ButtonData:
             validColors = [color]
         else:
             self.validColors = validColors
+        self.shardName = f"Button Shard {self.id}"
 
     
     def __repr__(self) -> str:
