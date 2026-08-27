@@ -43,7 +43,7 @@ def randomize_buttons(world: "GlyphsWorld", color_percentage: int = 0, shard_per
     if shard_percentage > 0:
         tmp: dict[str, ButtonData] = {}
         for key in glyphs_buttons:
-            if not key.endswith("Save") and key != "Smile Refund": # Special case for save buttons and refund button
+            if not key.endswith("Save") and not key in ("R1C First", "R1C Second", "Smile Refund"): # Special case for save buttons, refund button, and early buttons
                 tmp[key] = glyphs_buttons[key]
 
         count = len(tmp) * shard_percentage / 100
