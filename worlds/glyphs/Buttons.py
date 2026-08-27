@@ -11,7 +11,7 @@ if TYPE_CHECKING:
     from . import GlyphsWorld
 
 def randomize_buttons(world: "GlyphsWorld", color_percentage: int = 0, shard_percentage: int = 0) -> None:
-    buttons_to_randomize = []
+    buttons_to_randomize: list[str] = []
     world.buttons = {
         name: deepcopy(button)
         for name, button in glyphs_buttons.items()
@@ -41,16 +41,19 @@ def randomize_buttons(world: "GlyphsWorld", color_percentage: int = 0, shard_per
 
     # Randomize shards
     if shard_percentage > 0:
-        count = len(glyphs_buttons) * shard_percentage / 100
-        tmp = glyphs_buttons.copy()
+        tmp: dict[str, ButtonData] = {}
+        for key in glyphs_buttons:
+            if not key.endswith("Save") and key != "Smile Refund": # Special case for save buttons and refund button
+                tmp[key] = glyphs_buttons[key]
+
+        count = len(tmp) * shard_percentage / 100
+
         for _ in range(int(count)):
             key = world.random.choice(list(tmp.keys()))
             buttons_to_randomize.append(key)
             del tmp[key]
         
         for button in buttons_to_randomize:
-            if button == "R1A Save":    # Special case for starting button
-                continue
             world.buttons[button].isBroken = True
 
 def get_broken_buttons(world: "GlyphsWorld") -> list[str]:
