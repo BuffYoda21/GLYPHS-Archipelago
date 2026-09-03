@@ -1,18 +1,54 @@
 from collections.abc import Callable
-import dataclasses
 
 from BaseClasses import CollectionState
 from typing import TYPE_CHECKING
 
-from rule_builder.rules import Has, Rule
-from .Options import GlyphsOptions
-from .Buttons import get_button_color, get_shard_name, is_broken
+from .Buttons import get_button_color
 from .Types import ButtonColor
-
-options: GlyphsOptions
 
 if TYPE_CHECKING:
     from . import GlyphsWorld
+
+def set_macro_rules(state: CollectionState, world: "GlyphsWorld") -> None:
+    player = world.player
+
+    if world.options.LogicalWallJumps.value:
+        world.wall_jump_rule = lambda state: can_dash(state, player)
+    else:
+        world.wall_jump_rule = lambda state: False
+
+    if world.options.SwordlessCombat.value:
+        world.can_fight_rule = lambda state: state.has("Progressive Sword", player, 1) or state.has("Progressive Dash Orb", player, 2)
+    else:
+        world.can_fight_rule = lambda state: state.has("Progressive Sword", player, 1)
+
+    required_glyphstones = world.options.WizardRequirements.value
+    world.wizard_available_rule = lambda state: state.has("Glyphstone", player, required_glyphstones)
+
+    key = world.options.WraithRequirements.current_key.lower()
+    if key == "none":
+        world.wraith_available_rule = lambda state: True
+    elif key == "vanilla":
+        world.wraith_available_rule = lambda state: state.has("Silver Shard", player, 15)
+    elif key == "intended":
+        world.wraith_available_rule = lambda state: state.has("Silver Shard", player, 15) and state.has("Glyphstone", player, 3)
+    elif key == "silver_shards":
+        count = world.options.WraithSilverCount.value
+        world.wraith_available_rule = lambda state: state.has("Silver Shard", player, count)
+    elif key == "gold_shards":
+        count = world.options.WraithGoldCount.value
+        world.wraith_available_rule = lambda state: state.has("Gold Shard", player, count)
+    elif key == "smile_tokens":
+        count = world.options.WraithSmileCount.value
+        world.wraith_available_rule = lambda state: state.has("Smile Token", player, count)
+    elif key == "rune_cubes":
+        count = world.options.WraithRuneCount.value
+        world.wraith_available_rule = lambda state: state.has("Rune Cube", player, count)
+    elif key == "glyphstones":
+        count = world.options.WraithGlyphstoneCount.value
+        world.wraith_available_rule = lambda state: state.has("Glyphstone", player, count)
+
+    world.macro_init = True
 
 def has_sword(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Sword", player, 1)
@@ -23,8 +59,8 @@ def can_dash(state: CollectionState, player: int) -> bool:
 def can_dash_attack(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Dash Orb", player, 2)
 
-def can_wall_jump(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return can_dash(state, player) and bool(world.options.LogicalWallJumps.value)
+def can_wall_jump(state: CollectionState, world: "GlyphsWorld") -> bool:
+    return world.wall_jump_rule(state)
 
 ## Logically will never be needed
 # def can_chain_wall_jumps(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
@@ -107,8 +143,8 @@ def between_completion(state: CollectionState, player: int, world: "GlyphsWorld"
 def can_press_green_buttons(state: CollectionState, player: int) -> bool:
     return state.has("Progressive Sword", player, 1) or state.has("Progressive Dash Orb", player, 2)
 
-def can_fight(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return state.has("Progressive Sword", player, 1) or (state.has("Progressive Dash Orb", player, 2) and bool(world.options.SwordlessCombat.value))
+def can_fight(state: CollectionState, world: "GlyphsWorld") -> bool:
+    return world.can_fight_rule(state)
 
 def can_warp(state: CollectionState, player: int) -> bool:
     return state.has("Map", player)
@@ -131,43 +167,11 @@ def shadow_chase_open(state: CollectionState, player: int, world: "GlyphsWorld")
 def has_clarity(state: CollectionState, player: int) -> bool:
     return state.has("Clarity", player)
 
-def wizard_fight_available(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return state.has("Glyphstone", player, world.options.WizardRequirements.value)
+def wizard_fight_available(state: CollectionState, world: "GlyphsWorld") -> bool:
+    return world.wizard_available_rule(state)
 
-def wraith_fight_available(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    key = world.options.WraithRequirements.current_key.lower()
-    if key == "none":
-        return True
-    if key == "vanilla":
-        return state.has("Silver Shard", player, 15)
-    if key == "intended":
-        return state.has("Silver Shard", player, 15) and state.has("Glyphstone", player, 3)
-    if key == "silver_shards":
-        return has_wraith_silvers(state, player, world)
-    if key == "gold_shards":
-        return has_wraith_golds(state, player, world)
-    if key == "smile_tokens":
-        return has_wraith_smiles(state, player, world)
-    if key == "rune_cubes":
-        return has_wraith_runes(state, player, world)
-    if key == "glyphstones":
-        return has_wraith_glyphstones(state, player, world)
-    return False
-
-def has_wraith_silvers(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return state.has("Silver Shard", player, world.options.WraithSilverCount.value)
-
-def has_wraith_golds(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return state.has("Gold Shard", player, world.options.WraithGoldCount.value)
-
-def has_wraith_smiles(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return state.has("Smile Token", player, world.options.WraithSmileCount.value)
-
-def has_wraith_runes(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return state.has("Rune Cube", player, world.options.WraithRuneCount.value)
-
-def has_wraith_glyphstones(state: CollectionState, player: int, world: "GlyphsWorld") -> bool:
-    return state.has("Glyphstone", player, world.options.WraithGlyphstoneCount.value)
+def wraith_fight_available(state: CollectionState, world: "GlyphsWorld") -> bool:
+    return world.wraith_available_rule(state)
 
 def defeated_runic_construct(state: CollectionState, player: int) -> bool:
     return state.has("Defeat Runic Construct", player)
@@ -218,7 +222,7 @@ def flower_puzzle_completion(state: CollectionState, player: int, world: "Glyphs
     If used in an entrance access rule, wrap with `multiworld.register_indirect_condition(world.get_region("Region 1E"), <foo>)`.
     """
     completion = 0
-    wall_jump = can_wall_jump(state, player, world)
+    wall_jump = can_wall_jump(state, world)
     if state.can_reach_region("Region 1E", player) and can_dash(state, player) and can_press_buttons(state, player, world, ["R1B 4th Lowest", "R1B 5th Lowest"]) and (wall_jump or can_press_button(state, player, world, "R1B 6th Lowest")):
         completion += 1
     else:

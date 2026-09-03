@@ -1,6 +1,6 @@
 from BaseClasses import MultiWorld, Item, Tutorial
 from worlds.AutoWorld import World, CollectionState, WebWorld
-from typing import Dict, TextIO
+from typing import Callable, Dict, TextIO
 
 from .Shop import get_shop_prices
 from .Types import ButtonData, ButtonColor, ItemData
@@ -41,6 +41,13 @@ class GlyphsWorld(World):
     shop_prices: list[int]
     buttons: dict[str, ButtonData]
     items: dict[str, ItemData]
+
+    # Macros to be used in Macros.py
+    macro_init = False
+    wall_jump_rule: Callable[[CollectionState], bool]
+    can_fight_rule: Callable[[CollectionState], bool]
+    wizard_available_rule: Callable[[CollectionState], bool]
+    wraith_available_rule: Callable[[CollectionState], bool]
 
     def __init__(self, multiworld: "MultiWorld", player: int):
         super().__init__(multiworld, player)
