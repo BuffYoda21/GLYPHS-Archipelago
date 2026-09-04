@@ -9,7 +9,7 @@ from .Items import create_item, create_itempool, item_table, hats
 from .Options import GlyphsOptions
 from .Regions import create_regions
 from .Rules import set_rules, connect_entrances
-from .Buttons import randomize_buttons, get_raw_button_color_data, get_button_color_spoiler_data, get_broken_button_spoiler_data
+from .Buttons import get_broken_button_ids, randomize_buttons, get_raw_button_color_data, get_button_color_spoiler_data, get_broken_button_spoiler_data
 
 class GlyphsWeb(WebWorld):
     theme = "stone"
@@ -132,7 +132,7 @@ class GlyphsWorld(World):
             },
             "shop_prices": prices,
             "button_colors": get_raw_button_color_data(self),
-            "broken_buttons": get_broken_button_spoiler_data(self),
+            "broken_buttons": get_broken_button_ids(self),
             "Seed": self.multiworld.seed_name,
             "Slot": self.multiworld.player_name[self.player],
             "TotalLocations": get_total_locations(self)

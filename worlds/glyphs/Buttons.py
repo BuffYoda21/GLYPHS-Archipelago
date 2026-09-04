@@ -81,6 +81,9 @@ def get_raw_button_color_data(world: "GlyphsWorld") -> dict[int, int]:
         button_data[button.id] = button.color.value
     return button_data
 
+def get_broken_button_ids(world: "GlyphsWorld") -> list[int]:
+    return [button.id for button in world.buttons.values() if button.isBroken]
+
 def get_button_color_spoiler_data(world: "GlyphsWorld") -> dict[str, str]:
     button_data: dict[str, str] = {}
     for key, value in world.buttons.items():
